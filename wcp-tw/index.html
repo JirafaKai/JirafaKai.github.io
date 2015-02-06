@@ -109,7 +109,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		
 		$.each(data.feed.entry, function(index, value){
 		    if (parseInt(value.gs$cell.row) <= 1 ) return true;
-		
+			$("#overlay-loading").remove();
     		col = parseInt(value.gs$cell.col);
 	    	tmp.push(value.content.$t);
 		    if (col == 4) {
@@ -117,7 +117,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			    tmp = [];
 		    }
 		});
-		loadFinish();
+		$("#overlay-loading").remove();
 	}
 
 	function addScript( src ) {
