@@ -74,14 +74,14 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
         </div>
 	</div>
 	
-	<!--
+
 	<div id="overlay-loading">
 		<div id="overlay-loading-content">
 			<i class="fa fa-spinner fa-pulse fa-4x"></i>
             <div>從 google spreadsheets 讀取問題資料（<span id="loaded-count"></span>）</div>
         </div>
     </div>
-	-->
+
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
@@ -112,7 +112,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			    tmp = [];
 		    }
 		});
-		//loadFinish();
+		loadFinish();
 	}
 
 	function addScript( src ) {
@@ -121,7 +121,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
         document.body.appendChild( s );
     }
 	
-	/*
+
 	function loadFinish() {
         finishCount++;
         if ( finishCount == Object.keys(gridIds).length ) {
@@ -132,7 +132,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
             $("#loaded-count").text(finishCount + '/' + Object.keys(gridIds).length);
         }
     }
-	*/
+
 	
 	$(document).ready(function() {
 		$.each( gridIds, function(key, value) {
