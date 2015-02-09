@@ -137,6 +137,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					//$("#result").append(charName.length);	
 			}
 			testPrint();
+			$("#overlay-loading").remove();
 		});
 		
 		//$('form').on 'submit', -> console.log 'submit'; false
@@ -147,10 +148,10 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			for (var i in charName){
 				//if (charName.indexOf($(this).val) !== -1) 
 				//	$("#result").append("success"  + '<br/>');
-				$("#result").append(charName[i]);
+				$("#result").append(inputKeyWord);
 			}
 		};
-		$("#overlay-loading").remove();
+		
 	});
 	</script>
 
