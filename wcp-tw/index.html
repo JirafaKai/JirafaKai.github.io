@@ -143,16 +143,14 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			testPrint();
 			$("#overlay-loading").remove();
 		});
+
+		var key = findID("inputKeyWord");
 		
-		//$('form').on 'submit', -> console.log 'submit'; false
-		
-		var inputKeyWord = document.getElementById("inputKeyword");
-		
-		inputKeyWord.onkeyup = function(e){
+		key.onkeyup = function(e){
 			for (var i in charName){
 				//if (charName.indexOf($(this).val) !== -1) 
 				//	$("#result").append("success"  + '<br/>');
-				$("#result").append(inputKeyWord.innerHTML);
+				$("#result").append(key.innerHTML);
 				$("#result").append("test");
 			}
 		};
