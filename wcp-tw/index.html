@@ -125,27 +125,30 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json";
 		
-		$.getJSON(urlScript, function(JData){
-			for (var i=0; i<JData.feed.entry.length; i++){
-				imgSrc[i] = JData.feed.entry[i].gsx$imgsrc.$t;
-				charName[i] = JData.feed.entry[i].gsx$charname.$t;
-				charType[i] = JData.feed.entry[i].gsx$chartype.$t;
-				//$("#result").append(charName[i]);
-				//$("#result").append(charName.length);
+		$.getJSON(urlScript, 
+			function(JData){
+				for (var i=0; i<JData.feed.entry.length; i++){
+					imgSrc[i] = JData.feed.entry[i].gsx$imgsrc.$t;
+					charName[i] = JData.feed.entry[i].gsx$charname.$t;
+					charType[i] = JData.feed.entry[i].gsx$chartype.$t;
+					//$("#result").append(charName[i]);
+					//$("#result").append(charName.length);
 			}
 			testPrint();
 			$("#overlay-loading").remove();
 		});
 		
-		$("inputKeyword").on("keyup", function() {
-		    var val = $(this).val().toLowerCase();
-			for (var i=0; i<charData.length; i++){
-				if (charData[i].indexOf(val) !== -1)
-					$("#result").append(charData[i]);
-			} 
-			}); //.on()
-		}); //.ready()
-		*/
+		
+		$("inputKeyword").on("keyup", 
+			function() {
+				var val = $(this).val().toLowerCase();
+				for (var i=0; i<charData.length; i++){
+					if (charData[i].indexOf(val) !== -1)
+						$("#result").append(charData[i]);
+				} 
+			}); //$("inputKeyword").on()
+		}); //$(document).ready()
+		
 	});
 	</script>
 
