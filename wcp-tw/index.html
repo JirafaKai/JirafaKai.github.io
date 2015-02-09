@@ -101,6 +101,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
 	<script>
+	var exeOrder = 0;
 	var sheetId = '1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I';
 	var finishCount = 0;
 	var gridIds = {
@@ -126,6 +127,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json";
 		
+		if (exeOrder===0){
 		$.getJSON(urlScript, 
 			function(JData){
 				for (var i=0; i<JData.feed.entry.length; i++){
@@ -136,9 +138,10 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					//$("#result").append(charName.length);
 			}
 			testPrint();
-			$("inputKeyword").on("keyup", function searchKey());
+			exeOrder++;
 			$("#overlay-loading").remove();
 		});
+		}
 		
 		function searchKey(){
 			return ;
