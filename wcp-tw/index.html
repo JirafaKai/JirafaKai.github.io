@@ -145,11 +145,9 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		var key = document.getElementById("inputKeyword");
 		
 		key.onkeyup = function(e){
-			//alert(key.value);
 			for (var i in charName){
-				//if (charName.indexOf($(this).val) !== -1) 
-				//	$("#result").append("success"  + '<br/>');
-				$("#result")="";
+				if (charName.match(key.value) != null) 
+					$("#result").append("success"  + '<br/>');
 				$("#result").append(key.value);
 			}
 		};
