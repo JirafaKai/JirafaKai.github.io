@@ -145,14 +145,14 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	$(document).ready(function() {
 	
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json";
-		$("#overlay-loading").remove();
+		
 		$.getJSON(urlScript, function(JData){
 			for (var i=0; i<JData.feed.entry.length; i++){
-				$("#result").append(JData.feed.entry[i].gsx$charName.$t);
+				$("#result").append(JData.feed.entry[i].gsx$charname.$t);
 			}
 		});
 		
-		
+		$("#overlay-loading").remove();
 		
 		/*
 		$("#result").append(charData.value[0]);
