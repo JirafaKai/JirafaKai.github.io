@@ -101,46 +101,10 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		//'weapon'	: ['weapon', 'loadWeapon']
 	};
 	
-	var charData = [];
-	
-	/*
-	function loadChar(data) {
-		var tmp = [];
-		var col = 0;
-		
-		$.each(data.feed.entry, function(index, value){
-
-		    if (parseInt(value.gs$cell.row) <= 2 ) return true;
-			
-    		col = parseInt(value.gs$cell.col);
-	    	tmp.push(value.content.$t);
-
-		    if (col == 4) {
-                charData.push(tmp);
-			    tmp = [];
-		    }
-		});
-		$("#overlay-loading").remove();
-	}
-
-	function addScript( src ) {
-        var s = document.createElement( 'script' );
-        s.setAttribute( 'src', src );
-        document.body.appendChild( s );
-    }
-	
-
-	function loadFinish() {
-        finishCount++;
-        if ( finishCount == Object.keys(gridIds).length ) {
-			$("#overlay-loading").remove();
-			$("#load-count").text('共讀取了 ' + (charData.normal.length + charData.sort.length + charData.daily.length ) + ' 個問題。');
-        }
-        else {
-            $("#loaded-count").text(finishCount + '/' + Object.keys(gridIds).length);
-        }
-    }
-	*/
+	var imgSrc = [];
+	var charName = [];
+	var charType = [];
+	var comment = [];
 	
 	$(document).ready(function() {
 	
@@ -148,10 +112,12 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		
 		$.getJSON(urlScript, function(JData){
 			for (var i=0; i<JData.feed.entry.length; i++){
-				$("#result").append(JData.feed.entry[i].gsx$charname.$t);
+				charName[i] = JData.feed.entry[i].gsx$charname.$t;
 			}
 		});
 		
+		for (var i=0; i<charName.length; i++)
+			$("#result").append(charName[i]);
 		$("#overlay-loading").remove();
 		
 		/*
