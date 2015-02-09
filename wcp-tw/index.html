@@ -138,13 +138,17 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			$("#overlay-loading").remove();
 		});
 		
-		
+		$("inputKeyword").onKeyup(
+			function(){
+				return ;
+		}
 		//$("inputKeyword").on("keyup", function searchKey());
+		/*
 		function searchKey(){
 			return ;
 		}
 		
-		/*
+		
 			function() {
 				var val = $(this).val().toLowerCase();
 				for (var i=0; i<charData.length; i++){
