@@ -120,8 +120,8 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			$("#result").append(charName[i] + charType[i] + '<br/>'); 
 		}	
 	}
-
 	
+
 	$(document).ready(
 		function() {
 	
@@ -144,9 +144,11 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		
 		var key = document.getElementById("inputKeyword");
 		
+		
 		key.onkeyup = function(e){
+			alert(key.value);
 			for (var i in charName){
-				//if (charName.match(key.value) != null) 
+				//if (charName.indexOf($(this).val) !== -1) 
 				//	$("#result").append("success"  + '<br/>');
 				$("#result").append(key.value);
 			}
