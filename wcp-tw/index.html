@@ -103,6 +103,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	
 	var charData = [];
 	
+	/*
 	function loadChar(data) {
 		var tmp = [];
 		var col = 0;
@@ -139,13 +140,13 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
             $("#loaded-count").text(finishCount + '/' + Object.keys(gridIds).length);
         }
     }
-
+	*/
 	
 	$(document).ready(function() {
 	
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json";
 		$("#overlay-loading").remove();
-		$.getJson(urlScript, function(JData){
+		$.getJSON(urlScript, function(JData){
 			for (var i=0; i<JData.feed.entry.length; i++){
 				$("#result").append(JData.feed.entry[i].gsx$charName.$t);
 			}
