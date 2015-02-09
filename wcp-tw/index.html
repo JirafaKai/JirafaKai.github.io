@@ -74,8 +74,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
         <div class="container">
 	        <form class="form">
 			    <label for="inputKeyword" class="sr-only">關鍵字</label>
-		        <input type="text" id="inputKeyword" class="form-control" onkeyup="inputkey()"
-				placeholder="請輸入關鍵字 ex. 紅蓮、弓手、杖" required autofocus>
+		        <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 紅蓮、弓手、杖" required autofocus>
 		    </form>
         </div>
 	</div>
@@ -138,12 +137,12 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					//$("#result").append(charName.length);	
 			}
 			testPrint();
+			$("#inputKeyword").onkeyup = function(e){
+				$("#result").append("success");
+			};
 			$("#overlay-loading").remove();
 		});
 	});
-	function inputkey(e){
-		$("#result").append("success");
-	};
 	</script>
 
 
