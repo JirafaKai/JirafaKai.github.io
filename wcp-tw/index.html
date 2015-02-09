@@ -144,13 +144,13 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		
 		
 		key.onkeyup = function(e){
+			$("#result").html("");
+			
 			for (var i in charName){
 			
 				if (key.value.length <= 0) {
 					return $("#result").html("");
 				}
-				
-				$("#result").html("");
 				
 				if (charName[i].indexOf(key.value) !== -1) 
 					$("#result").append("success"  + '<br/>');
