@@ -169,9 +169,9 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 				if (charName[i].indexOf(key.value) !== -1) 
 				{
 					$("#result").append('<tr>'
-										+ '<td class="chartd"><img src="' + imgSrc[i] + '"></img></td>'
-										+ '<td class="chartd">' + charName[i] + '</td>'
-										+ '<td class="chartd">'+ charType[i] + '</td>'
+										+ '<td id="chartd"><img src="' + imgSrc[i] + '"></img></td>'
+										+ '<td id="chartd">' + charName[i] + '</td>'
+										+ '<td id="chartd">'+ charType[i] + '</td>'
 										+ '</tr>');
 				}
 			}	
