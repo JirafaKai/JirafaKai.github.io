@@ -135,9 +135,9 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					charType[i] = JData.feed.entry[i].gsx$chartype.$t;
 					//$("#result").append(charName[i]);
 					//$("#result").append(charName.length);
-			}.success(function() { $("#overlay-loading").remove(); })
+			}
 			testPrint();
-			
+			$("#overlay-loading").remove();
 		});
 		
 		
