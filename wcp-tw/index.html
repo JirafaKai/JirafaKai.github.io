@@ -137,9 +137,10 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					//$("#result").append(charName.length);	
 			}
 			testPrint();
-			//$("#inputKeyword").onkeyup = function(e){
+			function keyup(e){
 				$("#result").append("success");
-			//};
+			};
+			$("#inputKeyword").onkeyup = keyup;
 			$("#overlay-loading").remove();
 		});
 	});
