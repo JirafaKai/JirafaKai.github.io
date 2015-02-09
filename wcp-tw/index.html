@@ -106,6 +106,14 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	var charType = [];
 	var comment = [];
 	
+	function testPrint(){
+		$("#result").append(charName.length);
+		for (var i=0; i<=charName.length; i++){
+			$("#result").append(charName[i]); 
+		}
+		
+	}
+	
 	$(document).ready(function() {
 	
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json";
@@ -116,13 +124,11 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 				$("#result").append(charName[i]);
 				$("#result").append(charName.length);
 			}
+			testPrint();
+			$("#overlay-loading").remove();
 		});
 		
-		//$("#result").append(charName.length);
-		for (var i=0; i<=1; i++){
-			$("#result").append(charName[i]); 
-		}
-		$("#overlay-loading").remove();
+		
 		
 		/*
 		$("#result").append(charData.value[0]);
