@@ -120,10 +120,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			$("#result").append(charName[i] + charType[i] + '<br/>'); 
 		}	
 	}
-	
-	function findID(x){
-		return document.getElementById(x);
-	}
+
 	
 	$(document).ready(
 		function() {
@@ -152,6 +149,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			for (var i in charName){
 				//if (charName.indexOf($(this).val) !== -1) 
 				//	$("#result").append("success"  + '<br/>');
+				$("#result")="";
 				$("#result").append(key.value);
 			}
 		};
