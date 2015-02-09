@@ -109,10 +109,11 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		
 		$.each(data.feed.entry, function(index, value){
 
-		    if (parseInt(value.gs$cell.row) <= 1 ) return true;
+		    if (parseInt(value.gs$cell.row) <= 2 ) return true;
 			
     		col = parseInt(value.gs$cell.col);
 	    	tmp.push(value.content.$t);
+
 		    if (col == 4) {
                 charData.push(tmp);
 			    tmp = [];
