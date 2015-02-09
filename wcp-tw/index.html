@@ -22,7 +22,6 @@
 
 	#search-box{
 		margin-top: 60px;
-		margin-left: 40px;
 	}
 	
 	#overlay-loading {
@@ -46,6 +45,11 @@
         text-align: center;
         color: #fff;
     }
+	
+	.img30x30{
+		width: 30px;
+		height: 30px;
+	}
 	
 </style>
 
@@ -75,11 +79,13 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
         </div>
 	</div>
 	
-	<table class="table table-striped">
-	<tbody id="result">
-	<tr>123</tr>
-	</tbody>
-	</table>
+	<div id="charTable">
+		<table class="table table-striped">
+			<tbody id="result">
+				
+			</tbody>
+		</table>
+	</div>
 
 	<div id="overlay-loading">
 		<div id="overlay-loading-content">
@@ -131,17 +137,14 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			$("#overlay-loading").remove();
 		});
 		
-		
-		
-		/*
-		$("#result").append(charData.value[0]);
 		$("inputKeyword").on("keyup", function() {
 		    var val = $(this).val().toLowerCase();
-			$.each(charData, function(index, value) {
-				if (value[0].toLowerCase().indexOf(val) !== -1)
-					$("#result").append('<tr><td><div class="question">' + value[0] + '</div><div class="text-danger">' + htmlEncode(value.slice(1).join('、')) + '</div></td></tr>');
-			});
-		});
+			for (var i=0; i<charData.length; i++){
+				if (charData[i].indexOf(val) !== -1)
+					$("#result").append(charData[i]);
+			} 
+			}); //.on()
+		}); //.ready()
 		*/
 	});
 	</script>
