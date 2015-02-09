@@ -142,13 +142,17 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 
 	
 	$(document).ready(function() {
+		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json";
 		
-		$.each( gridIds, function(key, value) {
-			var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json-in-script&callback=loadChar";
-		    addScript(urlScript);
-
+		$.getJson(urlScript, function(JData){
+			for (var i=0; i<JData.feed.entry.length; i++){
+				$("#result").append(JData.feed.entry[i].gsx$charName.$t);
+			}
 		});
 		
+		$("#overlay-loading").remove();
+		
+		/*
 		$("#result").append(charData.value[0]);
 		$("inputKeyword").on("keyup", function() {
 		    var val = $(this).val().toLowerCase();
@@ -157,6 +161,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					$("#result").append('<tr><td><div class="question">' + value[0] + '</div><div class="text-danger">' + htmlEncode(value.slice(1).join('、')) + '</div></td></tr>');
 			});
 		});
+		*/
 	});
 	</script>
 
