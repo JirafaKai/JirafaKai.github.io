@@ -121,7 +121,8 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		
 	}
 	
-	$(document).ready(function() {
+	$(document).ready(
+		function() {
 	
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json";
 		
@@ -135,18 +136,22 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					//$("#result").append(charName.length);
 			}
 			testPrint();
+			$("inputKeyword").on("keyup", function searchKey());
 			$("#overlay-loading").remove();
 		});
 		
+		function searchKey(){
+			return ;
+		}
+		
+		/*
 		$("inputKeyword").onKeyup(
 			function(){
 				return ;
 		}
 		//$("inputKeyword").on("keyup", function searchKey());
-		/*
-		function searchKey(){
-			return ;
-		}
+		
+		
 		
 		
 			function() {
