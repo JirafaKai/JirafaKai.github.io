@@ -143,8 +143,14 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	$(document).ready(function() {
 		
 		$.each( gridIds, function(key, value) {
+<<<<<<< HEAD
+			var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/basic?alt=json-in-script&callback=loadChar";
+		    addScript(urlScript);
+
+=======
 			var urlScript = "https://spreadsheets.google.com/feeds/cells/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/charactor/public/values?alt=json-in-script&callback=loadChar";
 		    addScript(urlScript);
+>>>>>>> 49bd820038dc396dc1aab075ef8f3d70d3a34fb7
 		});
 		
 		$("inputKeyword").on("keyup", function() {
