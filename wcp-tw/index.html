@@ -149,6 +149,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 
 		});
 		
+		$("#result").append(charData.value[0]);
 		$("inputKeyword").on("keyup", function() {
 		    var val = $(this).val().toLowerCase();
 			$.each(charData, function(index, value) {
