@@ -113,7 +113,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		$.getJSON(urlScript, function(JData){
 			for (var i=0; i<JData.feed.entry.length; i++){
 				charName[i] = JData.feed.entry[i].gsx$charname.$t;
-				$("#result").append(charName[i]);  <<
+				$("#result").append(charName[i]);
 			}
 		});
 		
