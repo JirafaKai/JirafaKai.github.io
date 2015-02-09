@@ -143,8 +143,15 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		});
 		}
 		
-		function searchKey(){
-			return ;
+		if (exeOrder===1){
+			$("inputKeyword").onKeyup(
+				function() {
+				var val = $(this).val().toLowerCase();
+				for (var i=0; i<charData.length; i++){
+					if (charData[i].indexOf(val) !== -1)
+						$("#result").append(charData[i]);
+				}
+				});
 		}
 		
 		/*
