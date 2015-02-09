@@ -107,9 +107,9 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	var comment = [];
 	
 	function testPrint(){
-		$("#result").append(charName.length);
+		$("#result").append(charName.length + '<br/>');
 		for (var i=0; i<=charName.length; i++){
-			$("#result").append(charName[i]); 
+			$("#result").append(charName[i] + charType[i] + '<br/>'); 
 		}
 		
 	}
@@ -121,8 +121,9 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		$.getJSON(urlScript, function(JData){
 			for (var i=0; i<JData.feed.entry.length; i++){
 				charName[i] = JData.feed.entry[i].gsx$charname.$t;
-				$("#result").append(charName[i]);
-				$("#result").append(charName.length);
+				charType[i] = JData.feed.entry[i].gsx$chartype.$t;
+				//$("#result").append(charName[i]);
+				//$("#result").append(charName.length);
 			}
 			testPrint();
 			$("#overlay-loading").remove();
