@@ -139,9 +139,11 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 			testPrint();
 		});
 		
-		$('form').on 'submit', -> console.log 'submit'; false
+		//$('form').on 'submit', -> console.log 'submit'; false
 		
-		document.getElementById("inputKeyword").onkeyup = function(e){
+		var inputKeyWord = document.getElementById("inputKeyword")
+		
+		inputKeyWord.onkeyup = function(e){
 			for (var i in charName){
 				//if (charName.indexOf($(this).val) !== -1) 
 				//	$("#result").append("success"  + '<br/>');
