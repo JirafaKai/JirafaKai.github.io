@@ -59,6 +59,18 @@
 		height: 30px;
 	}
 	
+	#charTable{
+		width: 80%
+		margin: 90px auto;
+	}
+	
+	#chartd{
+	  border: 4px solid #fff;
+	  width: 170px;
+	  padding: 10px;
+	  background: #f8f8f8;
+	}
+	
 </style>
 
 <!--
@@ -83,20 +95,20 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	<!--Search Box in the middle><!-->
 	<div id="search-box">
         <div class="container">
-	        <form class="form">
-			    <label for="inputKeyword" class="sr-only">關鍵字</label>
-		        <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 紅蓮、弓手、杖" required autofocus>
-		    </form>
+			<label for="inputKeyword" class="sr-only">關鍵字</label>
+		    <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 紅蓮、弓手、杖" required autofocus>
         </div>
 	</div>
 	
 	
 	<div id="charTable">
-		<table class="table table-striped">
+		<div class="container">
+		<table class="table">
 			<tbody id="result">
 				
 			</tbody>
 		</table>
+		</div>
 	</div>
 
 	<div id="overlay-loading">
@@ -130,10 +142,10 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		$("#result").append(charName.length + '<br/>');
 		for (var i=0; i<charName.length; i++){
 			$("#result").append(charName[i] + charType[i] + '<br/>'); 
-		}
-		
+		}	
 	}
 	
+
 	$(document).ready(
 		function() {
 	
@@ -141,38 +153,43 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		
 		$.getJSON(urlScript, 
 			function(JData){
-				for (var i=0; i<JData.feed.entry.length; i++){
-					//imgSrc[i]   = JData.feed.entry[i].gsx$imgsrc.$t;
+				for (var i in JData.feed.entry){
+					imgSrc[i] = JData.feed.entry[i].gsx$imgsrc.$t;
 					charName[i] = JData.feed.entry[i].gsx$charname.$t;
 					charType[i] = JData.feed.entry[i].gsx$chartype.$t;
+					//$("#result").append(charName[i]);
+					//$("#result").append(charName.length);	
 			}
 			testPrint();
 			$("#overlay-loading").remove();
 		});
 		
+		//$('form').on 'submit', -> console.log 'submit'; false
 		
-
-		
-		$("inputKeyword").onKeyup(
-			function(){
-				$("#result").append("success");
-		});
-		//$("inputKeyword").on("keyup", function searchKey());
+		var key = document.getElementById("inputKeyword");
 		
 		
+		key.onkeyup = function(e){
+			$("#result").html("");
+			
+			for (var i in charName){
+			
+				if (key.value.length <= 0) {
+					return $("#result").html("");
+				}
+				
+				if (charName[i].indexOf(key.value) !== -1) 
+				{
+					$("#result").append('<tr>'
+										+ '<td id="chartd"><img src="' + imgSrc[i] + '"></img></td>'
+										+ '<td id="chartd">' + charName[i] + '</td>'
+										+ '<td id="chartd">'+ charType[i] + '</td>'
+										+ '</tr>');
+				}
+			}	
+		};
 		
-		
-			function() {
-				var val = $(this).val().toLowerCase();
-				for (var i=0; i<charData.length; i++){
-					if (charData[i].indexOf(val) !== -1)
-						$("#result").append(charData[i]);
-		
-				$("#overlay-loading").remove();
-			}); //$("inputKeyword").on()
-		*/
-		}); //$(document).ready()
-		//*/
+	});
 	</script>
 
 
