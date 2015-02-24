@@ -56,7 +56,7 @@
 	
 	
 
-	#charTable{
+	#charDiv{
 		background: #fff;
         border-radius: 5px;
         padding: 1em;
@@ -64,7 +64,8 @@
 
     #charTable td {
       border:none; 
-      line-height:30px;}
+      line-height:30px;
+      margin: 0px;}
 
     #charTable tr {border-bottom: 1px solid #dddddd;}
     #charTable tr:last-child {border:none;}
