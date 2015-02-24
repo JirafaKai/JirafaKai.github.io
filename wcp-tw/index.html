@@ -28,7 +28,7 @@
 		text-align: left;
 	}
 	
-	banner nav{
+	#banner nav{
 		background: #000305;
 		height: 40px;
 		line-height: 30px;
@@ -36,7 +36,12 @@
 		padding: 0;
 		text-align: center;
 		width: 800px;
+		border-radius: 5px;
 	}
+	
+	#banner nav ul {list-style: none; margin: 0 auto; width: 800px;}
+	#banner nav li {float: left; display: inline; margin: 0;}
+	
 
 	#search-box{
 		margin-top: 60px;
@@ -92,7 +97,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 
 	<header id="banner" class="body">
 	<!--navigation bar on the top><!-->
-    <nav>
+    	<nav>
         <div class="navbar-brand" href="#">
             <span class="hidden-xs">WCP-TW</span>
         </div>
