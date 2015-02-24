@@ -19,7 +19,7 @@
 		border-radius: 5px;
 	}
 	
-	#banner nav ul {list-style: none; margin: 0 auto; padding: 0; width: 800px;}
+	#banner nav ul {float: left; list-style: none; margin: 0 auto; padding: 0; width: 800px;}
 	#banner nav li {float: left; display: inline; margin: 0;}
 	#banner nav a:link, #banner nav a:visited {color:#fff; display: inline-block; height: 40px; padding: 5px 1.5em; text-decoration: none;}
 	#banner nav a:hover, #banner nav a:active, #banner nav .active a:link, #banner nav .active a:visited {background: #C74451; color: #fff; text-shadow: none !important;}
@@ -54,10 +54,7 @@
         color: #fff;
     }
 	
-	.img30x30{
-		width: 30px;
-		height: 30px;
-    }
+	
 
 	#charTable{
 		background: #fff;
@@ -65,6 +62,12 @@
         padding: 1em;
 	}
 
+    #charTable td {border:none; line-height:30px;}
+
+    #imgtd {width:30px; height:30px;}
+    #charNametd {width:200px; height:30px;}
+    #charTypetd {width:60px; height:30px;}
+    #attrtd {width:40px; height:30px;}
 	#chartd{
 	  border: 4px solid #fff;
 	  width: 170px;

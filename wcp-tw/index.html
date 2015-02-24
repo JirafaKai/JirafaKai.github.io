@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="author" content="JirafaKai">
 
-	<link rel="stylesheet" href="main.css" type="text/css" />
     <link media="all" type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link media="all" type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     
@@ -44,15 +43,14 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		    <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 紅蓮、弓手、杖" required autofocus>
         </div>
 	</div>
-	
-	<div class="container">
-	<div id="charTable">
+    <div class="container">	
+	  <div id="charTable">
 		<table class="table">
 			<tbody id="result">
 				
 			</tbody>
 		</table>
-		</div>
+	  </div>
 	</div>
 
 	<div id="overlay-loading">
@@ -135,14 +133,15 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 				if (charName[i].indexOf(key.value) !== -1) 
 				{
 					$("#result").append('<tr>'
-										+ '<td id="chartd"><img src="' + imgSrc[i] + '"></img></td>'
-										+ '<td id="chartd">' + charName[i] + '</td>'
-										+ '<td id="chartd">'+ charType[i] + '</td>'
-                                        + '<td id="chartd">'+ hp[i] + '</td>'
-                                        + '<td id="chartd">'+ sp[i] + '</td>'
-                                        + '<td id="chartd">'+ atk[i] + '</td>'
-                                        + '<td id="chartd">'+ def[i] + '</td>'
-                                        + '<td id="chartd">'+ cri[i] + '</td>'
+										+ '<td id="imgtd"><img src="' + imgSrc[i] + '"></img></td>'
+										+ '<td id="charNametd">' + charName[i] + '</td>'
+										+ '<td id="charTypetd">'+ charType[i] + '</td>'
+                                        + '<td id="attrtd">HP'+ hp[i] + '</td>'
+                                        + '<td id="attrtd">HP'+ hp[i] + '</td>'
+                                        + '<td id="attrtd">SP'+ sp[i] + '</td>'
+                                        + '<td id="attrtd">ATK'+ atk[i] + '</td>'
+                                        + '<td id="attrtd">DEF'+ def[i] + '</td>'
+                                        + '<td id="attrtd">CRI'+ cri[i] + '</td>'
 										+ '</tr>');
 				}
 			}	
