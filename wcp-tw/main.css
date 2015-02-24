@@ -1,0 +1,73 @@
+	body{
+		background: #F5F4EF;
+		color: #000305;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+	
+	#banner {margin: 0 auto; padding: 0;}
+	
+	#banner nav{
+		background: #000305;
+		font-size: 1.143em;
+		height: 40px;
+		line-height: 30px;
+		margin: 0 auto 20px auto;
+		padding: 0;
+		text-align: center;
+		border-radius: 5px;
+	}
+	
+	#banner nav ul {list-style: none; margin: 0 auto; padding: 0; width: 800px;}
+	#banner nav li {float: left; display: inline; margin: 0;}
+	#banner nav a:link, #banner nav a:visited {color:#fff; display: inline-block; height: 40px; padding: 5px 1.5em; text-decoration: none;}
+	#banner nav a:hover, #banner nav a:active, #banner nav .active a:link, #banner nav .active a:visited {background: #C74451; color: #fff; text-shadow: none !important;}
+	#banner nav li:first-child a {
+		border-top-left-radius :5px;
+		border-bottom-left-radius: 5px;
+	}
+	
+	#search-box{
+		margin-bottom: 20px;
+	}
+	
+	#overlay-loading {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background-color: rgba(0,0,0,0.5);
+    }
+    #overlay-loading-content{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 300px;
+        height: 100px;
+        text-align: center;
+        color: #fff;
+    }
+	
+	.img30x30{
+		width: 30px;
+		height: 30px;
+    }
+
+	#charTable{
+		background: #fff;
+        border-radius: 5px;
+        padding: 1em;
+	}
+
+	#chartd{
+	  border: 4px solid #fff;
+	  width: 170px;
+	  padding: 10px;
+	  background: #f8f8f8;
+	}
