@@ -54,29 +54,33 @@
         color: #fff;
     }
 	
-	
-
 	#charDiv{
 		background: #fff;
         border-radius: 5px;
         padding: 1em;
 	}
 
+    #charTable {margin:0;}
+
     #charTable td {
       border:none; 
       line-height:30px;
-      margin: 0px;}
+      margin: 0px;
+      border-bottom: 1px solid #dddddd;}
 
     #charTable tr {border-bottom: 1px solid #dddddd;}
     #charTable tr:last-child {border:none;}
 
-    #imgtd {width:30px; height:30px;}
-    #charNametd {width:200px; height:30px;}
-    #charTypetd {width:60px; height:30px;}
-    #attrtd {width:40px; height:30px;}
-	#chartd{
-	  border: 4px solid #fff;
-	  width: 170px;
-	  padding: 10px;
-	  background: #f8f8f8;
-	}
+    #imgtd {width:30px;}
+    #charNametd {width:200px;}
+    #charStartd {width:3em;}
+    #charTypetd {width:6em;}
+    #attrtd {width:6em;}
+
+
+
+    #skillTable {border:none;}
+    #skillTable td {border: 1px solid #dddddd;}
+    #skillTable td:first-child {border-top: none;}
+    #skillTable td:nth-child(2) {border-top: none;}
+    #titletd {width: 100px;}

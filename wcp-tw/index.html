@@ -78,6 +78,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 	
 	var imgSrc = [];
 	var charName = [];
+    var charStar = [];
 	var charType = [];
 	var comment = [];
     var hp = [];
@@ -85,6 +86,9 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
     var atk = [];
     var def = [];
     var cri = [];
+	var ls1 = [];
+	var ls2 = [];
+    
 	
 	function testPrint(){
 		$("#result").append(charName.length + '<br/>');
@@ -104,12 +108,15 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 				for (var i in JData.feed.entry){
 					imgSrc[i] = JData.feed.entry[i].gsx$imgsrc.$t;
 					charName[i] = JData.feed.entry[i].gsx$charname.$t;
+                    charStar[i] = JData.feed.entry[i].gsx$charstar.$t;
 					charType[i] = JData.feed.entry[i].gsx$chartype.$t;
                     hp[i] = JData.feed.entry[i].gsx$hp.$t;
                     sp[i] = JData.feed.entry[i].gsx$sp.$t;
                     atk[i] = JData.feed.entry[i].gsx$atk.$t;
                     def[i] = JData.feed.entry[i].gsx$def.$t;
                     cri[i] = JData.feed.entry[i].gsx$cri.$t;
+					ls1[i] = JData.feed.entry[i].gsx$ls1.$t;
+					ls2[i] = JData.feed.entry[i].gsx$ls2.$t;
 					//$("#result").append(charName[i]);
 					//$("#result").append(charName.length);	
 			}
@@ -136,6 +143,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					$("#result").append('<table class="table" id="charTable"><tr>'
 										+ '<td id="imgtd"><img src="' + imgSrc[i] + '"></img></td>'
 										+ '<td id="charNametd">' + charName[i] + '</td>'
+                                        + '<td id="charStartd">' + charStar[i] + '</td>'
 										+ '<td id="charTypetd">'+ charType[i] + '</td>'
                                         + '<td id="attrtd">HP'+ hp[i] + '</td>'
                                         + '<td id="attrtd">HP'+ hp[i] + '</td>'
@@ -146,8 +154,9 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
                                         + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a></td>'
 										+ '</tr></table>');
                     $("#result").append('<div id="char' + i + '" class="collapse">'
-                                        + '<table class="table" id="charTable"><tr>'
-                                        + 'test'
+                                        + '<table class="table" id="skillTable"><tr>'
+										+ '<tr><td id="titletd">隊長技能1</td><td>' + ls1[i] + '</td></tr>'
+										+ '<tr><td id="titletd">隊長技能2</td><td>' + ls2[i] + '</td></tr>'
                                         + '</tr></td></table></div>');
 				}
 			}	
