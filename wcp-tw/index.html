@@ -142,7 +142,18 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 					return $("#result").html("");
 				}
 				
-				if (charName[i].indexOf(key.value) !== -1) 
+				if(key.value.substr(key.value.length - 1) == " ")oKey = key.value.substr(0,key.value.length - 1);
+				else oKey = key.value;
+				var keyword = oKey.split(" ");
+				var show = false;
+				var checknum = 0;
+				for(var n in keyword){
+					if(charName[i].indexOf(keyword[n]) !== -1) checknum++;
+					if(charType[i].indexOf(keyword[n]) !== -1) checknum++;
+					if(charStar[i].indexOf(keyword[n]) !== -1) checknum++;
+					if(checknum == keyword.length)show=true;
+				}
+				if(show)
 				{
 					$("#result").append('<table class="table" id="charTable"><tr>'
 										+ '<td id="imgtd"><img src="' + imgSrc[i] + '"></img></td>'
