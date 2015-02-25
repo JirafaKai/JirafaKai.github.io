@@ -88,6 +88,9 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
     var cri = [];
 	var ls1 = [];
 	var ls2 = [];
+    var as1 = [];
+    var as2 = [];
+    var ds = [];
     
 	
 	function testPrint(){
@@ -117,10 +120,11 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
                     cri[i] = JData.feed.entry[i].gsx$cri.$t;
 					ls1[i] = JData.feed.entry[i].gsx$ls1.$t;
 					ls2[i] = JData.feed.entry[i].gsx$ls2.$t;
-					//$("#result").append(charName[i]);
-					//$("#result").append(charName.length);	
+					as1[i] = JData.feed.entry[i].gsx$as1.$t;
+                    as2[i] = JData.feed.entry[i].gsx$as2.$t;
+                    ds[i] = JData.feed.entry[i].gsx$ds.$t;
 			}
-			testPrint();
+			//testPrint();
 			$("#overlay-loading").remove();
 		});
 		
@@ -145,18 +149,21 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 										+ '<td id="charNametd">' + charName[i] + '</td>'
                                         + '<td id="charStartd">' + charStar[i] + '</td>'
 										+ '<td id="charTypetd">'+ charType[i] + '</td>'
-                                        + '<td id="attrtd">HP'+ hp[i] + '</td>'
-                                        + '<td id="attrtd">HP'+ hp[i] + '</td>'
-                                        + '<td id="attrtd">SP'+ sp[i] + '</td>'
-                                        + '<td id="attrtd">ATK'+ atk[i] + '</td>'
-                                        + '<td id="attrtd">DEF'+ def[i] + '</td>'
-                                        + '<td id="attrtd">CRI'+ cri[i] + '</td>'
+                                        + '<td id="attrtd">LV.100</td>'
+                                        + '<td id="attrtd">HP '+ hp[i] + '</td>'
+                                        + '<td id="attrtd">SP '+ sp[i] + '</td>'
+                                        + '<td id="attrtd">ATK '+ atk[i] + '</td>'
+                                        + '<td id="attrtd">DEF '+ def[i] + '</td>'
+                                        + '<td id="attrtd">CRI '+ cri[i] + '</td>'
                                         + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a></td>'
 										+ '</tr></table>');
                     $("#result").append('<div id="char' + i + '" class="collapse">'
                                         + '<table class="table" id="skillTable"><tr>'
 										+ '<tr><td id="titletd">隊長技能1</td><td>' + ls1[i] + '</td></tr>'
 										+ '<tr><td id="titletd">隊長技能2</td><td>' + ls2[i] + '</td></tr>'
+                                        + '<tr><td id="titletd">主動技能1</td><td>' + as1[i] + '</td></tr>'
+                                        + '<tr><td id="titletd">主動技能2</td><td>' + as2[i] + '</td></tr>'
+                                        + '<tr><td id="titletd">被動技能</td><td>' + ds[i] + '</td></tr>'
                                         + '</tr></td></table></div>');
 				}
 			}	

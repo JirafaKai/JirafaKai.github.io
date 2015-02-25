@@ -4,6 +4,7 @@
 		margin: 0;
 		padding: 0;
 		text-align: left;
+        font-family: serif,Microsoft JhengHei,sans-serif;
 	}
 	
 	#banner {margin: 0 auto; padding: 0;}
@@ -72,7 +73,7 @@
     #charTable tr:last-child {border:none;}
 
     #imgtd {width:30px;}
-    #charNametd {width:200px;}
+    #charNametd {color:#C74451; width:200px;}
     #charStartd {width:3em;}
     #charTypetd {width:6em;}
     #attrtd {width:6em;}
