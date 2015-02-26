@@ -73,7 +73,7 @@
     #charTable tr:last-child {border:none;}
 
     #imgtd {width:30px;}
-    #charNametd {color:#C74451; width:200px;}
+    #charNametd {color:#C74451; min-width:200px;}
     #charStartd {width:3em;}
     #charTypetd {width:6em;}
     #attrtd {width:6em;}

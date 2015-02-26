@@ -76,30 +76,16 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		//'weapon'	: ['weapon', 'loadWeapon']
 	};
 	
-	var imgSrc = [];
-	var charName = [];
-    var charStar = [];
-	var charType = [];
-	var comment = [];
-    var hp = [];
-    var sp = [];
-    var atk = [];
-    var def = [];
-    var cri = [];
-	var ls1 = [];
-	var ls2 = [];
-    var as1 = [];
-    var as2 = [];
-    var ds = [];
-    
-	
-	function testPrint(){
-		$("#result").append(charName.length + '<br/>');
-		for (var i=0; i<charName.length; i++){
-			$("#result").append(charName[i] + charType[i] + '<br/>'); 
-		}	
-	}
-	
+    function charAttr (imgSrc, cname, star, type, hp, sp, atk, def, cri, ls1, ls2, as1, as2, ds1, ds2, ds3) {
+      this.imgSrc=imgSrc;
+      this.cName=cname;
+      this.star=star;
+      this.type=type;
+      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri};
+      this.skill={ls:[ls1,ls2], as:[as1,as2], ds:[ds1,ds2,ds3]};
+    }
+      
+    var charactor=[];
 
 	$(document).ready(
 		function() {
@@ -109,22 +95,27 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		$.getJSON(urlScript, 
 			function(JData){
 				for (var i in JData.feed.entry){
-					imgSrc[i] = JData.feed.entry[i].gsx$imgsrc.$t;
-					charName[i] = JData.feed.entry[i].gsx$charname.$t;
-                    charStar[i] = JData.feed.entry[i].gsx$charstar.$t;
-					charType[i] = JData.feed.entry[i].gsx$chartype.$t;
-                    hp[i] = JData.feed.entry[i].gsx$hp.$t;
-                    sp[i] = JData.feed.entry[i].gsx$sp.$t;
-                    atk[i] = JData.feed.entry[i].gsx$atk.$t;
-                    def[i] = JData.feed.entry[i].gsx$def.$t;
-                    cri[i] = JData.feed.entry[i].gsx$cri.$t;
-					ls1[i] = JData.feed.entry[i].gsx$ls1.$t;
-					ls2[i] = JData.feed.entry[i].gsx$ls2.$t;
-					as1[i] = JData.feed.entry[i].gsx$as1.$t;
-                    as2[i] = JData.feed.entry[i].gsx$as2.$t;
-                    ds[i] = JData.feed.entry[i].gsx$ds.$t;
+                    
+                    charactor[i] = new charAttr(
+                      JData.feed.entry[i].gsx$imgsrc.$t,
+                      JData.feed.entry[i].gsx$charname.$t,
+                      JData.feed.entry[i].gsx$charstar.$t,
+                      JData.feed.entry[i].gsx$chartype.$t,
+                      JData.feed.entry[i].gsx$hp.$t,
+                      JData.feed.entry[i].gsx$sp.$t,
+                      JData.feed.entry[i].gsx$atk.$t,
+                      JData.feed.entry[i].gsx$def.$t,
+                      JData.feed.entry[i].gsx$cri.$t,
+                      JData.feed.entry[i].gsx$ls1.$t,
+                      JData.feed.entry[i].gsx$ls2.$t,
+                      JData.feed.entry[i].gsx$as1.$t,
+                      JData.feed.entry[i].gsx$as2.$t,
+                      JData.feed.entry[i].gsx$ds1.$t,
+                      JData.feed.entry[i].gsx$ds2.$t,
+                      JData.feed.entry[i].gsx$ds3.$t
+                    );
+                    
 			}
-			//testPrint();
 			$("#overlay-loading").remove();
 		});
 		
@@ -136,7 +127,7 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		key.onkeyup = function(e){
 			$("#result").html("");
 			
-			for (var i in charName){
+			for (var i in charactor){
 			
 				if (key.value.length <= 0) {
 					return $("#result").html("");
@@ -147,33 +138,35 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 				var checknum2 = 0;
 				for(var n in keyword){
 					if(keyword[n] !== ""){checknum2++;	// prevent 2 spaces together, cannot use keyword.length (num of element of keyword array)
-					if(charName[i].indexOf(keyword[n]) !== -1) checknum++;    // !==-1 -> no match
-					if(charType[i].indexOf(keyword[n]) !== -1) checknum++;
-					if(charStar[i].indexOf(keyword[n]) !== -1) checknum++;}
+					if(charactor[i].cName.indexOf(keyword[n]) !== -1) checknum++;    // !==-1 -> no match
+					if(charactor[i].type.indexOf(keyword[n]) !== -1) checknum++;
+					if(charactor[i].star.indexOf(keyword[n]) !== -1) checknum++;}
 				}
 				if((checknum == checknum2) && key.value.trim().length !== 0)
 				{
 					$("#result").append('<table class="table" id="charTable"><tr>'
-										+ '<td id="imgtd"><img src="' + imgSrc[i] + '"></img></td>'
-										+ '<td id="charNametd">' + charName[i] + '</td>'
-                                        + '<td id="charStartd">' + charStar[i] + '</td>'
-										+ '<td id="charTypetd">'+ charType[i] + '</td>'
+										+ '<td id="imgtd"><img src="' + charactor[i].imgSrc + '"></img></td>'
+										+ '<td id="charNametd">' + charactor[i].cName + '</td>'
+                                        + '<td id="charStartd">' + charactor[i].star + '</td>'
+										+ '<td id="charTypetd">'+ charactor[i].type + '</td>'
                                         + '<td id="attrtd">LV.100</td>'
-                                        + '<td id="attrtd">HP '+ hp[i] + '</td>'
-                                        + '<td id="attrtd">SP '+ sp[i] + '</td>'
-                                        + '<td id="attrtd">ATK '+ atk[i] + '</td>'
-                                        + '<td id="attrtd">DEF '+ def[i] + '</td>'
-                                        + '<td id="attrtd">CRI '+ cri[i] + '</td>'
+                                        + '<td id="attrtd">HP '+ charactor[i].lvMaxAttr.hp + '</td>'
+                                        + '<td id="attrtd">SP '+ charactor[i].lvMaxAttr.sp + '</td>'
+                                        + '<td id="attrtd">ATK '+ charactor[i].lvMaxAttr.atk + '</td>'
+                                        + '<td id="attrtd">DEF '+ charactor[i].lvMaxAttr.def + '</td>'
+                                        + '<td id="attrtd">CRI '+ charactor[i].lvMaxAttr.cri + '</td>'
                                         + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a></td>'
 										+ '</tr></table>');
                     $("#result").append('<div id="char' + i + '" class="collapse">'
                                         + '<table class="table" id="skillTable"><tr>'
-										+ '<tr><td id="titletd">隊長技能1</td><td>' + ls1[i] + '</td></tr>'
-										+ '<tr><td id="titletd">隊長技能2</td><td>' + ls2[i] + '</td></tr>'
-                                        + '<tr><td id="titletd">主動技能1</td><td>' + as1[i] + '</td></tr>'
-                                        + '<tr><td id="titletd">主動技能2</td><td>' + as2[i] + '</td></tr>'
-                                        + '<tr><td id="titletd">被動技能</td><td>' + ds[i] + '</td></tr>'
-                                        + '</tr></td></table></div>');
+										+ '<tr><td id="titletd">隊長技能1</td><td>' + charactor[i].skill.ls[0] + '</td></tr>'
+										+ '<tr><td id="titletd">隊長技能2</td><td>' + charactor[i].skill.ls[1] + '</td></tr>'
+                                        + '<tr><td id="titletd">主動技能1</td><td>' + charactor[i].skill.as[0] + '</td></tr>'
+                                        + '<tr><td id="titletd">主動技能2</td><td>' + charactor[i].skill.as[1] + '</td></tr>'
+                                        + '<tr><td id="titletd">被動技能</td><td>' + charactor[i].skill.ds[0] + '<br/>'
+                                        + charactor[i].skill.ds[1] + '<br/>'
+                                        + charactor[i].skill.ds[2] 
+                                        + '</td></tr></table></div>');
 				}
 			}	
 		};
