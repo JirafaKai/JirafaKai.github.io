@@ -64,21 +64,20 @@
     #charTable {margin:0;}
 
     #charTable td {
-      border:none; 
+      border-top:none;
       line-height:30px;
-      margin: 0px;
-      border-bottom: 1px solid #dddddd;}
+      margin: 0px;}
 
-    #charTable tr {border-bottom: 1px solid #dddddd;}
     #charTable tr:last-child {border:none;}
+    #imgtd {border-bottom: 1px solid #dddddd; width:30px;}
+    #charNametd {border-bottom: 1px solid #dddddd; color:#C74451; min-width:200px;}
+    #charStartd {border-bottom: 1px solid #dddddd; width:3em;}
+    #charTypetd {border-bottom: 1px solid #dddddd; width:6em;}
+    #attrtd {border-bottom: 1px solid #dddddd; width:36em;}
+    #attrInnertd {width:6em;}
+    #more {border-bottom: 1px solid #dddddd;}
 
-    #imgtd {width:30px;}
-    #charNametd {color:#C74451; min-width:200px;}
-    #charStartd {width:3em;}
-    #charTypetd {width:6em;}
-    #attrtd {width:6em;}
-
-
+    #innerCharTable {border:1px solid; border-radius:5px !important;}
 
     #skillTable {border:none;}
     #skillTable td {border: 1px solid #dddddd;}
