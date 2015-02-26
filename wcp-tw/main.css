@@ -77,7 +77,7 @@
     #attrInnertd {width:6em;}
     #more {border-bottom: 1px solid #dddddd;}
 
-    #innerCharTable {border:1px solid; border-radius:5px !important;}
+    #innerCharTable {border:1px solid; border-radius:5px;border-collapse:separate;}
 
     #skillTable {border:none;}
     #skillTable td {border: 1px solid #dddddd;}
