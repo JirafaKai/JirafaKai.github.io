@@ -25,25 +25,29 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 -->
 
 <body>
-    <div class="container">
 	<header id="banner" class="body">
 	<!--navigation bar on the top><!-->
-    	<nav>
-        <ul>
-           <li class="active"><a href="#">Test1</a></li>
-           <li><a href="#">Test2</a></li>
-        </ul>
-	</nav>
-	</header>
-    </div>
-	
-	<!--Search Box in the middle><!-->
-	<div id="search-box">
-        <div class="container">
-			<label for="inputKeyword" class="sr-only">關鍵字</label>
-		    <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 紅蓮、弓手、杖" required autofocus>
+      <nav class="navbar navbar-default">
+      <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">BRAND</a>
         </div>
-	</div>
+        
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Charactors <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Weapons</a></li>
+      </ul>
+      
+          
+        <!--Search Box in the middle><!-->
+        <div id="search-box">
+                <label for="inputKeyword" class="sr-only">關鍵字</label>
+                <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 紅蓮、弓手、杖" required autofocus>
+        </div>
+      </nav>
+	</header>
+	
+	
     <div class="container">	
 	  <div id="charDiv">
 			<div id="result">

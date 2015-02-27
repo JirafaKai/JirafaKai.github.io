@@ -6,26 +6,10 @@
 		text-align: left;
         font-family: serif,Microsoft JhengHei,sans-serif;
 	}
-	
-	#banner {margin: 0 auto; padding: 0;}
-	
-	#banner nav{
-		background: #000305;
-		font-size: 1.143em;
-		height: 40px;
-		line-height: 30px;
-		margin: 0 auto 20px auto;
-		padding: 0;
-		text-align: center;
-	}
-	
-	#banner nav ul {float: left; list-style: none; margin: 0 auto; padding: 0; width: 800px;}
-	#banner nav li {float: left; display: inline; margin: 0;}
-	#banner nav a:link, #banner nav a:visited {color:#fff; display: inline-block; height: 40px; padding: 5px 1.5em; text-decoration: none;}
-	#banner nav a:hover, #banner nav a:active, #banner nav .active a:link, #banner nav .active a:visited {background: #99CCFF; color: #fff; text-shadow: none !important;}
-	
+
 	#search-box{
-		margin-bottom: 20px;
+		margin-bottom:20px;
+        padding-top:60px;
 	}
 	
 	#overlay-loading {
