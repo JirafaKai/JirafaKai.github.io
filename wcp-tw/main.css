@@ -1,15 +1,14 @@
 	body{
-		background: #F5F4EF !important; 
 		color: #000305;
 		margin: 0;
 		padding: 0;
 		text-align: left;
         font-family: serif,Microsoft JhengHei,sans-serif;
+        padding-top:10%;
 	}
 
 	#search-box{
 		margin-bottom:20px;
-        padding-top:60px;
 	}
 	
 	#overlay-loading {
@@ -36,10 +35,9 @@
 	
 	#charDiv{
 		background: #fff;
-        padding: 1em;
 	}
 
-    #charTable {margin:0;}
+    #charTable {margin:0;border:none;}
 
     #charTable td {
       border-top:none;
@@ -52,7 +50,8 @@
     #charStartd {border-bottom: 1px solid #dddddd; width:3em;}
     #charTypetd {border-bottom: 1px solid #dddddd; width:6em;}
     #attrtd {border-bottom: 1px solid #dddddd; width:36em;}
-    #attrInnertd {width:30em;}
+    #attrInnertd {min-width:6em;}
+    .attrInnertd {min-width:5em;}
     
     #more {border-bottom: 1px solid #dddddd;}
 
