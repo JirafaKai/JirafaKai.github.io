@@ -17,17 +17,12 @@
 		margin: 0 auto 20px auto;
 		padding: 0;
 		text-align: center;
-		border-radius: 5px;
 	}
 	
 	#banner nav ul {float: left; list-style: none; margin: 0 auto; padding: 0; width: 800px;}
 	#banner nav li {float: left; display: inline; margin: 0;}
 	#banner nav a:link, #banner nav a:visited {color:#fff; display: inline-block; height: 40px; padding: 5px 1.5em; text-decoration: none;}
-	#banner nav a:hover, #banner nav a:active, #banner nav .active a:link, #banner nav .active a:visited {background: #C74451; color: #fff; text-shadow: none !important;}
-	#banner nav li:first-child a {
-		border-top-left-radius :5px;
-		border-bottom-left-radius: 5px;
-	}
+	#banner nav a:hover, #banner nav a:active, #banner nav .active a:link, #banner nav .active a:visited {background: #99CCFF; color: #fff; text-shadow: none !important;}
 	
 	#search-box{
 		margin-bottom: 20px;
@@ -57,7 +52,6 @@
 	
 	#charDiv{
 		background: #fff;
-        border-radius: 5px;
         padding: 1em;
 	}
 
@@ -74,15 +68,17 @@
     #charStartd {border-bottom: 1px solid #dddddd; width:3em;}
     #charTypetd {border-bottom: 1px solid #dddddd; width:6em;}
     #attrtd {border-bottom: 1px solid #dddddd; width:36em;}
+    #attrInnertd {width:30em;}
     
     #more {border-bottom: 1px solid #dddddd;}
 
-    #innerCharTable {border:1px solid; border-radius:20px;border-collapse:separate;}
-    #innerCharTable td {text-align:center;width:6em;}
+    #innerCharTable {border-collapse:separate;padding:0;margin-bottom:.3em;}
+    #innerCharTable td:first-child {background:#dddddd;}
+    #innerCharTable td {text-align:center;width:6em;background:#f8f8f8;}
     #skillTable {border:none;}
     #skillTable td {border: 1px solid #dddddd;}
     #skillTable td:first-child {border-top: none;}
     #skillTable td:nth-child(2) {border-top: none;}
     #titletd {width: 100px;}
 
-    .tag-label{background:#C74451;border-radius:20px;margin-right:.5em;color:#fff;padding:.2em .5em .2em .5em;}
+    .tag-label{background:#C74451;margin-right:.5em;color:#fff;padding:.2em .5em .2em .5em;}
