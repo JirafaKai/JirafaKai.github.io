@@ -4,10 +4,20 @@
 		padding: 0;
 		text-align: left;
         font-family: serif,Microsoft JhengHei,sans-serif;
-        padding-top:10%;
+        padding-top:60px;
 	}
 
+    #banner nav {background:#99CCFF;}
+    #banner span {color:#fff;}
+    #banner a {color:#fff;height:3em;}
+    #banner .active a, #banner a:hover {
+      background:#1174c5;
+      color:#fff;
+      border-bottom:2px solid #fff;
+      margin-bottom:0.5em;}  
+
 	#search-box{
+	    margin-top:0;
 		margin-bottom:20px;
 	}
 	
@@ -41,7 +51,7 @@
 
     #charTable td {
       border-top:none;
-      line-height:30px;
+      line-height:1.8em;
       margin: 0px;}
 
     #charTable tr:last-child {border:none;}
@@ -50,7 +60,7 @@
     #charStartd {border-bottom: 1px solid #dddddd; width:3em;}
     #charTypetd {border-bottom: 1px solid #dddddd; width:6em;}
     #attrtd {border-bottom: 1px solid #dddddd; width:36em;}
-    #attrInnertd {min-width:6em;}
+    #attrInnertd {min-width:6em;height:2.4em;}
     .attrInnertd {min-width:5em;}
     
     #more {border-bottom: 1px solid #dddddd;}
@@ -65,3 +75,4 @@
     #titletd {width: 100px;}
 
     .tag-label{background:#C74451;margin-right:.5em;color:#fff;padding:.2em .5em .2em .5em;}
+

@@ -30,22 +30,23 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
       <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">BRAND</a>
+            <span class="navbar-brand">BRAND</span>
           </div>
         
         <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Charactors <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Weapons</a></li>
+        <li class="active"><a href="#">搜角色</a></li>
+        <li><a href="#">搜武器</a></li>
         </ul>
-          
-        <!--Search Box in the middle><!-->
+      </div>    
+      </nav>
+	</header>
+  
+	<div class="container">
         <div id="search-box">
                 <label for="inputKeyword" class="sr-only">關鍵字</label>
                 <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 紅蓮、弓手、杖" required autofocus>
         </div>
-      </nav>
-	</header>
-	
+    </div>
 	
     <div class="container">	
 			<div id="result">
@@ -158,7 +159,8 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 										+ '<td id="charNametd"><span class="tag-label">' + charactor[i].phase + '</span>'    //phase
                                         + '<span class="tag-label">' + charactor[i].star + '</span>'                         //star
                                         + '<span class="tag-label">' + charactor[i].type +'</span>'                          //type
-                                        + '<br/>' + charactor[i].cName + '</td>'                                             //chinese name
+                                        + '<br/>' + charactor[i].cName                                              //chinese name
+                                        + '<br/>' + charactor[i].cName + '</td>'
                                         + '<td id="attrtd"><table id="innerCharTable"><tr><td id="attrInnertd">LV.100</td>'  //table of LV100 attribute
                                         + '<td class="attrInnertd">HP '+ charactor[i].lvMaxAttr.hp + '</td>'
                                         + '<td class="attrInnertd">SP '+ charactor[i].lvMaxAttr.sp + '</td>'
