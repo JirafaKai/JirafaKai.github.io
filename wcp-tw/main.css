@@ -69,18 +69,20 @@
       margin: 0px;}
 
     #charTable tr:last-child {border:none;}
-    #imgtd {border-bottom: 1px solid #dddddd; width:30px;}
+    #imgtd {border-bottom:1px solid #dddddd;width:60px;height:60px;}
     #charNametd {border-bottom: 1px solid #dddddd; color:#C74451; min-width:200px;}
     #charStartd {border-bottom: 1px solid #dddddd; width:3em;}
     #charTypetd {border-bottom: 1px solid #dddddd; width:6em;}
     #attrtd {border-bottom: 1px solid #dddddd; width:36em;}
-    #attrInnertd {width:6em;}
+    
     #more {border-bottom: 1px solid #dddddd;}
 
-    #innerCharTable {border:1px solid; border-radius:5px;border-collapse:separate;}
-
+    #innerCharTable {border:1px solid; border-radius:20px;border-collapse:separate;}
+    #innerCharTable td {text-align:center;width:6em;}
     #skillTable {border:none;}
     #skillTable td {border: 1px solid #dddddd;}
     #skillTable td:first-child {border-top: none;}
     #skillTable td:nth-child(2) {border-top: none;}
     #titletd {width: 100px;}
+
+    .tag-label{background:#C74451;border-radius:20px;margin-right:.5em;color:#fff;padding:.2em .5em .2em .5em;}

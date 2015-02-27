@@ -76,12 +76,14 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		//'weapon'	: ['weapon', 'loadWeapon']
 	};
 	
-    function charAttr (imgSrc, cname, star, type, hp, sp, atk, def, cri, ls1, ls2, as1, as2, ds1, ds2, ds3) {
+    function charAttr (imgSrc, cname, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, ls1, ls2, as1, as2, ds1, ds2, ds3) {
       this.imgSrc=imgSrc;
       this.cName=cname;
+      this.phase=phase;
       this.star=star;
       this.type=type;
       this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri};
+      this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
       this.skill={ls:[ls1,ls2], as:[as1,as2], ds:[ds1,ds2,ds3]};
     }
       
@@ -99,13 +101,19 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
                     charactor[i] = new charAttr(
                       JData.feed.entry[i].gsx$imgsrc.$t,
                       JData.feed.entry[i].gsx$charname.$t,
+                      JData.feed.entry[i].gsx$phase.$t,
                       JData.feed.entry[i].gsx$charstar.$t,
                       JData.feed.entry[i].gsx$chartype.$t,
-                      JData.feed.entry[i].gsx$hp.$t,
-                      JData.feed.entry[i].gsx$sp.$t,
-                      JData.feed.entry[i].gsx$atk.$t,
-                      JData.feed.entry[i].gsx$def.$t,
-                      JData.feed.entry[i].gsx$cri.$t,
+                      JData.feed.entry[i].gsx$maxhp.$t,
+                      JData.feed.entry[i].gsx$hyperhp.$t,
+                      JData.feed.entry[i].gsx$maxsp.$t,
+                      JData.feed.entry[i].gsx$hypersp.$t,
+                      JData.feed.entry[i].gsx$maxatk.$t,
+                      JData.feed.entry[i].gsx$hyperatk.$t,
+                      JData.feed.entry[i].gsx$maxdef.$t,
+                      JData.feed.entry[i].gsx$hyperdef.$t,
+                      JData.feed.entry[i].gsx$maxcri.$t,
+                      JData.feed.entry[i].gsx$hypercri.$t,
                       JData.feed.entry[i].gsx$ls1.$t,
                       JData.feed.entry[i].gsx$ls2.$t,
                       JData.feed.entry[i].gsx$as1.$t,
@@ -145,18 +153,27 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 				if((checknum >= checknum2) && key.value.trim().length !== 0)
 				{
 					$("#result").append('<table class="table" id="charTable"><tr>'
-										+ '<td id="imgtd"><img src="' + charactor[i].imgSrc + '"></img></td>'
-										+ '<td id="charNametd">' + charactor[i].cName + '</td>'
-                                        + '<td id="charStartd">' + charactor[i].star + '</td>'
-										+ '<td id="charTypetd">'+ charactor[i].type + '</td>'
-                                        + '<td id="attrtd"><table id="innerCharTable"><tr><td id="attrInnertd">LV.100</td>'
-                                        + '<td id="attrInnertd">HP '+ charactor[i].lvMaxAttr.hp + '</td>'
-                                        + '<td id="attrInnertd">SP '+ charactor[i].lvMaxAttr.sp + '</td>'
-                                        + '<td id="attrInnertd">ATK '+ charactor[i].lvMaxAttr.atk + '</td>'
-                                        + '<td id="attrInnertd">DEF '+ charactor[i].lvMaxAttr.def + '</td>'
-                                        + '<td id="attrInnertd">CRI '+ charactor[i].lvMaxAttr.cri + '</td></tr></table></td>'
-                                        + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a></td>'
-										+ '</tr></table>');
+										+ '<td id="imgtd"><img src="' + charactor[i].imgSrc + '"></img></td>'                //image
+										+ '<td id="charNametd"><span class="tag-label">' + charactor[i].phase + '</span>'    //phase
+                                        + '<span class="tag-label">' + charactor[i].star + '</span>'                         //star
+                                        + '<span class="tag-label">' + charactor[i].type +'</span>'                          //type
+                                        + '<br/>' + charactor[i].cName + '</td>'                                             //chinese name
+                                        + '<td id="attrtd"><table id="innerCharTable"><tr><td id="attrInnertd">LV.100</td>'  //table of LV100 attribute
+                                        + '<td class="attrInnertd">HP '+ charactor[i].lvMaxAttr.hp + '</td>'
+                                        + '<td class="attrInnertd">SP '+ charactor[i].lvMaxAttr.sp + '</td>'
+                                        + '<td class="attrInnertd">ATK '+ charactor[i].lvMaxAttr.atk + '</td>'
+                                        + '<td class="attrInnertd">DEF '+ charactor[i].lvMaxAttr.def + '</td>'
+                                        + '<td class="attrInnertd">CRI '+ charactor[i].lvMaxAttr.cri + '</td></tr></table>'
+                                        + '<table id="innerCharTable"><tr>'
+                                        + '<td id="attrInnertd">4突</td>'
+                                        + '<td class="attrInnertd">HP '+ charactor[i].hyperAttr.hp + '</td>'
+                                        + '<td class="attrInnertd">SP '+ charactor[i].hyperAttr.sp + '</td>'
+                                        + '<td class="attrInnertd">ATK '+ charactor[i].hyperAttr.atk + '</td>'
+                                        + '<td class="attrInnertd">DEF '+ charactor[i].hyperAttr.def + '</td>'
+                                        + '<td class="attrInnertd">CRI '+ charactor[i].hyperAttr.cri + '</td>'
+                                        + '</tr></table></td>'
+                                        + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a></td>'      //more button
+										+ '</tr>');
                     $("#result").append('<div id="char' + i + '" class="collapse">'
                                         + '<table class="table" id="skillTable"><tr>'
 										+ '<tr><td id="titletd">隊長技能1</td><td>' + charactor[i].skill.ls[0] + '</td></tr>'
