@@ -22,6 +22,8 @@
 <!--
 Google spreadsheet = https://docs.google.com/spreadsheets/d/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/pubhtml
 JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json
+
+https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/formResponse?entry.1562942030=123&entry.2001095882=683459&submit=Submit
 -->
 
 <body>
@@ -78,7 +80,8 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
 		//'weapon'	: ['weapon', 'loadWeapon']
 	};
 	
-    function charAttr (imgSrc, cname, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, ls1, ls2, as1, as2, ds1, ds2, ds3) {
+    function charAttr (charno, imgSrc, cname, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, ls1, ls2, as1, as2, ds1, ds2, ds3) {
+	  this.charno=charno;
       this.imgSrc=imgSrc;
       this.cName=cname;
       this.phase=phase;
@@ -88,19 +91,38 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
       this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
       this.skill={ls:[ls1,ls2], as:[as1,as2], ds:[ds1,ds2,ds3]};
     }
+	
+	function commAttr (charNo, comment) {
+		this.charNo=charNo;
+		this.comment=comment;
+	}
       
     var charactor=[];
+	var commentG=[];
 
 	$(document).ready(
 		function() {
 	
-		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/od6/public/values?alt=json";
+		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
+		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
+		
+		$.getJSON(urlScript2, 
+			function(JData){
+				for (var i in JData.feed.entry){
+                    commentG[i] = new commAttr(
+						JData.feed.entry[i].gsx$charno.$t,
+						JData.feed.entry[i].gsx$commentmsg.$t
+					);
+			}
+		});
+		
 		
 		$.getJSON(urlScript, 
 			function(JData){
 				for (var i in JData.feed.entry){
                     
                     charactor[i] = new charAttr(
+					  JData.feed.entry[i].gsx$charno.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
                       JData.feed.entry[i].gsx$charname.$t,
                       JData.feed.entry[i].gsx$phase.$t,
@@ -175,7 +197,8 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
                                         + '<td class="attrInnertd">DEF '+ charactor[i].hyperAttr.def + '</td>'
                                         + '<td class="attrInnertd">CRI '+ charactor[i].hyperAttr.cri + '</td>'
                                         + '</tr></table></td>'
-                                        + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a></td>'      //more button
+                                        + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a><br/>'      //more button
+                                        + '<a href="#comm' + i + ' "data-toggle="collapse">評價</a></td>'				//comment button
 										+ '</tr>');
                     $("#result").append('<div id="char' + i + '" class="collapse">'
                                         + '<table class="table" id="skillTable"><tr>'
@@ -184,6 +207,16 @@ JSON = https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sS
                                         + '<tr><td id="titletd">主動技能1</td><td>' + charactor[i].skill.as[0] + '</td></tr>'
                                         + '<tr><td id="titletd">主動技能2</td><td>' + charactor[i].skill.as[1] + '</td></tr>'
                                         + '<tr><td id="titletd">被動技能</td><td>' + charactor[i].skill.ds[0] + '<br/>'
+                                        + charactor[i].skill.ds[1] + '<br/>'
+                                        + charactor[i].skill.ds[2] 
+                                        + '</td></tr></table></div>');
+					$("#result").append('<div id="comm' + i + '" class="collapse">'
+                                        + '<table class="table table-striped" id="commTable"><tr>'
+										+ '<tr><td id="commtd">test</td><td>' + commentG[1].comment + '</td></tr>'
+										+ '<tr><td id="commtd">test</td><td>' + commentG[1].charNo + '</td></tr>'
+                                        + '<tr><td id="commtd">test</td><td>' + charactor[i].skill.as[0] + '</td></tr>'
+                                        + '<tr><td id="commtd">tset</td><td>' + charactor[i].skill.as[1] + '</td></tr>'
+                                        + '<tr><td id="commtd">test</td><td>' + charactor[i].skill.ds[0] + '<br/>'
                                         + charactor[i].skill.ds[1] + '<br/>'
                                         + charactor[i].skill.ds[2] 
                                         + '</td></tr></table></div>');
