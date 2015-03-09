@@ -96,6 +96,15 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		this.charNo=charNo;
 		this.comment=comment;
 	}
+		function sumitcom (charNo) {
+		var nid = 'inputCommt' + charNo;
+		var result = 'https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/formResponse?'
+					+ 'entry.1562942030=' + charNo
+					+ '&entry.2001095882=' + document.getElementById(nid).value
+					+ '&submit=Submit';			
+		$.getScript(result);
+		document.getElementById(nid).value = "";
+	}
       
     var charactor=[];
 	var commentG=[];
@@ -210,16 +219,16 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                         + charactor[i].skill.ds[1] + '<br/>'
                                         + charactor[i].skill.ds[2] 
                                         + '</td></tr></table></div>');
-					$("#result").append('<div id="comm' + i + '" class="collapse">'
-                                        + '<table class="table table-striped" id="commTable"><tr>'
-										+ '<tr><td id="commtd">test</td><td>' + commentG[1].comment + '</td></tr>'
-										+ '<tr><td id="commtd">test</td><td>' + commentG[1].charNo + '</td></tr>'
-                                        + '<tr><td id="commtd">test</td><td>' + charactor[i].skill.as[0] + '</td></tr>'
-                                        + '<tr><td id="commtd">tset</td><td>' + charactor[i].skill.as[1] + '</td></tr>'
-                                        + '<tr><td id="commtd">test</td><td>' + charactor[i].skill.ds[0] + '<br/>'
-                                        + charactor[i].skill.ds[1] + '<br/>'
-                                        + charactor[i].skill.ds[2] 
-                                        + '</td></tr></table></div>');
+					var commet = '<div id="comm' + i + '" class="collapse">'
+                                        + '<table class="table table-striped" id="commTable">'
+										+ '<tr><td><input type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
+										+ '<input type="button" value="Input" onclick="sumitcom(' + charactor[i].charno + ')"</td></tr>';
+					for(var c in commentG){
+						if(commentG[c].charNo == charactor[i].charno)
+						commet += '<tr><td id="commtd">test</td><td>' + commentG[c].comment + '</td></tr>';
+					}
+					commet += '</table></div>';
+					$("#result").append(commet);
 				}
 			}	
 		};
