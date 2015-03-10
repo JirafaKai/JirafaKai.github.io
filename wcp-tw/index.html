@@ -235,6 +235,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 	}
 	function scrpitback(i){
 		var nid = 'inputCommt' + charactor[i].charno;
+		var commt = document.getElementById(nid).value;
 		document.getElementById(nid).value = "";
 		commentG=[];
 		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
@@ -247,7 +248,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 					);
 				var commet = '<table class="table table-striped" id="commTable">'
 							+ '<tr><td><input type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
-							+ '<input type="button" value="Input" onclick="sumitcom(' + i + ')"</td></tr>';
+							+ '<input type="button" value="Input" onclick="sumitcom(' + i + ')"</td></tr>'
+							+ '<tr><td id="commtd">test</td><td>' + commt + '</td></tr>';
 				for(var c in commentG){
 					if(commentG[c].charNo == charactor[i].charno)
 					commet += '<tr><td id="commtd">test</td><td>' + commentG[c].comment + '</td></tr>';
