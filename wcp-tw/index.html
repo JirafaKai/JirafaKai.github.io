@@ -230,10 +230,10 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		$.getScript(result);
 		var commt = document.getElementById(nid).value;
 		document.getElementById(nid).value = "";
-		commentG=[];
-		loadcomment();
 		nid = 'comm' + charactor[i].charno;
 		document.getElementById(nid).innerHTML = makecomment(i,commt);
+		commentG=[];
+		loadcomment();
 	}
 	function loadcomment(){
 		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
