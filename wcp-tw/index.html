@@ -188,8 +188,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 				if((checknum >= checknum2) && key.value.trim().length !== 0)
 				{
 					$("#result").append('<table class="table" id="charTable"><tr>'
-										+ '<td id="imgtd"><img style="width:60px;" src="' + charactor[i].imgSrc + '"></img></td>'                //image
-										+ '<td id="charNametd"><span class="tag-label">' + charactor[i].phase + '</span>'    //phase
+										+ '<td id="imgtd"><img style="width:70px;" src="' + charactor[i].imgSrc + '"></img></td>'                //image
+										+ '<td style="width:450px;" id="charNametd"><span class="tag-label">' + charactor[i].phase + '</span>'    //phase
                                         + '<span class="tag-label">' + charactor[i].star + '</span>'                         //star
                                         + '<span class="tag-label">' + charactor[i].type +'</span>'                          //type
                                         + '<br/>' + charactor[i].cName                                              //chinese name
@@ -202,8 +202,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                         + '<td class="attrInnertd">CRI '+ charactor[i].lvMaxAttr.cri + '</td>'
                                         + '<td class="attrInnertd">SPR '+ charactor[i].lvMaxAttr.spr + '</td></tr></table>'
                                         + '<table id="innerCharTable"><tr>'
-                                        + '<td id="attrInnertd" style="background:#fff; color:#000;width:400px;text-align:left;padding-left:15px;">SPR上限: ' + charactor[i].sprComm + '</td>'
-                                        + '<td class="attrInnertd" style="width:150px;border:2px solid #C74451;color:#C74451;">Gamewith評價: ' + charactor[i].gamewith + '</td>'
+                                        + '<td id="attrInnertd" style="background:#fff; color:#000;width:400px;text-align:left;padding-left:15px;">SPR上限：' + charactor[i].sprComm + '</td>'
+                                        + '<td class="attrInnertd" style="width:150px;border:2px solid #C74451;color:#C74451;">Gamewith評價：' + charactor[i].gamewith + '</td>'
                                         + '</tr></table></td>'
                                         + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a><br/>'      //more button
                                         + '<a href="#comm' + charactor[i].charno + ' "data-toggle="collapse">評價</a></td>'				//comment button
