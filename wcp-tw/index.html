@@ -81,7 +81,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
 	
-    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as2, ds1, ds2, ds3, spcComm, gamewith) {
+    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
 	  this.charno=charno;
       this.imgSrc=imgSrc;
       this.cName=cname;
@@ -93,7 +93,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
       this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
       this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
       this.sprComm=spcComm;
-      this.skill={ls:[ls1,ls2], as:[as1,as2], ds:[ds1,ds2,ds3]};
+      this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
       this.gamewith=gamewith;
     }
 	
@@ -151,7 +151,9 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                       JData.feed.entry[i].gsx$ls1.$t,
                       JData.feed.entry[i].gsx$ls2.$t,
                       JData.feed.entry[i].gsx$as1.$t,
+					  JData.feed.entry[i].gsx$as1sp.$t,
                       JData.feed.entry[i].gsx$as2.$t,
+					  JData.feed.entry[i].gsx$as2sp.$t,
                       JData.feed.entry[i].gsx$ds1.$t,
                       JData.feed.entry[i].gsx$ds2.$t,
                       JData.feed.entry[i].gsx$ds3.$t,
@@ -225,8 +227,8 @@ var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t
                                         + '<table class="table" id="skillTable"><tr>'
 										+ '<tr><td id="titletd">隊長技能1</td><td>' + charactor[i].skill.ls[0] + '</td></tr>'
 										+ '<tr><td id="titletd">隊長技能2</td><td>' + charactor[i].skill.ls[1] + '</td></tr>'
-                                        + '<tr><td id="titletd">主動技能1</td><td>' + charactor[i].skill.as[0] + '</td></tr>'
-                                        + '<tr><td id="titletd">主動技能2</td><td>' + charactor[i].skill.as[1] + '</td></tr>'
+                                        + '<tr><td id="titletd">主動技能1</td><td>' + charactor[i].skill.as[0] + '<br/>消費SP：' + charactor[i].skill.as[1] + '</td></tr>'
+                                        + '<tr><td id="titletd">主動技能2</td><td>' + charactor[i].skill.as[2] + '<br/>消費SP：' + charactor[i].skill.as[3] + '</td></tr>'
                                         + '<tr><td id="titletd">被動技能</td><td>' + charactor[i].skill.ds[0] + '<br/>'
                                         + charactor[i].skill.ds[1] + '<br/>'
                                         + charactor[i].skill.ds[2] 
