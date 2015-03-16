@@ -110,6 +110,18 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		function() {
 	
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
+		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
+		
+		$.getJSON(urlScript2, 
+			function(JData){
+				for (var i in JData.feed.entry){
+                    commentG[i] = new commAttr(
+						JData.feed.entry[i].gsx$charno.$t,
+						JData.feed.entry[i].gsx$commentmsg.$t,
+						JData.feed.entry[i].gsx$time.$t
+					);
+			}
+		});
 		
 		$.getJSON(urlScript, 
 			function(JData){
@@ -158,7 +170,6 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		
 		
 		key.onkeyup = function(e){
-		$(document).append($("#overlay-loading"));
 		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 		$.getJSON(urlScript2, 
 			function(JData){
@@ -169,7 +180,6 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                         JData.feed.entry[q].gsx$time.$t
 					);
 			}
-			$("#overlay-loading").remove();
 		});
 			$("#result").html("");
 			
