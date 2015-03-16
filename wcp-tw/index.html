@@ -232,7 +232,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		var commt = document.getElementById(nid).value;
 		document.getElementById(nid).value = "";
 		commentG=[];
-		loadcomment(true,i,commt);
+		loadcomment();
 		nid = 'comm' + charactor[i].charno;
 		document.getElementById(nid).innerHTML = makecomment(i,comment);}
 	}
