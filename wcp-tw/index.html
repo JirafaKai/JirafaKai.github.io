@@ -34,11 +34,6 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
           <div class="navbar-header">
             <span class="navbar-brand">BRAND</span>
           </div>
-        
-        <ul class="nav navbar-nav">
-        <li class="active"><a href="#">搜角色</a></li>
-        <li><a href="#">搜武器</a></li>
-        </ul>
       </div>    
       </nav>
 	</header>
@@ -80,20 +75,30 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		//'weapon'	: ['weapon', 'loadWeapon']
 	};
 	
-    function charAttr (charno, imgSrc, cname, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, ls1, ls2, as1, as2, ds1, ds2, ds3) {
+	function getTime()
+	{
+		var Today = new Date();
+		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
+	}
+	
+    function charAttr (charno, imgSrc, cname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as2, ds1, ds2, ds3, spcComm, gamewith) {
 	  this.charno=charno;
       this.imgSrc=imgSrc;
       this.cName=cname;
+      this.cnName=cnName;
       this.phase=phase;
       this.star=star;
       this.type=type;
-      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri};
+      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
       this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
+      this.sprComm=spcComm;
       this.skill={ls:[ls1,ls2], as:[as1,as2], ds:[ds1,ds2,ds3]};
+      this.gamewith=gamewith;
     }
 	
-	function commAttr (charNo, comment) {
+	function commAttr (charNo, comment, iTime) {
 		this.charNo=charNo;
+		this.iTime=iTime;
 		this.comment=comment;
 	}
       
@@ -111,7 +116,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 				for (var i in JData.feed.entry){
                     commentG[i] = new commAttr(
 						JData.feed.entry[i].gsx$charno.$t,
-						JData.feed.entry[i].gsx$commentmsg.$t
+						JData.feed.entry[i].gsx$commentmsg.$t,
+						JData.feed.entry[i].gsx$time.$t
 					);
 			}
 		});
@@ -125,6 +131,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 					  JData.feed.entry[i].gsx$charno.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
                       JData.feed.entry[i].gsx$charname.$t,
+                      JData.feed.entry[i].gsx$charnickname.$t,
                       JData.feed.entry[i].gsx$phase.$t,
                       JData.feed.entry[i].gsx$charstar.$t,
                       JData.feed.entry[i].gsx$chartype.$t,
@@ -138,13 +145,16 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                       JData.feed.entry[i].gsx$hyperdef.$t,
                       JData.feed.entry[i].gsx$maxcri.$t,
                       JData.feed.entry[i].gsx$hypercri.$t,
+                      JData.feed.entry[i].gsx$spr.$t,
                       JData.feed.entry[i].gsx$ls1.$t,
                       JData.feed.entry[i].gsx$ls2.$t,
                       JData.feed.entry[i].gsx$as1.$t,
                       JData.feed.entry[i].gsx$as2.$t,
                       JData.feed.entry[i].gsx$ds1.$t,
                       JData.feed.entry[i].gsx$ds2.$t,
-                      JData.feed.entry[i].gsx$ds3.$t
+                      JData.feed.entry[i].gsx$ds3.$t,
+                      JData.feed.entry[i].gsx$sprcomm.$t,
+                      JData.feed.entry[i].gsx$gamewith.$t
                     );
                     
 			}
@@ -171,6 +181,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 				for(var n in keyword){
 					if(keyword[n] !== ""){checknum2++;	// prevent 2 spaces together, cannot use keyword.length (num of element of keyword array)
 					if(charactor[i].cName.indexOf(keyword[n]) !== -1) checknum++;    // !==-1 -> is match
+                    if(charactor[i].cnName.indexOf(keyword[n]) !== -1) checknum++;
 					if(charactor[i].type.indexOf(keyword[n]) !== -1) checknum++;
 					if(charactor[i].star.indexOf(keyword[n]) !== -1) checknum++;}
 				}
@@ -188,14 +199,11 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                         + '<td class="attrInnertd">SP '+ charactor[i].lvMaxAttr.sp + '</td>'
                                         + '<td class="attrInnertd">ATK '+ charactor[i].lvMaxAttr.atk + '</td>'
                                         + '<td class="attrInnertd">DEF '+ charactor[i].lvMaxAttr.def + '</td>'
-                                        + '<td class="attrInnertd">CRI '+ charactor[i].lvMaxAttr.cri + '</td></tr></table>'
+                                        + '<td class="attrInnertd">CRI '+ charactor[i].lvMaxAttr.cri + '</td>'
+                                        + '<td class="attrInnertd">SPR '+ charactor[i].lvMaxAttr.spr + '</td></tr></table>'
                                         + '<table id="innerCharTable"><tr>'
-                                        + '<td id="attrInnertd">4突</td>'
-                                        + '<td class="attrInnertd">HP '+ charactor[i].hyperAttr.hp + '</td>'
-                                        + '<td class="attrInnertd">SP '+ charactor[i].hyperAttr.sp + '</td>'
-                                        + '<td class="attrInnertd">ATK '+ charactor[i].hyperAttr.atk + '</td>'
-                                        + '<td class="attrInnertd">DEF '+ charactor[i].hyperAttr.def + '</td>'
-                                        + '<td class="attrInnertd">CRI '+ charactor[i].hyperAttr.cri + '</td>'
+                                        + '<td id="attrInnertd" style="background:#fff; color:#000;width:400px;text-align:left;padding-left:15px;">SPR上限: ' + charactor[i].sprComm + '</td>'
+                                        + '<td class="attrInnertd" style="width:150px;border:2px solid #C74451;color:#C74451;">Gamewith評價: ' + charactor[i].gamewith + '</td>'
                                         + '</tr></table></td>'
                                         + '<td id="more"><a href="#char' + i + ' "data-toggle="collapse">更多</a><br/>'      //more button
                                         + '<a href="#comm' + charactor[i].charno + ' "data-toggle="collapse">評價</a></td>'				//comment button
@@ -212,11 +220,11 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                         + '</td></tr></table></div>');
 					var commet = '<div id="comm' + charactor[i].charno + '" class="collapse">'
                                         + '<table class="table table-striped" id="commTable">'
-										+ '<tr><td><input type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
-										+ '<input type="button" value="Input" onclick="sumitcom(' + i + ')"</td></tr>';
+										+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
+										+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>';
 					for(var c in commentG){
 						if(commentG[c].charNo == charactor[i].charno)
-						commet += '<tr><td id="commtd">test</td><td>' + commentG[c].comment + '</td></tr>';
+						commet += '<tr><td  class="commTime" id="commtd"><span class="spanTime">' + commentG[c].iTime + '</span></td><td class="commTd">' + commentG[c].comment + '</td></tr>';
 					}
 					commet += '</table></div>';
 					$("#result").append(commet);
@@ -230,6 +238,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		var result = 'https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/formResponse?'
 					+ 'entry.1562942030=' + charactor[i].charno
 					+ '&entry.2001095882=' + document.getElementById(nid).value
+					+ '&entry.714632310=' + getTime()
 					+ '&submit=Submit';			
 		$.getScript(result,scrpitback(i));
 	}
@@ -244,15 +253,16 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 				for (var q in JData.feed.entry){
                     commentG[q] = new commAttr(
 						JData.feed.entry[q].gsx$charno.$t,
-						JData.feed.entry[q].gsx$commentmsg.$t
+						JData.feed.entry[q].gsx$commentmsg.$t,
+                        JData.feed.entry[q].gsx$time.$t
 					);
 				var commet = '<table class="table table-striped" id="commTable">'
-							+ '<tr><td><input type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
-							+ '<input type="button" value="Input" onclick="sumitcom(' + i + ')"</td></tr>'
-							+ '<tr><td id="commtd">test</td><td>' + commt + '</td></tr>';
+							+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
+							+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>'
+							+ '<tr><td class="commTime" id="commtd"><span class="spanTime">' + getTime() + '</span></td><td class="commTd">' + commt + '</td></tr>';
 				for(var c in commentG){
 					if(commentG[c].charNo == charactor[i].charno)
-					commet += '<tr><td id="commtd">test</td><td>' + commentG[c].comment + '</td></tr>';
+					commet += '<tr><td class="commTime" id="commtd"><span class="spanTime">' + commentG[c].iTime + '</span></td><td class="commTd">' + commentG[c].comment + '</td></tr>';
 				}
 				commet += '</table>';
 				nid = 'comm' + charactor[i].charno;
