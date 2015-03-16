@@ -233,8 +233,10 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		document.getElementById(nid).value = "";
 		commentG=[];
 		loadcomment(true,i,commt);
+		nid = 'comm' + charactor[i].charno;
+		document.getElementById(nid).innerHTML = makecomment(i,comment);}
 	}
-	function loadcomment(b,i,comment){
+	function loadcomment(){
 		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 		$.getJSON(urlScript2, 
 			function(JData){
@@ -245,9 +247,6 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                         JData.feed.entry[q].gsx$time.$t
 					);
 			}
-			if(b == true){
-					var nid = 'comm' + charactor[i].charno;
-					document.getElementById(nid).innerHTML = makecomment(i,comment);}
 		});
 	}
 	function makecomment(i,comment){
