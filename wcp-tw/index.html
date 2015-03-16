@@ -112,16 +112,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
 		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 		
-		$.getJSON(urlScript2, 
-			function(JData){
-				for (var i in JData.feed.entry){
-                    commentG[i] = new commAttr(
-						JData.feed.entry[i].gsx$charno.$t,
-						JData.feed.entry[i].gsx$commentmsg.$t,
-						JData.feed.entry[i].gsx$time.$t
-					);
-			}
-		});
+		loadcomment(false,0,"");
 		
 		$.getJSON(urlScript, 
 			function(JData){
@@ -170,17 +161,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		
 		
 		key.onkeyup = function(e){
-		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
-		$.getJSON(urlScript2, 
-			function(JData){
-				for (var q in JData.feed.entry){
-                    commentG[q] = new commAttr(
-						JData.feed.entry[q].gsx$charno.$t,
-						JData.feed.entry[q].gsx$commentmsg.$t,
-                        JData.feed.entry[q].gsx$time.$t
-					);
-			}
-		});
+		loadcomment(false,0,"");
 			$("#result").html("");
 			
 			for (var i in charactor){
@@ -251,6 +232,9 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		var commt = document.getElementById(nid).value;
 		document.getElementById(nid).value = "";
 		commentG=[];
+		loadcomment(true,i,commt);
+	}
+	function loadcomment(b,i,commt){
 		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 		$.getJSON(urlScript2, 
 			function(JData){
@@ -260,8 +244,9 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 						JData.feed.entry[q].gsx$commentmsg.$t,
                         JData.feed.entry[q].gsx$time.$t
 					);
-				nid = 'comm' + charactor[i].charno;
-				document.getElementById(nid).innerHTML = makecomment(i,commt);
+				if(b){
+					var nid = 'comm' + charactor[i].charno;
+					document.getElementById(nid).innerHTML = makecomment(i,commt);}
 			}
 		});
 	}
