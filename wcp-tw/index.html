@@ -81,10 +81,11 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
 	
-    function charAttr (charno, imgSrc, cname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as2, ds1, ds2, ds3, spcComm, gamewith) {
+    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as2, ds1, ds2, ds3, spcComm, gamewith) {
 	  this.charno=charno;
       this.imgSrc=imgSrc;
       this.cName=cname;
+      this.ccName=ccname;
       this.cnName=cnName;
       this.phase=phase;
       this.star=star;
@@ -131,6 +132,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 					  JData.feed.entry[i].gsx$charno.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
                       JData.feed.entry[i].gsx$charname.$t,
+                      JData.feed.entry[i].gsx$ccharname.$t,
                       JData.feed.entry[i].gsx$charnickname.$t,
                       JData.feed.entry[i].gsx$phase.$t,
                       JData.feed.entry[i].gsx$charstar.$t,
@@ -193,7 +195,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                         + '<span class="tag-label">' + charactor[i].star + '</span>'                         //star
                                         + '<span class="tag-label">' + charactor[i].type +'</span>'                          //type
                                         + '<br/>' + charactor[i].cName                                              //chinese name
-                                        + '<br/>' + charactor[i].cName + '</td>'
+                                        + '<br/>' + charactor[i].ccName + '</td>'
                                         + '<td id="attrtd"><table id="innerCharTable"><tr><td id="attrInnertd">LV.100</td>'  //table of LV100 attribute
                                         + '<td class="attrInnertd">HP '+ charactor[i].lvMaxAttr.hp + '</td>'
                                         + '<td class="attrInnertd">SP '+ charactor[i].lvMaxAttr.sp + '</td>'
