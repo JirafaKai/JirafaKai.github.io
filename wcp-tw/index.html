@@ -232,11 +232,11 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		document.getElementById(nid).value = "";
 		nid = 'comm' + charactor[i].charno;
 		document.getElementById(nid).innerHTML = makecomment(i,commt,1);
+		commentG=[];
 		loadcomment();
 	}
 	function loadcomment(){
 		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
-		commentG=[];
 		$.getJSON(urlScript2, 
 			function(JData){
 				for (var q in JData.feed.entry){
@@ -252,7 +252,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 				var content = '<table class="table table-striped" id="commTable">'
 							+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
 							+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>';
-				
+				if(add == 1){
+							+ '<tr><td class="commTime" id="commtd"><span class="spanTime">' + getTime() + '</span></td><td class="commTd">' + comment + '</td></tr>';}
 				for(var c in commentG){
 					if(commentG[c].charNo == charactor[i].charno)
 					content += '<tr><td class="commTime" id="commtd"><span class="spanTime">' + commentG[c].iTime + '</span></td><td class="commTd">' + commentG[c].comment + '</td></tr>';
