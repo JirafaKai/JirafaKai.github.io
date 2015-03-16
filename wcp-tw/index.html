@@ -171,7 +171,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		
 		
 		key.onkeyup = function(e){
-var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
+		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 		$.getJSON(urlScript2, 
 			function(JData){
 				for (var q in JData.feed.entry){
@@ -292,7 +292,6 @@ var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t
 		else if(type == "弓")color += "#F8F8F8;";
 		else if(type == "拳")color += "#F8F8F8;";
 		else if(type == "雙劍")color += "#FFF8F8;";
-		alert(color);
 		return color;
 	}
 	</script>
