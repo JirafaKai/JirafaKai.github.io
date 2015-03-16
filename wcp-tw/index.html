@@ -205,9 +205,9 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 					var color = typecolor(charactor[i].type);
 					$("#result").append('<table class="table" id="charTable"><tr>'
 										+ '<td id="imgtd"><img style="width:70px;" src="' + charactor[i].imgSrc + '"></img></td>'                //image
-										+ '<td style="width:450px;" id="charNametd"><span class="tag-label" style="' + color + '">' + charactor[i].phase + '</span>'    //phase
-                                        + '<span class="tag-label" style="' + color + '">' + charactor[i].star + '</span>'                         //star
-                                        + '<span class="tag-label" style="' + color + '">' + charactor[i].type +'</span>'                          //type
+										+ '<td style="width:450px;" id="charNametd"><span class="tag-label" style="background:' + color + '">' + charactor[i].phase + '</span>'    //phase
+                                        + '<span class="tag-label" style="background:' + color + '">' + charactor[i].star + '</span>'                         //star
+                                        + '<span class="tag-label" style="background:' + color + '">' + charactor[i].type +'</span>'                          //type
                                         + '<br/>' + charactor[i].cName                                              //chinese name
                                         + '<br/>' + charactor[i].cnName + '</td>'
                                         + '<td id="attrtd"><table id="innerCharTable"><tr><td id="attrInnertd">LV.100</td>'  //table of LV100 attribute
@@ -284,8 +284,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		});
 	}
 	function typecolor(type){
-		var color = "background:";
-		if(type == "劍")color += "#F8F8F8;";
+		var color="";
+		if(type == "劍")color += "#F2F3F3;";
 		else if(type == "法")color += "#F8F8F8;";
 		else if(type == "槍")color += "#F8F8F8;";
 		else if(type == "斧")color += "#F8F8F8;";
