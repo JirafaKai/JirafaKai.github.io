@@ -244,10 +244,10 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 						JData.feed.entry[q].gsx$commentmsg.$t,
                         JData.feed.entry[q].gsx$time.$t
 					);
-				if(b == true){alert("123");
+			}
+			if(b == true){
 					var nid = 'comm' + charactor[i].charno;
 					document.getElementById(nid).innerHTML = makecomment(i,comment);}
-			}
 		});
 	}
 	function makecomment(i,comment){
