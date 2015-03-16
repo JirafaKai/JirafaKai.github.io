@@ -213,7 +213,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                         + charactor[i].skill.ds[1] + '<br/>'
                                         + charactor[i].skill.ds[2] 
                                         + '</td></tr></table></div>');
-					var comment = '<div id="comm' + charactor[i].charno + '" class="collapse">' + makecomment(i,"",false) + '</div>';
+					var comment = '<div id="comm' + charactor[i].charno + '" class="collapse">' + makecomment(i,"",0) + '</div>';
 					$("#result").append(comment);
 				}
 			}	
@@ -231,7 +231,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		var commt = document.getElementById(nid).value;
 		document.getElementById(nid).value = "";
 		nid = 'comm' + charactor[i].charno;
-		document.getElementById(nid).innerHTML = makecomment(i,commt,true);
+		document.getElementById(nid).innerHTML = makecomment(i,commt,1);
 		loadcomment();
 	}
 	function loadcomment(){
@@ -252,7 +252,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 				var content = '<table class="table table-striped" id="commTable">'
 							+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
 							+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>';
-				if(add == true){
+				if(add == 1){
 							+ '<tr><td class="commTime" id="commtd"><span class="spanTime">' + getTime() + '</span></td><td class="commTd">' + comment + '</td></tr>';}
 				for(var c in commentG){
 					if(commentG[c].charNo == charactor[i].charno)
