@@ -57,7 +57,7 @@
     #more {border-bottom: 1px solid #dddddd;}
 
     #innerCharTable {border-collapse:separate;padding:0;margin-bottom:.3em;}
-    #innerCharTable td:first-child {background:#C74451;color:#fff;}
+    #innerCharTable td:first-child {color:#fff;}
     #innerCharTable td {border-left:1px solid #fff; text-align:center;width:6em;background:#f8f8f8;}
     #skillTable {border:none;}
     #skillTable td {border: 1px solid #dddddd;}
