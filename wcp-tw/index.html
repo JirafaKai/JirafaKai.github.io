@@ -112,7 +112,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
 		var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 		
-		loadcomment(false,0,"");
+		loadcomment();
 		
 		$.getJSON(urlScript, 
 			function(JData){
@@ -161,7 +161,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		
 		
 		key.onkeyup = function(e){
-		loadcomment(false,0,"");
+		loadcomment();
 			$("#result").html("");
 			
 			for (var i in charactor){
