@@ -234,16 +234,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                         + charactor[i].skill.ds[1] + '<br/>'
                                         + charactor[i].skill.ds[2] 
                                         + '</td></tr></table></div>');
-					var commet = '<div id="comm' + charactor[i].charno + '" class="collapse">'
-                                        + '<table class="table table-striped" id="commTable">'
-										+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
-										+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>';
-					for(var c in commentG){
-						if(commentG[c].charNo == charactor[i].charno)
-						commet += '<tr><td  class="commTime" id="commtd"><span class="spanTime">' + commentG[c].iTime + '</span></td><td class="commTd">' + commentG[c].comment + '</td></tr>';
-					}
-					commet += '</table></div>';
-					$("#result").append(commet);
+					var comment = '<div id="comm' + charactor[i].charno + '" class="collapse">' + makecomment(i,"") + '</div>';
+					$("#result").append(comment);
 				}
 			}	
 		};
@@ -269,19 +261,23 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 						JData.feed.entry[q].gsx$commentmsg.$t,
                         JData.feed.entry[q].gsx$time.$t
 					);
-				var commet = '<table class="table table-striped" id="commTable">'
-							+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
-							+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>'
-							+ '<tr><td class="commTime" id="commtd"><span class="spanTime">' + getTime() + '</span></td><td class="commTd">' + commt + '</td></tr>';
-				for(var c in commentG){
-					if(commentG[c].charNo == charactor[i].charno)
-					commet += '<tr><td class="commTime" id="commtd"><span class="spanTime">' + commentG[c].iTime + '</span></td><td class="commTd">' + commentG[c].comment + '</td></tr>';
-				}
-				commet += '</table>';
 				nid = 'comm' + charactor[i].charno;
-				document.getElementById(nid).innerHTML = commet;
+				document.getElementById(nid).innerHTML = makecomment(i,commt);
 			}
 		});
+	}
+	function makecomment(i,comment){
+				var content = '<table class="table table-striped" id="commTable">'
+							+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
+							+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>';
+				if(comment != ""){
+							+ '<tr><td class="commTime" id="commtd"><span class="spanTime">' + getTime() + '</span></td><td class="commTd">' + comment + '</td></tr>';}
+				for(var c in commentG){
+					if(commentG[c].charNo == charactor[i].charno)
+					content += '<tr><td class="commTime" id="commtd"><span class="spanTime">' + commentG[c].iTime + '</span></td><td class="commTd">' + commentG[c].comment + '</td></tr>';
+				}
+				content += '</table>';
+				return content;
 	}
 	function typecolor(type){
 		var color="#";
