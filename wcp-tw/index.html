@@ -41,7 +41,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 	<div class="container">
         <div id="search-box">
                 <label for="inputKeyword" class="sr-only">關鍵字</label>
-                <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 正月白魔、弓、4星" required autofocus>
+                <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 正月白魔、弓、4星、第四期、聖誕限定 (兩個關鍵字間可用空格隔開)" required autofocus>
         </div>
     </div>
 	
@@ -177,6 +177,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 					if(charactor[i].cName.indexOf(keyword[n]) !== -1) checknum++;    // !==-1 -> is match
                     if(charactor[i].cnName.indexOf(keyword[n]) !== -1) checknum++;
 					if(charactor[i].type.indexOf(keyword[n]) !== -1) checknum++;
+                    if(charactor[i].phase.indexOf(keyword[n]) !== -1) checknum++;
 					if(charactor[i].star.indexOf(keyword[n]) !== -1) checknum++;}
 				}
 				if((checknum >= checknum2) && key.value.trim().length !== 0)
