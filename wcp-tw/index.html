@@ -224,7 +224,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                      + '<div class="modal-body">'
                                      + '<div class="form-group">'
                                      + '<label for="message-text" class="control-label">回報內容:</label>'
-                                     + '<textarea id="reportContent' + i + '" class="form-control" id="message-text"></textarea>'
+                                     + '<textarea id="reportContent' + charactor[i].charno + '" class="form-control" id="message-text"></textarea>'
                                      + '</div></form></div>'
                                      + '<div class="modal-footer">'
                                      + '<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>'
@@ -232,7 +232,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                      + '</div>'
                                      + '</div>' 
                                      + '</div>'
-                                     + '</div>')
+                                     + '</div>');
 					var comment = '<div id="comm' + charactor[i].charno + '" class="collapse">' + makecomment(i,"",0) + '</div>';
 					$("#result").append(comment);
 				}
@@ -248,6 +248,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                    + '&entry.261850290=' + charactor[i].charno
                    + '&submit=Submit';
       $.getScript(result);
+      $('#'+nid).val("");
+      $('#report'+i).modal("hide");
     }
       
 	function sumitcom (i) {
@@ -302,6 +304,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		else if(type == "雙劍")color += "e4688c";
 		return color;
 	}
+      
 	</script>
 
 
