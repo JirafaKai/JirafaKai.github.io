@@ -12,7 +12,7 @@ function myobj(){
 			function(JData){
 				for (var i in JData.feed.entry){
                     
-                    this.charactor[i] = new charAttr(this.charactor[i]
+                    this.charactor[i] = new charAttr(this.charactor[i],
 					  JData.feed.entry[i].gsx$charno.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
                       JData.feed.entry[i].gsx$charname.$t,
