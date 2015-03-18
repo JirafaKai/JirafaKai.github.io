@@ -1,6 +1,6 @@
 function myobj(){
-	this.charactor = new array();
-	this.commentG = new array();
+	this.charactor=[];
+	this.commentG=[];
 	urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 	
 	this.getTime = function(){
@@ -11,7 +11,7 @@ function myobj(){
 		$.getJSON(urlScript, 
 			function(JData){
 				for (var i in JData.feed.entry){
-                    
+                    this.charactor[i] = [];
                     this.charactor[i] = new charAttr(
 					  JData.feed.entry[i].gsx$charno.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
