@@ -187,7 +187,7 @@ function myobj(){
 						);
 						
 				}
-				$("#overlay-loading").remove();
+				
 			});
 	}
     function sumitReport (i) {
