@@ -146,7 +146,7 @@ function myobj(){
 		});
 	}
 	
-	function initialize(){
+	function gogo(){
 		loadcomment();
 		$.getJSON(urlScript, 
 				function(JData){
