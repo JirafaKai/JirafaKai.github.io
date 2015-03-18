@@ -9,9 +9,26 @@ function myobj(){
 	}
 	this.getData = function(urlScript){
 		$.getJSON(urlScript, 
-			function(JData){
+			gogo(JData);
+		});
+	}
+    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
+	  this.charno=charno;
+      this.imgSrc=imgSrc;
+      this.cName=cname;
+      this.ccName=ccname;
+      this.cnName=cnName;
+      this.phase=phase;
+      this.star=star;
+      this.type=type;
+      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
+      this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
+      this.sprComm=spcComm;
+      this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
+      this.gamewith=gamewith;
+    }
+	function gogo(JData){
 				for (var i in JData.feed.entry){
-                    this.charactor[i] = [];
                     this.charactor[i] = new charAttr(
 					  JData.feed.entry[i].gsx$charno.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
@@ -44,24 +61,7 @@ function myobj(){
                       JData.feed.entry[i].gsx$sprcomm.$t,
                       JData.feed.entry[i].gsx$gamewith.$t
                     );
-                    
 			}
 			$("#overlay-loading").remove();
-		});
 	}
-    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
-	  this.charno=charno;
-      this.imgSrc=imgSrc;
-      this.cName=cname;
-      this.ccName=ccname;
-      this.cnName=cnName;
-      this.phase=phase;
-      this.star=star;
-      this.type=type;
-      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
-      this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
-      this.sprComm=spcComm;
-      this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
-      this.gamewith=gamewith;
-    }
 }
