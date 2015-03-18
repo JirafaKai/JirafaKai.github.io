@@ -10,28 +10,30 @@ function myobj(){
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
 	
-    obj.charAttr = function (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
-	  this.charno=charno;
-	  this.img2d=img2d;
-      this.img3d=img3d;
-      this.imgSrc=imgSrc;
-      this.cName=cname;
-      this.ccName=ccname;
-      this.cnName=cnName;
-      this.phase=phase;
-      this.star=star;
-      this.type=type;
-      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
-      this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
-      this.sprComm=spcComm;
-      this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
-      this.gamewith=gamewith;
+    obj.charAttr = function (target,charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
+	  target.charno=charno;
+	  target.img2d=img2d;
+      target.img3d=img3d;
+      target.imgSrc=imgSrc;
+      target.cName=cname;
+      target.ccName=ccname;
+      target.cnName=cnName;
+      target.phase=phase;
+      target.star=star;
+      target.type=type;
+      target.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
+      target.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
+      target.sprComm=spcComm;
+      target.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
+      target.gamewith=gamewith;
+	  return target;
     }
 	
-	obj.function commAttr (target,charNo, comment, iTime) {
+	obj.commAttr = function (target,charNo, comment, iTime) {
 		target.charNo=charNo;
 		target.iTime=iTime;
 		target.comment=comment;
+		return target;
 	}
 	
 	obj.setKey = function(key,target){
@@ -137,7 +139,7 @@ function myobj(){
 		$.getJSON(urlScript2, 
 			function(JData){
 				for (var q in JData.feed.entry){
-                    commentG[q] = new commAttr(
+                    commentG[q] = new commAttr(commentG[q],
 						JData.feed.entry[q].gsx$charno.$t,
 						JData.feed.entry[q].gsx$commentmsg.$t,
                         JData.feed.entry[q].gsx$time.$t
@@ -151,7 +153,7 @@ function myobj(){
 		$.getJSON(urlScript, 
 				function(JData){
 					for (var i in JData.feed.entry){
-						charactor[i] = new charAttr(
+						charactor[i] = new charAttr(charactor[i],
 						  JData.feed.entry[i].gsx$charno.$t,
 						  JData.feed.entry[i].gsx$img2d.$t,
 						  JData.feed.entry[i].gsx$img3d.$t,
