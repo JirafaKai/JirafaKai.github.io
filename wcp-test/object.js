@@ -27,7 +27,7 @@ function myobj(){
       this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
       this.gamewith=gamewith;
     }
-	function gogo(JData){
+	this.gogo = function(JData){
 				for (var i in JData.feed.entry){
                     this.charactor[i] = new charAttr(
 					  JData.feed.entry[i].gsx$charno.$t,
