@@ -4,7 +4,7 @@ function myobj(){
 	this.urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
 	this.urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 	
-	this.loadcomment = function(){
+	function loadcomment(){
 		
 		$.getJSON(urlScript2, 
 			function(JData){
@@ -18,7 +18,7 @@ function myobj(){
 		});
 	}
 	
-	this.inti = function(){
+	function inti(){
 		loadcomment();
 		$.getJSON(urlScript, 
 				function(JData){
