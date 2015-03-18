@@ -1,6 +1,6 @@
 function myobj(){
-	this.charactor=[];
-	this.commentG=[];
+	this.charactor = new array();
+	this.commentG = new array();
 	urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 	
 	this.getTime = function(){
