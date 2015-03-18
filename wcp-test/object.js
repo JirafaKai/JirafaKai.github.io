@@ -6,6 +6,7 @@ function myobj(){
 	
 	this.getTime = function(){
 		var Today = new Date();
+		$("#overlay-loading").remove();
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
 }
