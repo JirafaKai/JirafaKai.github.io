@@ -12,7 +12,7 @@ function myobj(){
 			function(JData){
 				for (var i in JData.feed.entry){
                     
-                    this.charactor[i] = new charAttr(this.charactor[i],
+                    this.charactor[i] = new charAttr(
 					  JData.feed.entry[i].gsx$charno.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
                       JData.feed.entry[i].gsx$charname.$t,
@@ -49,20 +49,19 @@ function myobj(){
 			$("#overlay-loading").remove();
 		});
 	}
-	function charAttr (target,charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
-	  target.charno=charno;
-      target.imgSrc=imgSrc;
-      target.cName=cname;
-      target.ccName=ccname;
-      target.cnName=cnName;
-      target.phase=phase;
-      target.star=star;
-      target.type=type;
-      target.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
-      target.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
-      target.sprComm=spcComm;
-      target.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
-      target.gamewith=gamewith;
-	  return target;
+    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
+	  this.charno=charno;
+      this.imgSrc=imgSrc;
+      this.cName=cname;
+      this.ccName=ccname;
+      this.cnName=cnName;
+      this.phase=phase;
+      this.star=star;
+      this.type=type;
+      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
+      this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
+      this.sprComm=spcComm;
+      this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
+      this.gamewith=gamewith;
     }
 }
