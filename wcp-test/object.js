@@ -1,4 +1,4 @@
-Object myobj(){
+function myobj(){
 	
 	var charactor=[];
 	var commentG=[];
