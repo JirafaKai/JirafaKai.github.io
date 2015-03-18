@@ -5,7 +5,7 @@ function myobj(){
 	var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
 	var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 	
-	var getTime = function(){
+	function getTime(){
 		var Today = new Date();
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
@@ -146,7 +146,7 @@ function myobj(){
 		});
 	}
 	
-	var initialize = function(){
+	function initialize(){
 		loadcomment();
 		$.getJSON(urlScript, 
 				function(JData){
