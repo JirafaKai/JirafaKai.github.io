@@ -9,7 +9,7 @@ function myobj(){
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
 	this.getData = function(){
-		$.getJSON(urlScript, 
+		$.getJSON(this.urlScript, 
 			function(JData){
 				for (var i in JData.feed.entry){
                     
