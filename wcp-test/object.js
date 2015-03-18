@@ -1,16 +1,16 @@
 function myobj(){
+	var obj = new Object();
+	obj.charactor=[];
+	obj.commentG=[];
+	obj.urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
+	obj.urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 	
-	var charactor=[];
-	var commentG=[];
-	var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
-	var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
-	
-	function getTime(){
+	obj.getTime = function(){
 		var Today = new Date();
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
 	
-    function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
+    obj.charAttr = function (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
 	  this.charno=charno;
 	  this.img2d=img2d;
       this.img3d=img3d;
@@ -28,13 +28,13 @@ function myobj(){
       this.gamewith=gamewith;
     }
 	
-	function commAttr (charNo, comment, iTime) {
-		this.charNo=charNo;
-		this.iTime=iTime;
-		this.comment=comment;
+	obj.function commAttr (target,charNo, comment, iTime) {
+		target.charNo=charNo;
+		target.iTime=iTime;
+		target.comment=comment;
 	}
 	
-	function setKey(key,target){
+	obj.setKey = function(key,target){
 		key.onkeyup = function(e){
 			loadcomment();
 			$(target).html("");
@@ -132,7 +132,7 @@ function myobj(){
 		};
 	}
 	
-	function loadcomment(){
+	obj.loadcomment = function(){
 		
 		$.getJSON(urlScript2, 
 			function(JData){
@@ -146,7 +146,7 @@ function myobj(){
 		});
 	}
 	
-	function gogo(){
+	obj.inti = function(){
 		loadcomment();
 		$.getJSON(urlScript, 
 				function(JData){
@@ -190,7 +190,7 @@ function myobj(){
 				
 			});
 	}
-    function sumitReport (i) {
+    obj.sumitReport = function(i) {
       var nid ='reportContent' + charactor[i].charno;
       var result = 'https://docs.google.com/forms/d/1s1YJ1n80Ow5eSc9VvjgoTeSxsJ6KRi3zF1lw1Xp8ZUk/formResponse?'
                    + 'entry.1948090599=' + document.getElementById(nid).value
@@ -201,7 +201,7 @@ function myobj(){
       $('#report'+i).modal("hide");
     }
       
-	function sumitcom (i) {
+	obj.sumitcom =function(i) {
 		var nid = 'inputCommt' + charactor[i].charno;
 		var result = 'https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/formResponse?'
 					+ 'entry.1562942030=' + charactor[i].charno
@@ -216,7 +216,7 @@ function myobj(){
 		commentG=[];
 		loadcomment();
 	}
-	function makecomment(i,comment,add){
+	obj.makecomment = function(i,comment,add){
 				var content = '<table class="table table-striped" id="commTable">'
 							+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
 							+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>';
@@ -229,7 +229,7 @@ function myobj(){
 				content += '</table>';
 				return content;
 	}
-	function typecolor(type){
+	obj.typecolor =function(type){
 		var color="#";
 		if(type == "劍")color += "e03d3e;";
 		else if(type == "法")color += "c056dc";
@@ -240,4 +240,5 @@ function myobj(){
 		else if(type == "雙劍")color += "e4688c";
 		return color;
 	}
+	return ;
 }
