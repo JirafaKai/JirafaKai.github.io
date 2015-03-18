@@ -30,7 +30,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 	<header id="banner" class="body">
 	<!--navigation bar on the top><!-->
       <nav class="navbar navbar-default navbar-fixed-top">
-      <div style="padding:0 5rem;">
+      <div class="container">
           <div class="navbar-header">
             <span class="navbar-brand" style="font-weight:bold;">白貓project角色搜尋器</span>
           </div>
@@ -38,14 +38,14 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
       </nav>
 	</header>
   
-	<div style="padding:0 6rem;">
+	<div class="container">
         <div id="search-box">
                 <label for="inputKeyword" class="sr-only">關鍵字</label>
                 <input type="text" id="inputKeyword" class="form-control" placeholder="請輸入關鍵字 ex. 正月白魔、弓、4星、第四期、聖誕限定 (兩個關鍵字間可用空格隔開)" required autofocus>
         </div>
     </div>
 	
-    <div style="padding:0 5.5rem;">
+    <div class="container">	
 			<div id="result">
 				
 			</div>
@@ -79,8 +79,10 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
 	
-    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
+    function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
 	  this.charno=charno;
+	  this.img2d=img2d;
+      this.img3d=img3d;
       this.imgSrc=imgSrc;
       this.cName=cname;
       this.ccName=ccname;
@@ -117,6 +119,8 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                     
                     charactor[i] = new charAttr(
 					  JData.feed.entry[i].gsx$charno.$t,
+					  JData.feed.entry[i].gsx$img2d.$t,
+                      JData.feed.entry[i].gsx$img3d.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
                       JData.feed.entry[i].gsx$charname.$t,
                       JData.feed.entry[i].gsx$ccharname.$t,
@@ -182,7 +186,7 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 				{
 					var color = typecolor(charactor[i].type);
 					$("#result").append('<table class="table" id="charTable"><tr>'
-										+ '<td id="imgtd"><img style="width:70px;" src="' + charactor[i].imgSrc + '"></img></td>'                //image
+										+ '<td id="imgtd"><a href="#" data-toggle="modal" data-target="#img2d3d' + i + '"><img style="width:70px;" src="' + charactor[i].imgSrc + '"></img></a></td>'                //image
 										+ '<td style="width:450px;" id="charNametd"><span class="tag-label" style="background:' + color + ';">' + charactor[i].phase + '</span>'    //phase
                                         + '<span class="tag-label" style="background:' + color + ';">' + charactor[i].star + '</span>'                         //star
                                         + '<span class="tag-label" style="background:' + color + ';">' + charactor[i].type +'</span>'                          //type
@@ -232,6 +236,21 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
                                      + '</div>' 
                                      + '</div>'
                                      + '</div>');
+					$("#result").append('<div class="modal fade" id="img2d3d' + i + '" taindex="-1" role="dialog" aria-labelledby="reportLabel" aria-hidden="true">'
+									 + '<div class="modal-dialog">'
+                                     + '<div class="modal-content">'
+                                     + '<div class="modal-header">'
+									 + '<h4 class="modal-title" id="reportLabel">' + charactor[i].cName + '</h4>'
+									 + '</div>'
+                                     + '<div class="modal-body" style="text-align:center;">'
+                                     + '<div style="display:block;">'
+									 + '<img class="img2dC" src="' + charactor[i].img2d + '"/>'
+                                     + '<img class="img2dC" src="' + charactor[i].img3d + '"/>'
+                                     + '</div>'
+                                     + '</div>'
+									 + '</div>' 
+                                     + '</div>'
+									 + '</div>');
 					var comment = '<div id="comm' + charactor[i].charno + '" class="collapse">' + makecomment(i,"",0) + '</div>';
 					$("#result").append(comment);
 				}
