@@ -1,4 +1,5 @@
-myobj {
+function myobj(){}
+myobj = {
 	var charactor=[];
 	var commentG=[];
 	var urlScript = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/2/public/values?alt=json";
