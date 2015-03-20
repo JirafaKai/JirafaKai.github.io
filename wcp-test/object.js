@@ -83,7 +83,7 @@
 		target.onkeyup = function(e){
 			commentG = loadcomment();
 			$("#result").html("");
-			alret("123");
+			alert("123");
 			for (var i in charactor){
 				if (target.value.length <= 0) {
 					return $("#result").html("");
