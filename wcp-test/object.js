@@ -89,28 +89,28 @@
 					return $("#result").html("");
 				}
 				var keyword = target.value.trim().split(" ");
-				if(cheackpost(keyword,charactor[i]))
+				if(cheackpost(keyword))
 				{
 					var color = typecolor(charactor[i].type);
 					alert("123");
-					resultStatus(i,charactor[i],color);
-					resultSkill(i,charactor[i]);
-					resultReport(i,charactor[i]);
-					resultComment(i,charactor[i]);
+					resultStatus(i,color);
+					resultSkill(i);
+					resultReport(i]);
+					resultComment(i);
 				}
 			}	
 		}
 	}
-	function cheackpost(keyword,charactor){
+	function cheackpost(keyword){
 		var checknum = 0;
 		var checknum2 = 0;
 		for(var n in keyword){
 			if(keyword[n] !== ""){checknum2++;	// prevent 2 spaces together, cannot use keyword.length (num of element of keyword array)
-			if(charactor.cName.toLowerCase().indexOf(keyword[n].toLowerCase()) !== -1) checknum++;    // !==-1 -> is match
-			if(charactor.cnName.toLowerCase().indexOf(keyword[n].toLowerCase()) !== -1) checknum++;
-			if(charactor.type.indexOf(keyword[n]) !== -1) checknum++;
-			if(charactor.phase.indexOf(keyword[n]) !== -1) checknum++;
-			if(charactor.star.indexOf(keyword[n]) !== -1) checknum++;}
+			if(charactor[i].cName.toLowerCase().indexOf(keyword[n].toLowerCase()) !== -1) checknum++;    // !==-1 -> is match
+			if(charactor[i].cnName.toLowerCase().indexOf(keyword[n].toLowerCase()) !== -1) checknum++;
+			if(charactor[i].type.indexOf(keyword[n]) !== -1) checknum++;
+			if(charactor[i].phase.indexOf(keyword[n]) !== -1) checknum++;
+			if(charactor[i].star.indexOf(keyword[n]) !== -1) checknum++;}
 		}
 		if((checknum >= checknum2) && key.value.trim().length !== 0)
 			return true;
@@ -166,54 +166,54 @@
 		commentG=[];
 		commentG = loadcomment(urlScript2);
 	}
-	function resultStatus(i,charactor,color){
+	function resultStatus(i,color){
 		$("#result").append('<table class="table" id="charTable"><tr>'
-							+ '<td id="imgtd"><img style="width:70px;" src="' + charactor.imgSrc + '"></img></td>'                //image
-							+ '<td style="width:450px;" id="charNametd"><span class="tag-label" style="background:' + color + ';">' + charactor.phase + '</span>'    //phase
-							+ '<span class="tag-label" style="background:' + color + ';">' + charactor.star + '</span>'                         //star
-							+ '<span class="tag-label" style="background:' + color + ';">' + charactor.type +'</span>'                          //type
-							+ '<br/>' + charactor.cName                                              //chinese name
-							+ '<br/>' + charactor.cnName + '</td>'
+							+ '<td id="imgtd"><img style="width:70px;" src="' + charactor[i].imgSrc + '"></img></td>'                //image
+							+ '<td style="width:450px;" id="charNametd"><span class="tag-label" style="background:' + color + ';">' + charactor[i].phase + '</span>'    //phase
+							+ '<span class="tag-label" style="background:' + color + ';">' + charactor[i].star + '</span>'                         //star
+							+ '<span class="tag-label" style="background:' + color + ';">' + charactor[i].type +'</span>'                          //type
+							+ '<br/>' + charactor[i].cName                                              //chinese name
+							+ '<br/>' + charactor[i].cnName + '</td>'
 							+ '<td id="attrtd"><table id="innerCharTable"><tr><td id="attrInnertd" style="background:' + color + ';">LV.100</td>'  //table of LV100 attribute
-							+ '<td class="attrInnertd">HP '+ charactor.lvMaxAttr.hp + '</td>'
-							+ '<td class="attrInnertd">SP '+ charactor.lvMaxAttr.sp + '</td>'
-							+ '<td class="attrInnertd">ATK '+ charactor.lvMaxAttr.atk + '</td>'
-							+ '<td class="attrInnertd">DEF '+ charactor.lvMaxAttr.def + '</td>'
-							+ '<td class="attrInnertd">CRI '+ charactor.lvMaxAttr.cri + '</td>'
-							+ '<td class="attrInnertd">SPR '+ charactor.lvMaxAttr.spr + '</td></tr></table>'
+							+ '<td class="attrInnertd">HP '+ charactor[i].lvMaxAttr.hp + '</td>'
+							+ '<td class="attrInnertd">SP '+ charactor[i].lvMaxAttr.sp + '</td>'
+							+ '<td class="attrInnertd">ATK '+ charactor[i].lvMaxAttr.atk + '</td>'
+							+ '<td class="attrInnertd">DEF '+ charactor[i].lvMaxAttr.def + '</td>'
+							+ '<td class="attrInnertd">CRI '+ charactor[i].lvMaxAttr.cri + '</td>'
+							+ '<td class="attrInnertd">SPR '+ charactor[i].lvMaxAttr.spr + '</td></tr></table>'
 							+ '<table id="innerCharTable"><tr>'
 							+ '<td id="attrInnertd" style="background:#fff; color:#000;width:7em;text-align:left;padding-left:15px;">SPR上限：</td>'
-							+ '<td id="attrInnertd" style="text-align:left;background:#fff;color:#000;width:250px;">' + charactor.sprComm + '</td>'
-							+ '<td class="attrInnertd" style="text-align:right;background:#fff;width:150px;"><span style="border:2px solid '+color+';color:'+color+';padding:.2em .5em .2em .5em;">appmedia評價：' + charactor.gamewith + '</span></td>'
+							+ '<td id="attrInnertd" style="text-align:left;background:#fff;color:#000;width:250px;">' + charactor[i].sprComm + '</td>'
+							+ '<td class="attrInnertd" style="text-align:right;background:#fff;width:150px;"><span style="border:2px solid '+color+';color:'+color+';padding:.2em .5em .2em .5em;">appmedia評價：' + charactor[i].gamewith + '</span></td>'
 							+ '</tr></table></td>'
 							+ '<td id="more"><a style="display:block;width:2em;" href="#char' + i + ' "data-toggle="collapse">更多</a>'      //more button
-							+ '<a style="display:block;width:2em;" href="#comm' + charactor.charno + ' "data-toggle="collapse">評價</a>'
+							+ '<a style="display:block;width:2em;" href="#comm' + charactor[i].charno + ' "data-toggle="collapse">評價</a>'
 							+ '<a style="display:block;width:2em;" href="#" data-toggle="modal" data-target="#report' + i + '">回報</a>' + '</td>'				//comment button
 							+ '</tr>');
 	}
-	function resultSkill(i,charactor){
+	function resultSkill(i){
 		$("#result").append('<div id="char' + i + '" class="collapse">'
 							+ '<table class="table" id="skillTable"><tr>'
-							+ '<tr><td id="titletd">隊長技能1</td><td>' + charactor.skill.ls[0] + '</td></tr>'
-							+ '<tr><td id="titletd">隊長技能2</td><td>' + charactor.skill.ls[1] + '</td></tr>'
-							+ '<tr><td id="titletd">主動技能1</td><td>' + charactor.skill.as[0] + '<br/>消費SP：' + charactor.skill.as[1] + '</td></tr>'
-							+ '<tr><td id="titletd">主動技能2</td><td>' + charactor.skill.as[2] + '<br/>消費SP：' + charactor.skill.as[3] + '</td></tr>'
-							+ '<tr><td id="titletd">被動技能</td><td>' + charactor.skill.ds[0] + '<br/>'
-							+ charactor.skill.ds[1] + '<br/>'
-							+ charactor.skill.ds[2] 
+							+ '<tr><td id="titletd">隊長技能1</td><td>' + charactor[i].skill.ls[0] + '</td></tr>'
+							+ '<tr><td id="titletd">隊長技能2</td><td>' + charactor[i].skill.ls[1] + '</td></tr>'
+							+ '<tr><td id="titletd">主動技能1</td><td>' + charactor[i].skill.as[0] + '<br/>消費SP：' + charactor[i].skill.as[1] + '</td></tr>'
+							+ '<tr><td id="titletd">主動技能2</td><td>' + charactor[i].skill.as[2] + '<br/>消費SP：' + charactor[i].skill.as[3] + '</td></tr>'
+							+ '<tr><td id="titletd">被動技能</td><td>' + charactor[i].skill.ds[0] + '<br/>'
+							+ charactor[i].skill.ds[1] + '<br/>'
+							+ charactor[i].skill.ds[2] 
 							+ '</td></tr></table></div>');
 	}
-	function resultRepost(i,charactor){
+	function resultRepost(i){
 		$("#result").append('<div class="modal fade" id="report' + i + '" taindex="-1" role="dialog" aria-labelledby="reportLabel" aria-hidden="true">'
 							+ '<div class="modal-dialog">'
 							+ '<div class="modal-content">'
 							+ '<div class="modal-header">'
-							+ '<h4 class="modal-title" id="reportLabel">' + charactor.cName + ' 的錯誤回報</h4>'
+							+ '<h4 class="modal-title" id="reportLabel">' + charactor[i].cName + ' 的錯誤回報</h4>'
 							+ '</div>'
 							+ '<div class="modal-body">'
 							+ '<div class="form-group">'
 							+ '<label for="message-text" class="control-label">回報內容:</label>'
-							+ '<textarea id="reportContent' + charactor.charno + '" class="form-control" id="message-text"></textarea>'
+							+ '<textarea id="reportContent' + charactor[i].charno + '" class="form-control" id="message-text"></textarea>'
 							+ '</div></form></div>'
 							+ '<div class="modal-footer">'
 							+ '<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>'
@@ -223,7 +223,7 @@
 							+ '</div>'
 							+ '</div>');
 	}
-	function resultComment(i,charactor){
-		var comment = '<div id="comm' + charactor.charno + '" class="collapse">' + makecomment(i,"",0) + '</div>';
+	function resultComment(i){
+		var comment = '<div id="comm' + charactor[i].charno + '" class="collapse">' + makecomment(i,"",0) + '</div>';
 		$("#result").append(comment);
 	}
