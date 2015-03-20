@@ -89,7 +89,7 @@
 					return $("#result").html("");
 				}
 				var keyword = target.value.trim().split(" ");
-				if(cheackpost(keyword,target.value.trim()) == true)
+				if(checkpost(keyword,target.value.trim()) == true)
 				{
 					var color = typecolor(charactor[i].type);
 					alert("123");
@@ -101,9 +101,10 @@
 			}	
 		}
 	}
-	function cheackpost(keyword,key){
+	function checkpost(keyword,key){
 		var checknum = 0;
 		var checknum2 = 0;
+		alert("check");
 		for(var n in keyword){
 			if(keyword[n] !== ""){checknum2++;	// prevent 2 spaces together, cannot use keyword.length (num of element of keyword array)
 			if(charactor[i].cName.toLowerCase().indexOf(keyword[n].toLowerCase()) !== -1) checknum++;    // !==-1 -> is match
