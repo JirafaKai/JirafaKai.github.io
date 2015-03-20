@@ -41,7 +41,6 @@
                     );
 				}
 			target.remove();
-			alert(charactor.length);
 		});
 	}
 	function loadcomment(urlScript2){
@@ -85,7 +84,7 @@
 					return $("#result").html("");
 				}
 				var keyword = target.value.trim().split(" ");
-				if(checkpost(keyword,target.value.trim()) == true)
+				if(checkpost(keyword,target.value.trim(),i) == true)
 				{
 					var color = typecolor(charactor[i].type);
 					resultStatus(i,color);
@@ -96,10 +95,9 @@
 			}	
 		}
 	}
-	function checkpost(keyword,key){
+	function checkpost(keyword,key,i){
 		var checknum = 0;
 		var checknum2 = 0;
-		alert("check");
 		for(var n in keyword){
 			if(keyword[n] !== ""){checknum2++;	// prevent 2 spaces together, cannot use keyword.length (num of element of keyword array)
 			if(charactor[i].cName.toLowerCase().indexOf(keyword[n].toLowerCase()) !== -1) checknum++;    // !==-1 -> is match
