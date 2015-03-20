@@ -1,34 +1,14 @@
-function myobj(){
-	this.charactor=[];
-	this.commentG=[];
-	urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
-	
-	this.getTime = function(){
+
+	function getTime(){
 		var Today = new Date();
 		return Today.getFullYear() + ' / ' + parseInt(Today.getMonth()+1) + ' / ' + Today.getDate();
 	}
-	this.getData = function(urlScript){
+	function getData(target,urlScript){
+		var charactor = [];
 		$.getJSON(urlScript, 
-			this.gogo(JData));
-	}
-    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
-	  this.charno=charno;
-      this.imgSrc=imgSrc;
-      this.cName=cname;
-      this.ccName=ccname;
-      this.cnName=cnName;
-      this.phase=phase;
-      this.star=star;
-      this.type=type;
-      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
-      this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
-      this.sprComm=spcComm;
-      this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
-      this.gamewith=gamewith;
-    }
-	this.gogo = function(JData){
+			function(JData){
 				for (var i in JData.feed.entry){
-                    this.charactor[i] = new charAttr(
+                      charactor[i] = new charAttr(
 					  JData.feed.entry[i].gsx$charno.$t,
                       JData.feed.entry[i].gsx$imgsrc.$t,
                       JData.feed.entry[i].gsx$charname.$t,
@@ -61,6 +41,22 @@ function myobj(){
                       JData.feed.entry[i].gsx$gamewith.$t
                     );
 			}
-			$("#overlay-loading").remove();
+			target.remove();
+		}
+		return charactor;
 	}
-}
+    function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
+	  this.charno=charno;
+      this.imgSrc=imgSrc;
+      this.cName=cname;
+      this.ccName=ccname;
+      this.cnName=cnName;
+      this.phase=phase;
+      this.star=star;
+      this.type=type;
+      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr};
+      this.hyperAttr={hp:hhp, sp:hsp, atk:hatk, def:hdef, cri:hcri};
+      this.sprComm=spcComm;
+      this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
+      this.gamewith=gamewith;
+    }
