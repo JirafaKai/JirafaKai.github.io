@@ -41,6 +41,7 @@
                     );
 				}
 			target.remove();
+			alert(charactor.length);
 		});
 	}
 	function loadcomment(urlScript2){
