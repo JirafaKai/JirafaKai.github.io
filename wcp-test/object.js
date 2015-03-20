@@ -89,13 +89,13 @@
 					return $("#result").html("");
 				}
 				var keyword = target.value.trim().split(" ");
-				if(cheackpost(keyword))
+				if(cheackpost(keyword) == true)
 				{
 					var color = typecolor(charactor[i].type);
 					alert("123");
 					resultStatus(i,color);
 					resultSkill(i);
-					resultReport(i]);
+					resultReport(i);
 					resultComment(i);
 				}
 			}	
