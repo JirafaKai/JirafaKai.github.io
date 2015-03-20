@@ -113,7 +113,7 @@
 	function makecomment(i,comment,add){
 		var content = '<table class="table table-striped" id="commTable">'
 					+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
-					+ '<input type="button" value="提交" onclick="sumitcom(' + i + ')"</td></tr>';
+					+ '<input type="button" value="提交" onclick="submitcom(' + i + ')"</td></tr>';
 		if(add == 1){
 			content	+= '<tr><td class="commTime" id="commtd"><span class="spanTime">' + getTime() + '</span></td><td class="commTd">' + comment + '</td></tr>';}
 		for(var c in commentG){
@@ -134,7 +134,7 @@
 		else if(type == "雙劍")color += "e4688c";
 		return color;
 	}
-    function sumitReport (i) {
+    function submitReport (i) {
       var nid ='reportContent' + charactor[i].charno;
       var result = 'https://docs.google.com/forms/d/1s1YJ1n80Ow5eSc9VvjgoTeSxsJ6KRi3zF1lw1Xp8ZUk/formResponse?'
                    + 'entry.1948090599=' + document.getElementById(nid).value
@@ -145,7 +145,7 @@
       $('#report'+i).modal("hide");
     }
       
-	function sumitcom (i) {
+	function submitcom (i) {
 		var nid = 'inputCommt' + charactor[i].charno;
 		var result = 'https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/formResponse?'
 					+ 'entry.1562942030=' + charactor[i].charno
@@ -211,7 +211,7 @@
 							+ '</div></form></div>'
 							+ '<div class="modal-footer">'
 							+ '<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>'
-							+ '<button type="button" class="btn btn-primary" onclick=sumitReport(' + i + ')>傳送</button>'
+							+ '<button type="button" class="btn btn-primary" onclick=submitReport(' + i + ')>傳送</button>'
 							+ '</div>'
 							+ '</div>' 
 							+ '</div>'
