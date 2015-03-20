@@ -83,13 +83,12 @@
 		target.onkeyup = function(e){
 			commentG = loadcomment();
 			$("#result").html("");
-			
+			alert("123");
 			for (var i in charactor){
 				if (target.value.length <= 0) {
 					return $("#result").html("");
 				}
 				var keyword = target.value.trim().split(" ");
-				alert("123");
 				if(checkpost(keyword,target.value.trim()) == true)
 				{
 					var color = typecolor(charactor[i].type);
