@@ -89,10 +89,10 @@
 					return $("#result").html("");
 				}
 				var keyword = target.value.trim().split(" ");
+				alert("123");
 				if(checkpost(keyword,target.value.trim()) == true)
 				{
 					var color = typecolor(charactor[i].type);
-					alert("123");
 					resultStatus(i,color);
 					resultSkill(i);
 					resultReport(i);
