@@ -94,9 +94,10 @@
 					resultStatus(i,charactor[i],color);
 					resultSkill(i,charactor[i]);
 					resultReport(i,charactor[i]);
+					resultComment(i,charactor[i]);
 				}
 			}	
-		};
+		}
 	}
 	function cheackpost(keyword,charactor){
 		var checknum = 0;
