@@ -81,24 +81,22 @@
 	}
 	function setKey(target,charactor,commentG){
 		target.onkeyup = function(e){
-				commentG = loadcomment();
-				$("#result").html("");
-				for (var i in charactor){
-					if (key.value.length <= 0) {
-						return $("#result").html("");
-					}
-					var keyword = key.value.trim().split(" ");
-					if(cheackpost(keyword,charactor[i]))
-					{
-						var color = typecolor(charactor[i].type);
-						resultStatus(i,charactor[i],color);
-						resultSkill(i,charactor[i]);
-						resultReport(i,charactor[i]);
-					}
-				}	
-			};
-			
-		});
+			commentG = loadcomment();
+			$("#result").html("");
+			for (var i in charactor){
+				if (key.value.length <= 0) {
+					return $("#result").html("");
+				}
+				var keyword = key.value.trim().split(" ");
+				if(cheackpost(keyword,charactor[i]))
+				{
+					var color = typecolor(charactor[i].type);
+					resultStatus(i,charactor[i],color);
+					resultSkill(i,charactor[i]);
+					resultReport(i,charactor[i]);
+				}
+			}	
+		};
 	}
 	function cheackpost(keyword,charactor){
 		var checknum = 0;
