@@ -57,6 +57,121 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
             <div>從 google spreadsheets 讀取問題資料（<span id="loaded-count"></span>）</div>
         </div>
     </div>
+	
+	<div class="modal fade" id="calSP" taindex="-1" role="dialog" aria-labelledby="calSPLabel" reia-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="calCharName"><span id="calPopHeader">Title</span></h4>
+				</div>
+				<div class="modal-body">
+				
+					<input type="hidden" id="hiddenCalInput"/>
+					突破數　
+					<select class="form-control" id="breakthrough" onchange=calHandler()>
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+					</select>
+					<br/>
+					<label class="checkbox-inline">
+						<input type="checkbox" id="sheepBed" value="sheepBedMax" onchange=calHandler()>羊床Lv.MAX
+					</label>
+					<br/>
+					<br/>
+					
+					<div id="arrow" style="display:none;">
+					弓術所1 Lv. 
+					<select style="width:100px;display:inline;" class="form-control" id="arrow1" onchange=calHandler()>
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+						<option>13</option>
+						<option>14</option>
+						<option>15</option>
+					</select>
+					　弓術所2 Lv. 
+					<select style="width:100px;display:inline;" class="form-control" id="arrow2" onchange=calHandler()>
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+						<option>13</option>
+						<option>14</option>
+						<option>15</option>
+					</select>
+					</div>
+					
+					<div id="magic" style="display:none;">
+					魔術所1 Lv. 
+					<select style="width:100px;display:inline;" class="form-control" id="magic1" onchange=calHandler()>
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+						<option>13</option>
+						<option>14</option>
+						<option>15</option>
+					</select>
+					　魔術所2 Lv. 
+					<select style="width:100px;display:inline;" class="form-control" id="magic2" onchange=calHandler()>
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+						<option>13</option>
+						<option>14</option>
+						<option>15</option>
+					</select>
+					</div>
+					
+					<br/>
+					<div id="calAns" class="well">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div
 
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
