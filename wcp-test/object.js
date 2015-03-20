@@ -53,7 +53,6 @@
                         JData.feed.entry[q].gsx$time.$t
 					);
 				}
-				alert(commentG.length);
 		});
 	}
     function charAttr (charno, imgSrc, cname, ccname, cnName, phase, star, type, hp, hhp, sp, hsp, atk, hatk, def, hdef, cri, hcri, spr, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, gamewith) {
@@ -78,7 +77,7 @@
 	}
 	function setKey(target){
 		target.onkeyup = function(e){
-			commentG = loadcomment();
+			loadcomment();
 			$("#result").html("");
 			for(var i in charactor){
 				if (target.value.length <= 0) {
