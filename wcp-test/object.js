@@ -84,10 +84,10 @@
 			commentG = loadcomment();
 			$("#result").html("");
 			for (var i in charactor){
-				if (key.value.length <= 0) {
+				if (target.value.length <= 0) {
 					return $("#result").html("");
 				}
-				var keyword = key.value.trim().split(" ");
+				var keyword = target.value.trim().split(" ");
 				if(cheackpost(keyword,charactor[i]))
 				{
 					var color = typecolor(charactor[i].type);
