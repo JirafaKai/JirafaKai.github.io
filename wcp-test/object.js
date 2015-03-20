@@ -84,7 +84,6 @@
 			commentG = loadcomment();
 			$("#result").html("");
 			for(var i in charactor){
-				alert("123");
 				if (target.value.length <= 0) {
 					return $("#result").html("");
 				}
