@@ -79,7 +79,7 @@
 		this.iTime=iTime;
 		this.comment=comment;
 	}
-	function setKey(target,charactor,commentG){
+	function setKey(target){
 		target.onkeyup = function(e){
 			commentG = loadcomment();
 			$("#result").html("");
