@@ -89,7 +89,7 @@
 					return $("#result").html("");
 				}
 				var keyword = target.value.trim().split(" ");
-				if(cheackpost(keyword) == true)
+				if(cheackpost(keyword,target.value.trim()) == true)
 				{
 					var color = typecolor(charactor[i].type);
 					alert("123");
@@ -101,7 +101,7 @@
 			}	
 		}
 	}
-	function cheackpost(keyword){
+	function cheackpost(keyword,key){
 		var checknum = 0;
 		var checknum2 = 0;
 		for(var n in keyword){
@@ -112,7 +112,7 @@
 			if(charactor[i].phase.indexOf(keyword[n]) !== -1) checknum++;
 			if(charactor[i].star.indexOf(keyword[n]) !== -1) checknum++;}
 		}
-		if((checknum >= checknum2) && key.value.trim().length !== 0)
+		if((checknum >= checknum2) && key.length !== 0)
 			return true;
 		else return false;
 	}
