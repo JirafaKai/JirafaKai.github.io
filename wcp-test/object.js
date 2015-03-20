@@ -83,7 +83,7 @@
 		target.onkeyup = function(e){
 			commentG = loadcomment();
 			$("#result").html("");
-			alert("123");
+			
 			for (var i in charactor){
 				if (target.value.length <= 0) {
 					return $("#result").html("");
@@ -92,6 +92,7 @@
 				if(cheackpost(keyword,charactor[i]))
 				{
 					var color = typecolor(charactor[i].type);
+					alert("123");
 					resultStatus(i,charactor[i],color);
 					resultSkill(i,charactor[i]);
 					resultReport(i,charactor[i]);
