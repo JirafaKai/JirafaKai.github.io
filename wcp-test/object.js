@@ -164,7 +164,7 @@
 	}
 	function resultStatus(i,color){
 		$("#result").append('<table class="table" id="charTable"><tr>'
-							+ '<td id="imgtd"><img style="width:70px;" src="' + charactor[i].imgSrc + '"></img></td>'                //image
+							+ '<td id="imgtd"><a href="#" data-toggle="modal" data-target="#img2d3d' + i + '"><img style="width:70px;" src="' + charactor[i].imgSrc + '"></img></a></td>'
 							+ '<td style="width:450px;" id="charNametd"><span class="tag-label" style="background:' + color + ';">' + charactor[i].phase + '</span>'    //phase
 							+ '<span class="tag-label" style="background:' + color + ';">' + charactor[i].star + '</span>'                         //star
 							+ '<span class="tag-label" style="background:' + color + ';">' + charactor[i].type +'</span>'                          //type
@@ -187,6 +187,21 @@
 							+ '<a style="display:block;width:2em;" href="#comm' + charactor[i].charno + ' "data-toggle="collapse">評價</a>'
 							+ '<a style="display:block;width:2em;" href="#" data-toggle="modal" data-target="#report' + i + '">回報</a>' + '</td>'				//comment button
 							+ '</tr>');
+		$("#result").append('<div class="modal fade" id="img2d3d' + i + '" taindex="-1" role="dialog" aria-labelledby="reportLabel" aria-hidden="true">'
+							+ '<div class="modal-dialog">'
+                            + '<div class="modal-content">'
+                            + '<div class="modal-header">'
+							+ '<h4 class="modal-title" id="reportLabel">' + charactor[i].cName + '</h4>'
+							+ '</div>'
+                            + '<div class="modal-body" style="text-align:center;">'
+                            + '<div style="display:block;">'
+							+ '<img class="img2dC" src="' + charactor[i].img2d + '"/>'
+                            + '<img class="img2dC" src="' + charactor[i].img3d + '"/>'
+                            + '</div>'
+                            + '</div>'
+							+ '</div>' 
+                            + '</div>'
+							+ '</div>');
 	}
 	function resultSkill(i){
 		$("#result").append('<div id="char' + i + '" class="collapse">'
