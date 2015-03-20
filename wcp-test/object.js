@@ -197,7 +197,7 @@
 							+ charactor[i].skill.ds[2] 
 							+ '</td></tr></table></div>');
 	}
-	function resultRepost(i){
+	function resultReport(i){
 		$("#result").append('<div class="modal fade" id="report' + i + '" taindex="-1" role="dialog" aria-labelledby="reportLabel" aria-hidden="true">'
 							+ '<div class="modal-dialog">'
 							+ '<div class="modal-content">'
