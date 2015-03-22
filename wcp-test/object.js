@@ -391,7 +391,7 @@
 		
 		//突破
 		for (j=1;j<5;j++) {
-			if (calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr) != calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
+			if (calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
 				SPRcomment+=j + '突回' + calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr) + '；';
 				firstSPR=calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr);
 				brFlag=true;
@@ -401,7 +401,7 @@
 		}
 		
 		//羊床
-		if (calSPR(charactor[i].lvMaxAttr.sp[0]*(1+bedA),baseCorr) != calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
+		if (calSPR(charactor[i].lvMaxAttr.sp[0]*(1+bedA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
 			SPRcomment+='羊床 = 回' + calSPR(charactor[i].lvMaxAttr.sp[0]*(1+bedA),baseCorr) + '；';
 			firstSPR=calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr);
 			brFlag=true;
@@ -412,9 +412,11 @@
 		
 		//突破 + 羊床
 		for (j=1;j<5;j++) {
-			if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr) != calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
+			if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
+				& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr) > firstSPR) {
 				SPRcomment+=j + '突 + 羊床 = 回' + calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr) + '；';
 				SPRcomment+='<br/>';
+				firstSPR = calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr);
 				nullFlag=false;
 				break;
 			}
@@ -423,8 +425,8 @@
 		//突破 + 羊床 + 研究所(法、弓)
 		if (charactor[i].type=='法') {
 			for (j=1;j<5;j++) {
-				if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) != calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
-					& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) != firstSPR) {
+				if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
+					& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) > firstSPR) {
 					SPRcomment+=j + '突 + 羊床 + 研究所 = 回' + calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) + '；';
 					nullFlag=false;
 					break;
@@ -433,8 +435,8 @@
 		}
 		else if (charactor[i].type=='弓') {
 			for (j=1;j<5;j++) {
-				if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) != calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
-					& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) != firstSPR) {
+				if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
+					& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) > firstSPR) {
 					SPRcomment+=j + '突 + 羊床 + 研究所 = 回' + calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) + '；';
 					nullFlag=false;
 					break;
