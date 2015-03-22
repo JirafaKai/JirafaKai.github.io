@@ -133,7 +133,7 @@
 		else if(type == "斧")color += "1c7cd0";
 		else if(type == "弓")color += "fc6d21";
 		else if(type == "拳")color += "d8c238";
-		else if(type == "雙劍")color += "e4688c";
+		else if(type == "雙刀")color += "e4688c";
 		return color;
 	}
     function submitReport (i) {
