@@ -67,7 +67,7 @@
       this.phase=phase;
       this.star=star;
       this.type=type;
-      this.lvMaxAttr={hp:hp, sp:sp, atk:atk, def:def, cri:cri, spr:spr, sp1:sp1, sp2:sp2, sp3:sp3, sp4:sp4};
+      this.lvMaxAttr={hp:hp, sp:[sp,sp1,sp2,sp3,sp4], atk:atk, def:def, cri:cri, spr:spr};
       this.sprComm=spcComm;
       this.skill={ls:[ls1,ls2], as:[as1,as1sp,as2,as2sp], ds:[ds1,ds2,ds3]};
       this.gamewith=gamewith;
@@ -172,7 +172,7 @@
 							+ '<br/>' + charactor[i].cnName + '</td>'
 							+ '<td id="attrtd"><table id="innerCharTable"><tr><td id="attrInnertd" style="background:' + color + ';">LV.100</td>'  //table of LV100 attribute
 							+ '<td class="attrInnertd">HP '+ charactor[i].lvMaxAttr.hp + '</td>'
-							+ '<td class="attrInnertd">SP '+ charactor[i].lvMaxAttr.sp + '</td>'
+							+ '<td class="attrInnertd">SP '+ charactor[i].lvMaxAttr.sp[0] + '</td>'
 							+ '<td class="attrInnertd">ATK '+ charactor[i].lvMaxAttr.atk + '</td>'
 							+ '<td class="attrInnertd">DEF '+ charactor[i].lvMaxAttr.def + '</td>'
 							+ '<td class="attrInnertd">CRI '+ charactor[i].lvMaxAttr.cri + '</td>'
@@ -180,7 +180,7 @@
 							+ '<table id="innerCharTable"><tr>'
 							+ '<td id="attrInnertd" style="background:#fff; color:#000;width:7em;text-align:left;padding-left:15px;">'
 							+ '<a href="#" data-toggle="modal" data-target="#calSP" onClick=calClick(' + i + ',' + 0 + ')>SPR計算</a>' + '</td>'
-							+ '<td id="attrInnertd" style="text-align:left;background:#fff;color:#000;width:250px;">' + charactor[i].sprComm + '</td>'
+							+ '<td id="attrInnertd" style="text-align:left;background:#fff;color:#000;width:250px;">' + makeSPRcomment(i) + '</td>'
 							+ '<td class="attrInnertd" style="text-align:right;background:#fff;width:150px;text-align:left;"><span style="border:2px solid '+color+';color:'+color+';padding:.2em .5em .2em .5em;width:150px;display:block;">appmedia評價：' + charactor[i].gamewith + '</span></td>'
 							+ '</tr></table></td>'
 							+ '<td id="more"><a style="display:block;width:2em;" href="#char' + i + ' "data-toggle="collapse">更多</a>'      //more button
@@ -239,8 +239,7 @@
 		var comment = '<div id="comm' + charactor[i].charno + '" class="collapse">' + makecomment(i,"",0) + '</div>';
 		$("#result").append(comment);
 	}
-	function calHandler()
-	{
+	function calHandler() {
 		var charno = $('#hiddenCalInput').val();
 		calClick(charno, 1);
 	}
@@ -274,11 +273,11 @@
 		
 		$('#calPopHeader').html(charactor[i].cName);
 		
-		if (breakthrough=='0') totalSP = charactor[i].lvMaxAttr.sp;
-		else if (breakthrough=='1') totalSP = charactor[i].lvMaxAttr.sp1;
-		else if (breakthrough=='2') totalSP = charactor[i].lvMaxAttr.sp2;
-		else if (breakthrough=='3') totalSP = charactor[i].lvMaxAttr.sp3;
-		else if (breakthrough=='4') totalSP = charactor[i].lvMaxAttr.sp4;
+		if (breakthrough=='0') totalSP = charactor[i].lvMaxAttr.sp[0];
+		else if (breakthrough=='1') totalSP = charactor[i].lvMaxAttr.sp[1];
+		else if (breakthrough=='2') totalSP = charactor[i].lvMaxAttr.sp[2];
+		else if (breakthrough=='3') totalSP = charactor[i].lvMaxAttr.sp[3];
+		else if (breakthrough=='4') totalSP = charactor[i].lvMaxAttr.sp[4];
 		
 		if ($('#sheepBed').is(':checked'))
 		{
@@ -328,8 +327,7 @@
 		$('#calAns').append('<span style="font-size:18px;">SPR = ' + calSPR(totalSP, baseCorr) + '</span>');
 		
 	}
-	function calSPR (SP, baseCorr)
-	{
+	function calSPR (SP, baseCorr) {
 		var SPR = 0;
 		if (SP<67) SPR = 1;
 		else if (SP>=67 && SP<100) SPR = 2;
@@ -346,8 +344,7 @@
 		
 		return SPR;
 	}
-	function calArrowA (i)
-	{
+	function calArrowA (i) {
 		var a=0;
 		
 		if (i=='3') a = 0.3;
@@ -380,4 +377,73 @@
 		
 		return a*0.01;
 	}
-      
+    function makeSPRcomment (i) {
+		var SPRcomment = '';
+		baseCorr=0;
+		bedA=3*0.01;
+		arrowA=1.5*2*0.01;
+		magicA=3.5*2*0.01;
+		firstSPR=0;
+		brFlag=false;
+		nullFlag=true;
+		if (charactor[i].type=='斧') baseCorr=2;
+		else if (charactor[i].type=='槍') baseCorr=1;
+		
+		//突破
+		for (j=1;j<5;j++) {
+			if (calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
+				SPRcomment+=j + '突回' + calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr) + '；';
+				firstSPR=calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr);
+				brFlag=true;
+				nullFlag=false;
+				break;
+			}
+		}
+		
+		//羊床
+		if (calSPR(charactor[i].lvMaxAttr.sp[0]*(1+bedA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
+			SPRcomment+='羊床 = 回' + calSPR(charactor[i].lvMaxAttr.sp[0]*(1+bedA),baseCorr) + '；';
+			firstSPR=calSPR(charactor[i].lvMaxAttr.sp[j],baseCorr);
+			brFlag=true;
+			nullFlag=false;
+		}
+		
+		if (brFlag) SPRcomment+='<br/>';
+		
+		//突破 + 羊床
+		for (j=1;j<5;j++) {
+			if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
+				& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr) > firstSPR) {
+				SPRcomment+=j + '突 + 羊床 = 回' + calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr) + '；';
+				SPRcomment+='<br/>';
+				firstSPR = calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA),baseCorr);
+				nullFlag=false;
+				break;
+			}
+		}
+		
+		//突破 + 羊床 + 研究所(法、弓)
+		if (charactor[i].type=='法') {
+			for (j=1;j<5;j++) {
+				if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
+					& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) > firstSPR) {
+					SPRcomment+=j + '突 + 羊床 + 研究所 = 回' + calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) + '；';
+					nullFlag=false;
+					break;
+				}
+			}
+		}
+		else if (charactor[i].type=='弓') {
+			for (j=1;j<5;j++) {
+				if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
+					& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) > firstSPR) {
+					SPRcomment+=j + '突 + 羊床 + 研究所 = 回' + calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) + '；';
+					nullFlag=false;
+					break;
+				}
+			}	
+		}
+		
+		if (nullFlag) SPRcomment+='-';
+		return SPRcomment;
+	}
