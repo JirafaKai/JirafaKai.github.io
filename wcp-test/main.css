@@ -50,13 +50,13 @@
     #charNametd {border-bottom: 1px solid #dddddd; color:black; min-width:200px;}
     #charStartd {border-bottom: 1px solid #dddddd; width:3em;}
     #charTypetd {border-bottom: 1px solid #dddddd; width:6em;}
-    #attrtd {border-bottom: 1px solid #dddddd; width:36em;}
+    #attrtd {border-bottom: 1px solid #dddddd; }
     #attrInnertd {min-width:6em;height:2.4em;}
     .attrInnertd {min-width:5em;}
     
     #more {border-bottom: 1px solid #dddddd;}
 
-    #innerCharTable {border-collapse:separate;padding:0;margin-bottom:.3em;}
+    #innerCharTable {border-collapse:separate;padding:0;margin-bottom:.3em;float:right;width:50em;}
     #innerCharTable td:first-child {background:#C74451;color:#fff;}
     #innerCharTable td {border-left:1px solid #fff; text-align:center;width:6em;background:#f8f8f8;}
     #skillTable {border:none;}
