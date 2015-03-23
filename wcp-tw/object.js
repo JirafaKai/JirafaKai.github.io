@@ -314,6 +314,8 @@
 		}
 		if (charactor[i].type=='斧') {
 			baseCorr = 2;
+			$('#weapon5').hide();
+			$('#lweapon5').hide();
 		}
 		if (charactor[i].type=='槍') {
 			baseCorr = 1;
