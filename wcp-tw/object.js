@@ -178,10 +178,10 @@
 							+ '<td class="attrInnertd">CRI '+ charactor[i].lvMaxAttr.cri + '</td>'
 							+ '<td class="attrInnertd">SPR '+ charactor[i].lvMaxAttr.spr + '</td></tr></table>'
 							+ '<table id="innerCharTable"><tr>'
-							+ '<td id="attrInnertd" style="width:6em;background:#fff; color:#000;padding-left:15px;">'
+							+ '<td id="attrInnertd" style="background:#fff; color:#000;width:7em;text-align:left;padding-left:15px;">'
 							+ '<a href="#" data-toggle="modal" data-target="#calSP" onClick=calClick(' + i + ',' + 0 + ')>SPR計算</a>' + '</td>'
-							+ '<td id="attrInnertd" style="padding-left:2em;text-align:left;background:#fff;color:#000;width:450px;">' + makeSPRcomment(i) + '</td>'
-							+ '<td class="attrInnertd" style="float:right;text-align:right;background:#fff;width:150px;text-align:left;"><span style="border:2px solid '+color+';color:'+color+';padding:.2em .5em .2em .5em;width:150px;display:block;">appmedia評價：' + charactor[i].gamewith + '</span></td>'
+							+ '<td id="attrInnertd" style="text-align:left;background:#fff;color:#000;width:250px;">' + makeSPRcomment(i) + '</td>'
+							+ '<td class="attrInnertd" style="text-align:right;background:#fff;width:150px;text-align:left;"><span style="border:2px solid '+color+';color:'+color+';padding:.2em .5em .2em .5em;width:150px;display:block;">appmedia評價：' + charactor[i].gamewith + '</span></td>'
 							+ '</tr></table></td>'
 							+ '<td id="more"><a style="display:block;width:2em;" href="#char' + i + ' "data-toggle="collapse">更多</a>'      //more button
 							+ '<a style="display:block;width:2em;" href="#comm' + charactor[i].charno + ' "data-toggle="collapse">評價</a>'
@@ -253,24 +253,16 @@
 			$('#arrow2').val('0');
 			$('#magic1').val('0');
 			$('#magic2').val('0');
-			$('#weapon5').attr('checked', false);
-			$('#weapon3').attr('checked', false);
 		}
 		
 		$('#calAns').empty();
 		$('#arrow').hide();
 		$('#magic').hide();
-		$('#weapon5').show();
-		$('#lweapon5').show();
-		$('#weapon3').show();
-		$('#lweapon3').show();
 		
 		var totalSP = 0;
 		var baseCorr = 0;
 		var bedA = 0;
-		var weaponA = 0;
 		var SPR = 0;
-		var originalSP = 0;
 		
 		var breakthrough = document.getElementById('breakthrough').value;
 		var sheepBed = document.getElementById('sheepBed').value;
@@ -298,19 +290,9 @@
 			//$('#calAns').append('-sheepBed unchecked' + bedA + '<br/>');
 		}
 		
-		if ($('#weapon3').is(':checked')) {
-			weaponA = 3*0.01;
-		}
-		else if ($('#weapon5').is(':checked')) {
-			weaponA = 5*0.01;
-		}
-		else weaponA = 0;
-		
 		if (charactor[i].type=='劍') {
 		}
 		if (charactor[i].type=='拳') {
-			$('#weapon5').hide();
-			$('#lweapon5').hide();
 		}
 		if (charactor[i].type=='斧') {
 			baseCorr = 2;
@@ -320,25 +302,25 @@
 		}
 		if (charactor[i].type=='弓') {
 			$('#arrow').show();
-			$('#weapon5').hide();
-			$('#lweapon5').hide();
 		}
 		if (charactor[i].type=='法') {
 			$('#magic').show();
 		}
-		if (charactor[i].type=='雙刀') {
-			$('#weapon5').hide();
-			$('#lweapon5').hide();
-			$('#weapon3').hide();
-			$('#lweapon3').hide();
+		if (charactor[i].type=='雙劍') {
 		}
 		
+		//$('#calAns').append('-hidden ' + i + '<br/>');
 		$('#hiddenCalInput').val(i);
 		
-		originalSP = totalSP/(1+checkDS(i))*(1+weaponA+checkDS(i));
+		//$('#calAns').append('-arrow1 ' + calArrowA(arrow1) + '<br/>');
+		//$('#calAns').append('-arrow2 ' + calArrowA(arrow2) + '<br/>');
 		
-		totalSP = Math.floor(originalSP*(1+bedA+calArrowA(arrow1)+calArrowA(arrow2)+calMagicA(magic1)+calMagicA(magic2)));
-
+		//$('#calAns').append('-magic1 ' + calArrowA(magic1) + '<br/>');
+		//$('#calAns').append('-magic2 ' + calArrowA(magic2) + '<br/>');
+		
+		totalSP = Math.floor(totalSP*(1+bedA+calArrowA(arrow1)+calArrowA(arrow2)+calMagicA(magic1)+calMagicA(magic2)));
+		//$('#calAns').append('SP = ' + totalSP + '; SPR = ' + calSPR(totalSP, baseCorr));
+		
 		$('#calAns').append('<span style="font-size:18px;text-align:right;">SP = </span>')
 		$('#calAns').append('<span style="font-size:18px;">' + totalSP + '</span>');
 		$('#calAns').append('<br/>');
@@ -402,7 +384,6 @@
 		arrowA=1.5*2*0.01;
 		magicA=3.5*2*0.01;
 		firstSPR=0;
-		secondSPR=0;
 		brFlag=false;
 		nullFlag=true;
 		if (charactor[i].type=='斧') baseCorr=2;
@@ -427,10 +408,7 @@
 			nullFlag=false;
 		}
 		
-		if (brFlag) {
-			SPRcomment+='<br/>';
-			brFlag=false;
-		}
+		if (brFlag) SPRcomment+='<br/>';
 		
 		//突破 + 羊床
 		for (j=1;j<5;j++) {
@@ -450,7 +428,6 @@
 				if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
 					& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) > firstSPR) {
 					SPRcomment+=j + '突 + 羊床 + 研究所 = 回' + calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr) + '；';
-					firstSPR = calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+magicA),baseCorr);
 					nullFlag=false;
 					break;
 				}
@@ -461,102 +438,12 @@
 				if (calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)
 					& calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) > firstSPR) {
 					SPRcomment+=j + '突 + 羊床 + 研究所 = 回' + calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr) + '；';
-					firstSPR = calSPR(charactor[i].lvMaxAttr.sp[j]*(1+bedA+arrowA),baseCorr);
 					nullFlag=false;
 					break;
 				}
 			}	
 		}
 		
-		//突破 + 羊床 + 研究所(法、弓) + 武器+SP3%
-		if (charactor[i].type=='法') {
-			for (j=1;j<5;j++) {
-				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
-				if (calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) > firstSPR
-					& calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 研究所 + 武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) + '；';
-					secondSPR = calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr);
-					brFlag=true;
-					nullFlag = false;
-					break;
-				}
-			}
-		}
-		else if (charactor[i].type=='弓') {
-			for (j=1;j<5;j++) {
-				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
-				if (calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr) > firstSPR
-					& calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 研究所 + 武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr) + '；';
-					secondSPR = calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr);
-					brFlag=true;
-					nullFlag = false;
-					break;
-				}
-			}
-		}
-		else {
-			for (j=1;j<5;j++) {
-				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
-				if (calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr) > firstSPR
-					& calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr) + '；';
-					secondSPR = calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr);
-					brFlag=true;
-					nullFlag = false;
-					break;
-				}
-			}
-		}
-		
-		if (brFlag) {
-			SPRcomment+='<br/>';
-			brFlag=true;
-		}
-		
-		//突破 + 羊床 + 研究所(法、弓) + 武器+SP5% (暫時只有劍、槍、法)
-		if (charactor[i].type=='法') {
-			for (j=1;j<5;j++) {
-				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
-				//SPRcomment+='<br/>' + originalSP;
-				if (calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) > firstSPR
-					& calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 研究所 + 武器SP5% = 回' + calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) + '；';
-					nullFlag = false;
-					break;
-				}
-			}
-		}
-		else if (charactor[i].type=='劍' || charactor[i].type=='槍') {
-			for (j=1;j<5;j++) {
-				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
-				//SPRcomment+='<br/>' + originalSP;
-				//SPRcomment+='<br/>' + calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr);
-				if (calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr) > firstSPR
-					& calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 武器SP5% = 回' + calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr) + '；';
-					nullFlag = false;
-					break;
-				}
-			}
-		}
-		
 		if (nullFlag) SPRcomment+='-';
 		return SPRcomment;
-	}
-	function checkDS (i) {
-		var SPpercent = 0;
-		for (k=0;k<3;k++) {
-			if (charactor[i].skill.ds[k].indexOf('SP+15%') !== -1) SPpercent += 15;
-			else if (charactor[i].skill.ds[k].indexOf('SP+20%') !== -1) SPpercent += 20;
-		}
-		return SPpercent*0.01;
-	}
-	function weaponCheck (boxNum) {
-		if (boxNum==3) {
-			if ($('#weapon5').is(':checked')) $('#weapon5').attr('checked',false);
-		}
-		else if (boxNum==5) {
-			if ($('#weapon3').is(':checked')) $('#weapon3').attr('checked',false);
-		}
 	}
