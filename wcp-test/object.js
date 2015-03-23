@@ -474,7 +474,7 @@
 				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
 				if (calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) > firstSPR
 					& calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 研究所 + 武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) + '；';
+					SPRcomment += j + '突破+羊床+研究所+武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) + '；';
 					secondSPR = calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+magicA),baseCorr);
 					brFlag=true;
 					nullFlag = false;
@@ -487,7 +487,7 @@
 				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
 				if (calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr) > firstSPR
 					& calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 研究所 + 武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr) + '；';
+					SPRcomment += j + '突破+羊床+研究所+武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr) + '；';
 					secondSPR = calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA+arrowA),baseCorr);
 					brFlag=true;
 					nullFlag = false;
@@ -500,7 +500,7 @@
 				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
 				if (calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr) > firstSPR
 					& calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr) + '；';
+					SPRcomment += j + '突破+羊床+武器SP3% = 回' + calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr) + '；';
 					secondSPR = calSPR(originalSP*(1+3*0.01+checkDS(i))*(1+bedA),baseCorr);
 					brFlag=true;
 					nullFlag = false;
@@ -521,7 +521,7 @@
 				//SPRcomment+='<br/>' + originalSP;
 				if (calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) > firstSPR
 					& calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 研究所 + 武器SP5% = 回' + calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) + '；';
+					SPRcomment += j + '突破+羊床+研究所+武器SP5% = 回' + calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA+magicA),baseCorr) + '；';
 					nullFlag = false;
 					break;
 				}
@@ -534,7 +534,7 @@
 				//SPRcomment+='<br/>' + calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr);
 				if (calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr) > firstSPR
 					& calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr) > calSPR(charactor[i].lvMaxAttr.sp[0],baseCorr)) {
-					SPRcomment += j + '突破 + 羊床 + 武器SP5% = 回' + calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr) + '；';
+					SPRcomment += j + '突破+羊床+武器SP5% = 回' + calSPR(originalSP*(1+5*0.01+checkDS(i))*(1+bedA),baseCorr) + '；';
 					nullFlag = false;
 					break;
 				}
