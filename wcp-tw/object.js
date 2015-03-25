@@ -309,8 +309,8 @@
 		if (charactor[i].type=='劍') {
 		}
 		if (charactor[i].type=='拳') {
-			$('#weapon5').hide();
-			$('#lweapon5').hide();
+			//$('#weapon5').hide();
+			//$('#lweapon5').hide();
 		}
 		if (charactor[i].type=='斧') {
 			baseCorr = 2;
@@ -544,7 +544,7 @@
 				}
 			}
 		}
-		else if (charactor[i].type=='劍' || charactor[i].type=='槍') {
+		else if (charactor[i].type=='劍' || charactor[i].type=='槍' || charactor[i].type=='拳') {
 			for (j=1;j<5;j++) {
 				var originalSP = charactor[i].lvMaxAttr.sp[j]/(1+checkDS(i));
 				//SPRcomment+='<br/>' + originalSP;
