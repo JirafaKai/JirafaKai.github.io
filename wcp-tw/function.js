@@ -208,12 +208,12 @@
 			+'<a href="#" data-toggle="modal" data-target="#report' + myChar.getCharNo() + '">回報</a></div>'
 			+'<table class="pull-right text-center attr-table-md hidden-sm hidden-xs">'
 			+'<tr><td style="background:' + color +'">Lv.100</td>'
-			+'<td><span id="HPattr' + myChar.getCharNo() + 'big">HP ' + myChar.getAttr('HP',0) + '</span></td>'
-			+'<td><span id="SPattr' + myChar.getCharNo() + 'big">SP ' + myChar.getAttr('SP',0) + '</span></td>'
-			+'<td><span id="ATKattr' + myChar.getCharNo() + 'big">ATK ' + myChar.getAttr('ATK',0) + '</span></td>'
-			+'<td><span id="DEFattr' + myChar.getCharNo() + 'big">DEF ' + myChar.getAttr('DEF',0) + '</span></td>'
-			+'<td><span id="CRIattr' + myChar.getCharNo() + 'big">CRI ' + myChar.getAttr('CRI',0) + '</span></td>'
-			+'<td><span id="SPRattr' + myChar.getCharNo() + 'big">SPR ' + myChar.getAttr('SPR',0) + '</span></td>'
+			+'<td>HP <span id="HPattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('HP',0) + '</span></td>'
+			+'<td>SP <span id="SPattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('SP',0) + '</span></td>'
+			+'<td>ATK <span id="ATKattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('ATK',0) + '</span></td>'
+			+'<td>DEF <span id="DEFattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('DEF',0) + '</span></td>'
+			+'<td>CRI <span id="CRIattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('CRI',0) + '</span></td>'
+			+'<td>SPR <span id="SPRattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('SPR',0) + '</span></td>'
 			+'</tr></table>'
 			+'<div class="pull-right break-btn btn-group hidden-sm hidden-xs" role="group">'
 			+'<button type="button" id="button-0-big' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ',\'big\')">0突</button>'
@@ -293,7 +293,7 @@
 		
 		$('#button-' + breakTime + '-' + i).addClass("active");
 		$('#button-' + breakTime + '-big' + i).addClass("active");
-
+			
 		$('#HPattr' + charNo + size).html(myChar.getAttr('HP',breakTime));
 		$('#SPattr' + charNo + size).html(myChar.getAttr('SP',breakTime));
 		$('#SPRattr' + charNo + size).html(calSPR(myChar.getAttr('SP',breakTime),myChar.getType()));
