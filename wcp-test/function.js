@@ -92,19 +92,6 @@
 			return true;
 		else return false;
 	}
-	function makecomment(i,comment,add){
-		var content = '<table class="table table-striped" id="commTable">'
-					+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
-					+ '<input type="button" value="提交" onclick="submitcom(' + i + ')"</td></tr>';
-		if(add == 1){
-			content	+= '<tr><td class="commTime" id="commtd"><span class="spanTime">' + getTime() + '</span></td><td class="commTd">' + comment + '</td></tr>';}
-		for(var c in commentG){
-			if(commentG[c].charNo == charactor[i].charno)
-				content += '<tr><td class="commTime" id="commtd"><span class="spanTime">' + commentG[c].iTime + '</span></td><td class="commTd">' + commentG[c].comment + '</td></tr>';
-		}
-		content += '</table>';
-		return content;
-	}
 	function typecolor(type){
 		var color="#";
 		if(type == "劍")color += "e03d3e;";
@@ -195,7 +182,7 @@
 			+ '<label class="label-tag" style="background:' + color +'">' + myChar.getStar() + '</label>\n'
 			+'<label class="label-tag" style="background:' + color +'">' + myChar.getPhase() + '</label>\n'
 			+'<label class="label-tag" style="background:' + color +'">' + myChar.getType() + '</label><br/>'
-			+'<span class="hidden-xs">' + name[0] + '</span><br class="hidden-xs"/>'
+			+'<span class="hidden-xs">' + name[0] + '　</span>'
 			+'<span>' + name[1] + '</span><br/>'
 			+'<span>' +myChar.getNickname()+ '</span>'
 			+'</div>'
