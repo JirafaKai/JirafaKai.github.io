@@ -162,8 +162,7 @@
 	}
 	
 	.attr-table-md td:first-child {
-		background:red;
-		color:#000;
+		color:#fff;
 	}
 
 	.break-btn {
