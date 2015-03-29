@@ -34,38 +34,7 @@
         color: #fff;
     }
 	
-	#charDiv{
-		background: #fff;
-	}
 
-    #charTable {margin:0;border:none;}
-
-    #charTable td {
-      border-top:none;
-      line-height:1.8em;
-      margin: 0px;}
-
-    #charTable tr:last-child {border:none;}
-    #imgtd {border-bottom:1px solid #dddddd;width:60px;height:60px;}
-    #charNametd {border-bottom: 1px solid #dddddd; color:black; min-width:200px;}
-    #charStartd {border-bottom: 1px solid #dddddd; width:3em;}
-    #charTypetd {border-bottom: 1px solid #dddddd; width:6em;}
-    #attrtd {border-bottom: 1px solid #dddddd; }
-    #attrInnertd {min-width:6em;height:2.4em;}
-    .attrInnertd {min-width:5em;}
-    
-    #more {border-bottom: 1px solid #dddddd;}
-
-    #innerCharTable {border-collapse:separate;padding:0;margin-bottom:.3em;float:right;width:50em;}
-    #innerCharTable td:first-child {background:#C74451;color:#fff;}
-    #innerCharTable td {border-left:1px solid #fff; text-align:center;width:6em;background:#f8f8f8;}
-    #skillTable {border:none;}
-    #skillTable td {border: 1px solid #dddddd;}
-    #skillTable td:first-child {border-top: none;}
-    #skillTable td:nth-child(2) {border-top: none;}
-    #titletd {width: 100px;}
-    #SPRcomment {background:#f8f8f8;}
-    #gamewithtd {width:300px;}
 
     .tag-label {background:#C74451;margin-right:.5em;color:#fff;padding:.2em .5em .2em .5em;}
 
@@ -75,3 +44,131 @@
     .spanTime {width:120px;background:#eeeeee;color:#000;padding:.2em .5em .2em .5em;}
 
     .img2dC {width:50%;}
+	
+	
+	
+	.bottom-line {
+		border-bottom:1px solid #dddddd;
+		padding-top: 1em;
+		padding-bottom: 1em;
+	}
+	
+	.label-tag {
+		background:#000;
+		color:#fff;
+		padding:.2em .5em .2em .5em;
+	}
+	
+	.img-icon {
+		max-width:75px;
+		min-width:70px;
+	}
+
+	.img-icon > a  > img {
+		height:65px;
+	}
+	
+	.textJPname {
+		
+	}
+	
+	.extend-panel {
+		padding-left:1em;
+		line-height:1.8em;
+		float:right;
+	}
+	
+	.exteng-panel > a {
+		
+	}
+	
+	.char-attr {
+		margin-top:1em;
+	}
+	
+	.char-attr .panel-heading span:first-child,
+	.spr-data .panel-heading span:first-child{
+		color:green;
+	}
+	
+	.spr-data {
+		margin-top:0;
+	}
+	
+	.calculator {
+		width:8em;
+		background:white;
+	}
+	
+	.skill-table tr > td:first-child {
+		width:6em;
+	}
+	
+	.skill-table span {
+		color:green;
+	}
+	
+	.attr-tag {
+		display:inline-block;
+	}
+	
+	.attr-tag span:first-child {
+		background:#dddddd;
+		border:1px solid #dddddd;
+		border-top-left-radius:5px;
+		border-bottom-left-radius:5px;
+		text-align:center;
+		display: inline-block;
+		width:45px;
+	}
+	
+	.attr-tag span:last-child {
+		border:1px solid #dddddd;
+		border-top-right-radius:5px;
+		border-bottom-right-radius:5px;
+		border-left:none;
+		text-align:center;
+		display: inline-block;
+		width:50px;
+		margin-right:0.3em;
+	}
+	
+	.no-margin-right {
+		margin-right:0;
+	}
+	
+	.margin-bottom-small {
+		margin-bottom:1em;
+	}
+	
+	.input-comment {
+		background:#f8f8f8;
+	}
+	
+	.comment-date {
+		width:8em !important;
+	}
+	
+	.comment-date  span {
+		background:#eeeeee;
+		padding:4px;
+	}
+	
+	.attr-table-md td {
+		background:#f8f8f8;
+		border-left:1px solid white;
+		padding:.2em .5em .2em .5em;
+		min-width:5.5em;height:2.4em;
+	}
+	
+	.attr-table-md td:first-child {
+		background:red;
+	}
+
+	.break-btn {
+		margin-top:.5em;
+		margin-bottom:1em;
+	}
+	
+	.break-btn button {
+	}
