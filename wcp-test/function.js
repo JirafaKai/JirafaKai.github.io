@@ -19,11 +19,20 @@
                       JData.feed.entry[i].gsx$phase.$t,
                       JData.feed.entry[i].gsx$charstar.$t,
                       JData.feed.entry[i].gsx$chartype.$t,
+					  JData.feed.entry[i].gsx$lv1hp.$t,
                       JData.feed.entry[i].gsx$maxhp.$t,
+					  JData.feed.entry[i].gsx$hp4.$t,
+					  JData.feed.entry[i].gsx$lv1sp.$t,
                       JData.feed.entry[i].gsx$maxsp.$t,
+					  JData.feed.entry[i].gsx$lv1atk.$t,
                       JData.feed.entry[i].gsx$maxatk.$t,
+					  JData.feed.entry[i].gsx$atk4.$t,
+					  JData.feed.entry[i].gsx$lv1def.$t,
                       JData.feed.entry[i].gsx$maxdef.$t,
+					  JData.feed.entry[i].gsx$def4.$t,
+					  JData.feed.entry[i].gsx$lv1cri.$t,
                       JData.feed.entry[i].gsx$maxcri.$t,
+					  JData.feed.entry[i].gsx$cri4.$t,
                       JData.feed.entry[i].gsx$spr.$t,
 					  JData.feed.entry[i].gsx$sp1.$t,
 					  JData.feed.entry[i].gsx$sp2.$t,
@@ -91,6 +100,19 @@
 		if((checknum >= checknum2) && key.length !== 0)
 			return true;
 		else return false;
+	}
+	function makecomment(i,comment,add){
+		var content = '<table class="table table-striped" id="commTable">'
+					+ '<tr><td colspan="2"><input class="inputComm" type="text" id="inputCommt' + charactor[i].charno+ '" placeholder="可輸入評語" />'
+					+ '<input type="button" value="提交" onclick="submitcom(' + i + ')"</td></tr>';
+		if(add == 1){
+			content	+= '<tr><td class="commTime" id="commtd"><span class="spanTime">' + getTime() + '</span></td><td class="commTd">' + comment + '</td></tr>';}
+		for(var c in commentG){
+			if(commentG[c].charNo == charactor[i].charno)
+				content += '<tr><td class="commTime" id="commtd"><span class="spanTime">' + commentG[c].iTime + '</span></td><td class="commTd">' + commentG[c].comment + '</td></tr>';
+		}
+		content += '</table>';
+		return content;
 	}
 	function typecolor(type){
 		var color="#";
@@ -177,16 +199,15 @@
 	}
 	function charShowName(target,myChar,color){
 		var name = myChar.getJPname().split("　");
-		target.append(
-			'<div class="textJPname text-left col-xs-7 col-md-3">'
+		var content = '<div class="textJPname text-left col-xs-7 col-md-3">'
 			+ '<label class="label-tag" style="background:' + color +'">' + myChar.getStar() + '</label>\n'
 			+'<label class="label-tag" style="background:' + color +'">' + myChar.getPhase() + '</label>\n'
-			+'<label class="label-tag" style="background:' + color +'">' + myChar.getType() + '</label><br/>'
-			+'<span class="hidden-xs">' + name[0] + '　</span>'
-			+'<span>' + name[1] + '</span><br/>'
-			+'<span>' +myChar.getNickname()+ '</span>'
-			+'</div>'
-		);
+			+'<label class="label-tag" style="background:' + color +'">' + myChar.getType() + '</label><br/>';
+		if(name.length > 1)
+			content += '<span class="hidden-xs">' + name[0] + '　</span>'+'<span>' + name[1] + '</span><br/>';
+		else content += '<span>' + name[0] + '</span><br/>';
+		content += '<span>' +myChar.getNickname()+ '</span></div>'
+		target.append(content);
 	}
 	function charShowStatus(target,myChar,color){
 		target.append(
@@ -196,7 +217,7 @@
 			+'<a href="#comment' + myChar.getCharNo() + '" data-toggle="collapse">評價</a><br/>'
 			+'<a href="#" data-toggle="modal" data-target="#report' + myChar.getCharNo() + '">回報</a></div>'
 			+'<table class="pull-right text-center attr-table-md hidden-sm hidden-xs">'
-			+'<tr><td style="background:' + color +'">Lv.100</td>'
+			+'<tr><td style="background:' + color +'"><span id="LVattr' + myChar.getCharNo() + 'big">Lv.100</span></td>'
 			+'<td>HP <span id="HPattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('HP',0) + '</span></td>'
 			+'<td>SP <span id="SPattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('SP',0) + '</span></td>'
 			+'<td>ATK <span id="ATKattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('ATK',0) + '</span></td>'
@@ -205,11 +226,9 @@
 			+'<td>SPR <span id="SPRattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('SPR',0) + '</span></td>'
 			+'</tr></table>'
 			+'<div class="pull-right break-btn btn-group hidden-sm hidden-xs" role="group">'
-			+'<button type="button" id="button-0-big' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ',\'big\')">0突</button>'
-			+'<button type="button" id="button-1-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(1,'+findMyI(myChar) + ',\'big\')">1突</button>'
-			+'<button type="button" id="button-2-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(2,'+findMyI(myChar) + ',\'big\')">2突</button>'
-			+'<button type="button" id="button-3-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(3,'+findMyI(myChar) + ',\'big\')">3突</button>'
-			+'<button type="button" id="button-4-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(4,'+findMyI(myChar) + ',\'big\')">4突</button></div></div>'	
+			+'<button type="button" id="button-0-big' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ')">Lv.100</button>'
+			+'<button type="button" id="button-1-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(5,'+findMyI(myChar) + ')">Lv.1</button>'
+			+'<button type="button" id="button-2-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(4,'+findMyI(myChar) + ')">4突</button></div></div>'	
 		);
 	}
 	function charDataComment(target,charNo){
@@ -231,7 +250,7 @@
 					+ '<div class="col-xs-12">'
 					+ '<div class="char-attr panel panel-default">'
 					+ '<div class="panel-heading">'
-					+ '<strong><span>LV.100</span></strong>'
+					+ '<strong><span id="LVattr' + myChar.getCharNo() + 'small">LV.100</span></strong>'
 					+ '</div>'
 					+ '<div class="panel-body">'
 					+ '<span class="attr-tag"><span>HP</span><span id="HPattr' + myChar.getCharNo() + 'small">' + myChar.getAttr('HP',0) + '</span></span>'
@@ -243,11 +262,9 @@
 					+ '</div>'
 					+ '<div class="panel-footer clearfix">'
 					+ '<div class="pull-right btn-group" role="group">'
-					+ '<button type="button" id="button-0-' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ',\'small\')">0突</button>'
-					+ '<button type="button" id="button-1-' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(1,'+findMyI(myChar) + ',\'small\')">1突</button>'
-					+ '<button type="button" id="button-2-' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(2,'+findMyI(myChar) + ',\'small\')">2突</button>'
-					+ '<button type="button" id="button-3-' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(3,'+findMyI(myChar) + ',\'small\')">3突</button>'
-					+ '<button type="button" id="button-4-' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(4,'+findMyI(myChar) + ',\'small\')">4突</button>'
+					+ '<button type="button" id="button-0-' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ')">Lv.100</button>'
+					+ '<button type="button" id="button-1-' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(5,'+findMyI(myChar) + ')">Lv.1</button>'
+					+ '<button type="button" id="button-2-' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(4,'+findMyI(myChar) + ')">4突</button>'
 					+ '</div>'
 					+ '</div>'
 					+ '</div>'
@@ -271,24 +288,37 @@
 					+ '</div>'
 					+ '</div>')
 	}
-	function buttonHandler(breakTime, i, size){
+	function buttonHandler(breakTime, i){
 		var myChar = charactor[i];
 		var charNo = myChar.getCharNo();
 		
-		for (w=0;w<5;w++){
+		for (w=0;w<3;w++){
 			$('#button-' + w + '-' + i).removeClass("active");
 			$('#button-' + w + '-big' + i).removeClass("active");
 		}
+		var breakbtn;
+		var lv = 'Lv.100';
+		if(breakTime == 5){breakbtn = 1;lv = 'Lv.1'}
+		else if(breakTime == 4)breakbtn = 2;
+		else breakbtn = breakTime;
+		$('#button-' + breakbtn + '-' + i).addClass("active");
+		$('#button-' + breakbtn + '-big' + i).addClass("active");
 		
-		$('#button-' + breakTime + '-' + i).addClass("active");
-		$('#button-' + breakTime + '-big' + i).addClass("active");
-			
-		$('#HPattr' + charNo + size).html(myChar.getAttr('HP',breakTime));
-		$('#SPattr' + charNo + size).html(myChar.getAttr('SP',breakTime));
-		$('#SPRattr' + charNo + size).html(calSPR(myChar.getAttr('SP',breakTime),myChar.getType()));
-		$('#ATKattr' + charNo + size).html(myChar.getAttr('ATK',breakTime));
-		$('#DEFattr' + charNo + size).html(myChar.getAttr('DEF',breakTime));
-		$('#CRIattr' + charNo + size).html(myChar.getAttr('CRI',breakTime));
+		$('#LVattr' + charNo + 'small').html(lv);
+		$('#HPattr' + charNo + 'small').html(myChar.getAttr('HP',breakTime));
+		$('#SPattr' + charNo + 'small').html(myChar.getAttr('SP',breakTime));
+		$('#SPRattr' + charNo + 'small').html(calSPR(myChar.getAttr('SP',breakTime),myChar.getType()));
+		$('#ATKattr' + charNo + 'small').html(myChar.getAttr('ATK',breakTime));
+		$('#DEFattr' + charNo + 'small').html(myChar.getAttr('DEF',breakTime));
+		$('#CRIattr' + charNo + 'small').html(myChar.getAttr('CRI',breakTime));
+		
+		$('#LVattr' + charNo + 'big').html(lv);
+		$('#HPattr' + charNo + 'big').html(myChar.getAttr('HP',breakTime));
+		$('#SPattr' + charNo + 'big').html(myChar.getAttr('SP',breakTime));
+		$('#SPRattr' + charNo + 'big').html(calSPR(myChar.getAttr('SP',breakTime),myChar.getType()));
+		$('#ATKattr' + charNo + 'big').html(myChar.getAttr('ATK',breakTime));
+		$('#DEFattr' + charNo + 'big').html(myChar.getAttr('DEF',breakTime));
+		$('#CRIattr' + charNo + 'big').html(myChar.getAttr('CRI',breakTime));
 	}
 	function calHandler() {
 		var charno = $('#hiddenCalInput').val();
