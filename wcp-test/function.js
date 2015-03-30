@@ -226,8 +226,8 @@
 			+'<td>SPR <span id="SPRattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('SPR',0) + '</span></td>'
 			+'</tr></table>'
 			+'<div class="pull-right break-btn btn-group hidden-sm hidden-xs" role="group">'
-			+'<button type="button" id="button-0-big' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ')">Lv.100</button>'
 			+'<button type="button" id="button-1-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(5,'+findMyI(myChar) + ')">Lv.1</button>'
+			+'<button type="button" id="button-0-big' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ')">Lv.100</button>'
 			+'<button type="button" id="button-2-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(4,'+findMyI(myChar) + ')">4突</button></div></div>'	
 		);
 	}
@@ -262,8 +262,8 @@
 					+ '</div>'
 					+ '<div class="panel-footer clearfix">'
 					+ '<div class="pull-right btn-group" role="group">'
-					+ '<button type="button" id="button-0-' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ')">Lv.100</button>'
 					+ '<button type="button" id="button-1-' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(5,'+findMyI(myChar) + ')">Lv.1</button>'
+					+ '<button type="button" id="button-0-' + findMyI(myChar) + '" class="active btn btn-default" onclick="buttonHandler(0,'+findMyI(myChar) + ')">Lv.100</button>'
 					+ '<button type="button" id="button-2-' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(4,'+findMyI(myChar) + ')">4突</button>'
 					+ '</div>'
 					+ '</div>'
