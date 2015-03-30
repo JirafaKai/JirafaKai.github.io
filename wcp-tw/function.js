@@ -502,10 +502,15 @@
 		
 		//突破 + 羊床 + 研所 + 3%
 		for (k=1;k<5;k++){
-			if (myChar.getType()=='弓')
+			var tmp = '';
+			if (myChar.getType()=='弓') {
 				A = calSPR(myChar.calSP(k,true,true,15,false,false,true,false),myChar.getType());
-			else if (myChar.getType()=='法')
+				tmp = '+ 研究所 ';
+			}
+			else if (myChar.getType()=='法') {
 				A = calSPR(myChar.calSP(k,true,false,false,true,15,true,false),myChar.getType());
+				tmp = '+ 研究所 ';
+			}
 			else if (myChar.getType()=='雙刀')
 				break;
 			else 
@@ -514,7 +519,7 @@
 			if (A > B && (A > firstBreak || k < firstBreakNum)) {
 				if (!firstFlag) SPRcomment += '<br/>';
 				firstFlag = false;
-				SPRcomment += k + '突 + 羊床 + 研究所 + 武器3% = 回' + A + '；';
+				SPRcomment += k + '突 + 羊床 ' + tmp + '+ 武器3% = 回' + A + '；';
 				if (A > firstBreak) firstBreak = A;
 				if (k < firstBreakNum) firstBreakNum = k;
 				nullFlag = false;
@@ -524,18 +529,20 @@
 		
 		//突破 + 羊床 + 研所 + 5%
 		for (k=1;k<5;k++){
-			if (myChar.getType()=='弓' || myChar.getType()=='斧' || myChar.getType()=='雙刀')
+			var tmp = '';
+			if (myChar.getType()=='弓' || myChar.getType()=='斧' || myChar.getType()=='雙刀')  //無5%武器
 				break;
-				//A = calSPR(myChar.calSP(k,true,true,15,false,false,false,true),myChar.getType());
-			else if (myChar.getType()=='法')
+			else if (myChar.getType()=='法') {
 				A = calSPR(myChar.calSP(k,true,false,false,true,15,false,true),myChar.getType());
+				tmp = '+ 研究所 ';
+			}
 			else 
 				A = calSPR(myChar.calSP(k,true,false,false,false,false,false,true),myChar.getType());
 			B = calSPR(myChar.getAttr('SP',0),myChar.getType());
 			if (A > B && (A > firstBreak || k < firstBreakNum)) {
 				if (!firstFlag) SPRcomment += '<br/>';
 				firstFlag = false;
-				SPRcomment += k + '突 + 羊床 + 研究所 + 武器5% = 回' + A + '；';
+				SPRcomment += k + '突 + 羊床 ' + tmp + '+ 武器5% = 回' + A + '；';
 				if (A > firstBreak) firstBreak = A;
 				if (k < firstBreakNum) firstBreakNum = k;
 				nullFlag = false;
