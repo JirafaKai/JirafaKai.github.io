@@ -223,7 +223,7 @@
 			+'<td>ATK <span id="ATKattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('ATK',0) + '</span></td>'
 			+'<td>DEF <span id="DEFattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('DEF',0) + '</span></td>'
 			+'<td>CRI <span id="CRIattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('CRI',0) + '</span></td>'
-			+'<td>SPR <span id="SPRattr' + myChar.getCharNo() + 'big">' + myChar.getAttr('SPR',0) + '</span></td>'
+			+'<td>SPR <span id="SPRattr' + myChar.getCharNo() + 'big">' + calSPR(myChar.getAttr('SP',0),myChar.getType()) + '</span></td>'
 			+'</tr></table>'
 			+'<div class="pull-right break-btn btn-group hidden-sm hidden-xs" role="group">'
 			+'<button type="button" id="button-1-big' + findMyI(myChar) + '" class="btn btn-default" onclick="buttonHandler(5,'+findMyI(myChar) + ')">Lv.1</button>'
