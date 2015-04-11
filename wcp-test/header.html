@@ -18,11 +18,17 @@
 					<a href="index.html">角色</a>
 				</li>
 				<li id="navweaponbtn">
-					<a href="weapon.html">武器</a>
+						<a style="height:50px;" href="weapon.html">武器 <div id="new-flash" style="display:inline-block;color:red;font-size:10px;">NEW!</div></a>
 				</li>
 				</ul>
 		  </div>
 		</div>
       </nav>
-	  <script>setnavbtn()</script>
+	  
+	  <script>
+		setnavbtn();
+		setInterval(function(){
+			$('#new-flash').fadeOut(100).fadeIn(100);
+		},600);
+	  </script>
 </header>

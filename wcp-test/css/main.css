@@ -215,7 +215,10 @@ body{
 
 /*    weapon.html    */
 .weapon-icon{
-	width:100px;
+	width: 100px;
+	height: 100px;
+	padding-top: 18px;
+	padding-bottom: 18px;
 	border:4px double #dedede;
 }
 .span-tag{
@@ -304,7 +307,7 @@ body{
 		width:100px;
 	}
 	.weapon-simple-data{
-		width:500px;
+		width:400px;
 	}
 	.weapon-button-group{
 		float:left;
@@ -318,7 +321,7 @@ body{
 		width:130px;
 	}
 	.weapon-simple-data{
-		width:992px;
+		width:500px;
 	}
 	.weapon-button-group{
 		float:left;
@@ -360,32 +363,41 @@ body{
 
 
 
+
 /*    button    */
 .weapon-button-group button{
 	border:1px solid #e03d3e;
-	color:#e03d3e;
 	font-size:10pt;
 	background: none;
 	padding-top:3px;
 	padding-bottom:3px;
 	padding-left:20px;
 	padding-right:20px;
-	margin-left:-5px;
-	margin-bottom:10px;
+	margin-bottom:20px;
+	border-left:none;
 	outline: 0;
 }
 .weapon-button-group button:first-child{
 	border-top-left-radius:30px;
 	border-bottom-left-radius:30px;
+	border-left: 1px solid #e03d3e;
 }
 .weapon-button-group button:last-child{
 	border-top-right-radius:30px;
 	border-bottom-right-radius:30px;
 }
-.weapon-button-group button:hover,
-.weapon-button-group button:focus,
-.weapon-button-group button.active
-{
-	background:#e03d3e;
-	color:white;
-}
+.button-red{border-color:#e03d3e !important;color:#e03d3e;}
+.button-yellow{border-color:#d8c238 !important;color:#d8c238;}
+.button-blue{border-color:#1c7cd0 !important;color:#1c7cd0;}
+.button-green{border-color:#088A4B !important;color:#088A4B;}
+.button-pink{border-color:#e4688c !important;color:#e4688c;}
+.button-purple{border-color:#c056dc !important;color:#c056dc;}
+.button-orange{border-color:#fc6d21 !important;color:#fc6d21;}
+
+.button-red:hover,.button-red.active,.button-red:focus{color:white;background:#e03d3e;}
+.button-yellow:hover,.button-yellow.active,.button-yellow:focus{color:white;background:#d8c238;}
+.button-blue:hover,.button-blue.active,.button-blue:focus{color:white;background:#1c7cd0;}
+.button-green:hover,.button-green.active,.button-green:focus{color:white;background:#088A4B;}
+.button-pink:hover,.button-pink.active,.button-pink:focus{color:white;background:#e4688c;}
+.button-purple:hover,.button-purple.active,.button-purple:focus{color:white;background:#c056dc;}
+.button-orange:hover,.button-orange.active,.button-orange:focus{color:white;background:#fc6d21;}

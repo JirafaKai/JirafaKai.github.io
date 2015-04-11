@@ -133,8 +133,11 @@
 			+'<span class="span-tag" style="background:'+color+';">'+myWp.getStar()+'</span>\n'
 			+'<span class="span-tag" style="background:'+color+';">'+myWp.getType()+'</span>\n'
 			+'<span class="span-tag" style="background:'+color+';">'+myWp.getPhase()+'</span>\n'
-			+'<br/><span id="wpName'+myWp.getNo()+'" class="weapon-name">'+myWp.getName(myWp.getMax())+'</span>'
-			+'<br/><span class="weapon-nname">'+myWp.getNickname()+'</span>'
+			+'<div id="wpName'+myWp.getNo()+'" class="weapon-name">'+myWp.getName(myWp.getMax())+'</div>'
+			+'<span class="weapon-nname">'+myWp.getNickname()+'</span>'
+			+'</div>'
+			+'<div style="z-index:999" class="float-r hidden-lg hidden-md">'
+			+'<a href="#more-'+myWp.getNo()+'" data-toggle="collapse">更多</a>'
 			+'</div>'
 		);
 	}
@@ -164,7 +167,7 @@
 	}
 	function weaponMore(target,myWp,color){
 		target.html(
-			'<div class="weapon-attr display-ib float-l hidden-md hidden-lg">'
+			'<div id="more-'+myWp.getNo()+'" class="collapse weapon-attr display-ib float-l hidden-md hidden-lg">'
 			+'<table style="word-break:break-all;margin-bottom:10px;" class="weapon-table table table-bordered">'
 			+'<thead><tr><th class="th" style="background:'+color+'">攻擊</th>'
 			+'<th class="th" style="background:'+color+'">防御</th>'
@@ -183,20 +186,30 @@
 			+'</tr><tr>'
 			+'<th class="th-s" style="background:'+color+'">DS</th>'
 			+'<td id="wpStatus-7-'+myWp.getNo()+'" colspan="4" class="ta-left">'+myWp.getAttr('DS',myWp.getMax())+'</td>'
-			+'</tr></table></div>'
+			+'</tr></table>'
 			+weaponButton(myWp,'')
+			+'</div>'
 		);
 	}
 	function weaponButton(myWp,which){
 		var max = myWp.getMax();
 		var work = '';
+		var colorClass = 'button-';
+		if (myWp.getType()=='劍') colorClass+='red';
+		else if (myWp.getType()=='拳') colorClass+='yellow';
+		else if (myWp.getType()=='斧') colorClass+='blue';
+		else if (myWp.getType()=='槍') colorClass+='green';
+		else if (myWp.getType()=='弓') colorClass+='orange';
+		else if (myWp.getType()=='法') colorClass+='purple';
+		else if (myWp.getType()=='雙刀') colorClass+='pink';
+		
 		if(which == 'big')work += '<div class="weapon-button-group hidden-xs hidden-sm">';
 		else work += '<div class="weapon-button-group hidden-lg hidden-md">';
-		work +='<button id="wpBtn-1-'+myWp.getNo()+which+'" class="weapon-button" tabindex="0" onclick="buttonHandler(1,'+findMyI(myWp) + ')">一階</button>';
-		if(max > 1)work += '<button id="wpBtn-2-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(2,'+findMyI(myWp) + ')">二階</button>';
-		if(max > 2)work += '<button id="wpBtn-3-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(3,'+findMyI(myWp) + ')">三階</button>';
-		if(max > 3)work += '<button id="wpBtn-4-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(4,'+findMyI(myWp) + ')">四階</button>';
-		if(max > 4)work += '<button id="wpBtn-5-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(5,'+findMyI(myWp) + ')">五階</button>';
+		work +='<button id="wpBtn-1-'+myWp.getNo()+which+'" class="' + colorClass + ' weapon-button" tabindex="0" onclick="buttonHandler(1,'+findMyI(myWp) + ')">一階</button>';
+		if(max > 1)work += '<button id="wpBtn-2-'+myWp.getNo()+which+'" class="' + colorClass + ' weapon-button" onclick="buttonHandler(2,'+findMyI(myWp) + ')">二階</button>';
+		if(max > 2)work += '<button id="wpBtn-3-'+myWp.getNo()+which+'" class="' + colorClass + ' weapon-button" onclick="buttonHandler(3,'+findMyI(myWp) + ')">三階</button>';
+		if(max > 3)work += '<button id="wpBtn-4-'+myWp.getNo()+which+'" class="' + colorClass + ' weapon-button" onclick="buttonHandler(4,'+findMyI(myWp) + ')">四階</button>';
+		if(max > 4)work += '<button id="wpBtn-5-'+myWp.getNo()+which+'" class="' + colorClass + ' weapon-button" onclick="buttonHandler(5,'+findMyI(myWp) + ')">五階</button>';
 		work += '</div>';
 		return work;
 	}
