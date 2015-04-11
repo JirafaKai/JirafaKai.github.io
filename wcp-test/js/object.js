@@ -312,7 +312,14 @@ function weaponAttr(wpno,name1,name2,name3,name4,name5,nickname,star,type,phase,
 				return this.wpAttr.cri[index-1];
 				break;
 			case 'ADD':
-				return this.wpAttr.add[index-1];
+				var add = this.wpAttr.add[index-1];
+				var num = add.indexOf('L');
+				if(num != -1){
+					var frist = add.slice(0,num);
+					var second = add.slice(num,add.length);
+					return (frist + '<br />' + second);
+				}
+				return add;
 				break;
 			case 'ATTR':
 				return this.wpAttr.attr[index-1];
@@ -321,7 +328,7 @@ function weaponAttr(wpno,name1,name2,name3,name4,name5,nickname,star,type,phase,
 				return this.wpAttr.as[index-1];
 				break;
 			case 'DS':
-				return this.wpAttr.ds[index-1];
+				return this.wpAttr.ds[index-1].replace('；','<br />');
 				break;
 			default:
 				break;
