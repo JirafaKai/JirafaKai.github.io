@@ -155,22 +155,8 @@
 			+'<td id="wpStatus-6-'+myWp.getNo()+'big">'+myWp.getAttr('AS',myWp.getMax())+'</td>'
 			+'<td id="wpStatus-7-'+myWp.getNo()+'big">'+myWp.getAttr('DS',myWp.getMax())+'</td>'
 			+'</tr></table>'
-			+weaponbutton(myWp,'big') + '</div>'
+			+weaponButton(myWp,'big') + '</div>'
 		);
-	}
-	function weaponbutton(myWp,which){
-		var max = myWp.getMax();
-		var work = '';
-		if(which == 'big'){work += '<div class="weapon-button-group hidden-xs hidden-sm">'+'<button id="wpBtn-1-'+myWp.getNo()+'big" class="weapon-button" tabindex="0" onclick="buttonHandler(1,'+findMyI(myWp) + ')">一階</button>';}
-		else {work += '<div class="weapon-button-group hidden-lg hidden-md">'
-			+'<button id="wpBtn-1-'+myWp.getNo()+'" class="weapon-button" tabindex="0" onclick="buttonHandler(1,'+findMyI(myWp) + ')">一階</button>';}
-			
-		if(max > 1)work += '<button id="wpBtn-2-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(2,'+findMyI(myWp) + ')">二階</button>';
-		if(max > 2)work += '<button id="wpBtn-3-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(3,'+findMyI(myWp) + ')">三階</button>';
-		if(max > 3)work += '<button id="wpBtn-4-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(4,'+findMyI(myWp) + ')">改</button>';
-		if(max > 4)work += '<button id="wpBtn-5-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(5,'+findMyI(myWp) + ')">真</button>';
-		work += '</div>';
-		return work;
 	}
 	function weaponMore(target,myWp,color){
 		target.html(
@@ -194,8 +180,21 @@
 			+'<th class="th-s" style="background:'+color+'">DS</th>'
 			+'<td id="wpStatus-7-'+myWp.getNo()+'" colspan="4" class="ta-left">'+myWp.getAttr('DS',myWp.getMax())+'</td>'
 			+'</tr></table></div>'
-			+weaponbutton(myWp,'')
+			+weaponButton(myWp,'')
 		);
+	}
+	function weaponButton(myWp,which){
+		var max = myWp.getMax();
+		var work = '';
+		if(which == 'big')work += '<div class="weapon-button-group hidden-xs hidden-sm">';
+		else work += '<div class="weapon-button-group hidden-lg hidden-md">';
+		work +='<button id="wpBtn-1-'+myWp.getNo()+which+'" class="weapon-button" tabindex="0" onclick="buttonHandler(1,'+findMyI(myWp) + ')">一階</button>';
+		if(max > 1)work += '<button id="wpBtn-2-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(2,'+findMyI(myWp) + ')">二階</button>';
+		if(max > 2)work += '<button id="wpBtn-3-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(3,'+findMyI(myWp) + ')">三階</button>';
+		if(max > 3)work += '<button id="wpBtn-4-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(4,'+findMyI(myWp) + ')">改</button>';
+		if(max > 4)work += '<button id="wpBtn-5-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(5,'+findMyI(myWp) + ')">真</button>';
+		work += '</div>';
+		return work;
 	}
 	function intbtnactive(myWp){
 		$('#wpBtn-' + myWp.getMax() + '-' + myWp.getNo()).addClass("active");
