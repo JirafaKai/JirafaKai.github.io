@@ -50,7 +50,6 @@ https://docs.google.com/forms/d/1NJxcKOtlviztl54Em5esFJS3tejv-WGX2fYvH9azEqA/for
 <script>
 $(function(){
   $("#header").load("header.html"); 
-  setnavbtn();
 });
 </script>
 
@@ -209,6 +208,7 @@ $(function(){
 	var urlScript2 = "https://spreadsheets.google.com/feeds/list/1osCn09v241irWHcW2t21XxVjv41sSRMdb5rCduNG24I/1/public/values?alt=json";
 	$(document).ready(
 		function() {
+		setnavbtn();
 		loadcomment(urlScript2);
 		getData($("#overlay-loading"),urlScript);
 		setKey(document.getElementById("inputKeyword"));
