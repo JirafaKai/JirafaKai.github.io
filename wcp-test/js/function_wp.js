@@ -77,11 +77,14 @@
 		for(var n in keyword){
 			if(keyword[n] != ""){checknum2++;	// prevent 2 spaces together, cannot use keyword.length (num of element of keyword array)
 			for(var k=1;k<=5;k++){
-			if(weapon[i].getName(k).toLowerCase().indexOf(keyword[n].toLowerCase()) != -1) checknum++;}
+			var check = false;
+			if(weapon[i].getName(k).toLowerCase().indexOf(keyword[n].toLowerCase()) != -1) check = true;break;}
+			if(check == true)checknum++;
 			else if(weapon[i].getNickname().toLowerCase().indexOf(keyword[n].toLowerCase()) != -1) checknum++;
 			else if(weapon[i].getType().indexOf(keyword[n]) != -1) checknum++;
 			else if(weapon[i].getPhase().indexOf(keyword[n]) != -1) checknum++;
-			else if(weapon[i].getStar().indexOf(keyword[n]) != -1) checknum++;}
+			else if(weapon[i].getStar().indexOf(keyword[n]) != -1) checknum++;
+			}
 		}
 		if((checknum >= checknum2) && key.length != 0)
 			return true;
