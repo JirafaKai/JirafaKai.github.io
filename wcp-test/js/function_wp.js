@@ -136,7 +136,7 @@
 			+'<div id="wpName'+myWp.getNo()+'" class="weapon-name">'+myWp.getName(myWp.getMax())+'</div>'
 			+'<span class="weapon-nname">'+myWp.getNickname()+'</span>'
 			+'</div>'
-			+'<div style="z-index:999" class="float-r hidden-lg hidden-md">'
+			+'<div style="position:absolute;right:0;top:0;" class="hidden-lg hidden-md">'
 			+'<a href="#more-'+myWp.getNo()+'" data-toggle="collapse">更多</a>'
 			+'</div>'
 		);
