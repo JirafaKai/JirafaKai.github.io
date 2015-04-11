@@ -191,8 +191,8 @@
 		work +='<button id="wpBtn-1-'+myWp.getNo()+which+'" class="weapon-button" tabindex="0" onclick="buttonHandler(1,'+findMyI(myWp) + ')">一階</button>';
 		if(max > 1)work += '<button id="wpBtn-2-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(2,'+findMyI(myWp) + ')">二階</button>';
 		if(max > 2)work += '<button id="wpBtn-3-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(3,'+findMyI(myWp) + ')">三階</button>';
-		if(max > 3)work += '<button id="wpBtn-4-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(4,'+findMyI(myWp) + ')">改</button>';
-		if(max > 4)work += '<button id="wpBtn-5-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(5,'+findMyI(myWp) + ')">真</button>';
+		if(max > 3)work += '<button id="wpBtn-4-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(4,'+findMyI(myWp) + ')">四階</button>';
+		if(max > 4)work += '<button id="wpBtn-5-'+myWp.getNo()+which+'" class="weapon-button" onclick="buttonHandler(5,'+findMyI(myWp) + ')">五階</button>';
 		work += '</div>';
 		return work;
 	}
@@ -203,31 +203,29 @@
 	function buttonHandler(lv,i){
 		var myWp = weapon[i];
 		var wpNo = myWp.getNo();
-		var lvl = lv;
-		if(lv > myWp.getMax())lvl = myWp.getMax();
 		for (w=1;w<8;w++){
 			$('#wpBtn-' + w + '-' + wpNo).removeClass("active");
 			$('#wpBtn-' + w + '-'+ wpNo + 'big').removeClass("active");
 		}
-		$('#wpBtn-' + lvl + '-' + wpNo).addClass("active");
-		$('#wpBtn-' + lvl + '-'+ wpNo + 'big').addClass("active");
+		$('#wpBtn-' + lv + '-' + wpNo).addClass("active");
+		$('#wpBtn-' + lv + '-'+ wpNo + 'big').addClass("active");
 		
-		$('#weaponImg'+wpNo).attr("src",myWp.getImg(lvl));
-		$('#wpName' + wpNo).html(myWp.getName(lvl));
-		$('#wpStatus-1-' + wpNo + 'big').html(myWp.getAttr('ATK',lvl));
-		$('#wpStatus-2-' + wpNo + 'big').html(myWp.getAttr('DEF',lvl));
-		$('#wpStatus-3-' + wpNo + 'big').html(myWp.getAttr('CRI',lvl));
-		$('#wpStatus-4-' + wpNo + 'big').html(myWp.getAttr('ADD',lvl));
-		$('#wpStatus-5-' + wpNo + 'big').html(myWp.getAttr('ATTR',lvl));
-		$('#wpStatus-6-' + wpNo + 'big').html(myWp.getAttr('AS',lvl));
-		$('#wpStatus-7-' + wpNo + 'big').html(myWp.getAttr('DS',lvl));
-		$('#wpStatus-1-' + wpNo).html(myWp.getAttr('ATK',lvl));
-		$('#wpStatus-2-' + wpNo).html(myWp.getAttr('DEF',lvl));
-		$('#wpStatus-3-' + wpNo).html(myWp.getAttr('CRI',lvl));
-		$('#wpStatus-4-' + wpNo).html(myWp.getAttr('ADD',lvl));
-		$('#wpStatus-5-' + wpNo).html(myWp.getAttr('ATTR',lvl));
-		$('#wpStatus-6-' + wpNo).html(myWp.getAttr('AS',lvl));
-		$('#wpStatus-7-' + wpNo).html(myWp.getAttr('DS',lvl));
+		$('#weaponImg'+wpNo).attr("src",myWp.getImg(lv));
+		$('#wpName' + wpNo).html(myWp.getName(lv));
+		$('#wpStatus-1-' + wpNo + 'big').html(myWp.getAttr('ATK',lv));
+		$('#wpStatus-2-' + wpNo + 'big').html(myWp.getAttr('DEF',lv));
+		$('#wpStatus-3-' + wpNo + 'big').html(myWp.getAttr('CRI',lv));
+		$('#wpStatus-4-' + wpNo + 'big').html(myWp.getAttr('ADD',lv));
+		$('#wpStatus-5-' + wpNo + 'big').html(myWp.getAttr('ATTR',lv));
+		$('#wpStatus-6-' + wpNo + 'big').html(myWp.getAttr('AS',lv));
+		$('#wpStatus-7-' + wpNo + 'big').html(myWp.getAttr('DS',lv));
+		$('#wpStatus-1-' + wpNo).html(myWp.getAttr('ATK',lv));
+		$('#wpStatus-2-' + wpNo).html(myWp.getAttr('DEF',lv));
+		$('#wpStatus-3-' + wpNo).html(myWp.getAttr('CRI',lv));
+		$('#wpStatus-4-' + wpNo).html(myWp.getAttr('ADD',lv));
+		$('#wpStatus-5-' + wpNo).html(myWp.getAttr('ATTR',lv));
+		$('#wpStatus-6-' + wpNo).html(myWp.getAttr('AS',lv));
+		$('#wpStatus-7-' + wpNo).html(myWp.getAttr('DS',lv));
 	}
 	function findMyI(myWp){
 		for(var i in weapon){
