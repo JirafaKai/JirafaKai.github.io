@@ -1,0 +1,391 @@
+body{
+	color: #000305;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	font-family: serif,Microsoft JhengHei,sans-serif;
+	padding-top:60px;
+}
+
+#search-box{
+	margin-top:0;
+	margin-bottom:20px;
+}
+
+#overlay-loading {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background-color: rgba(0,0,0,0.5);
+}
+#overlay-loading-content{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 300px;
+	height: 100px;
+	text-align: center;
+	color: #fff;
+}
+
+
+
+.tag-label {background:#C74451;margin-right:.5em;color:#fff;padding:.2em .5em .2em .5em;}
+
+.inputComm {width:1000px;}
+.commTime {width:120px;}
+.commTd {word-wrap:break-word;word-break:break-all;}
+.spanTime {width:120px;background:#eeeeee;color:#000;padding:.2em .5em .2em .5em;}
+
+.img2dC {width:50%;}
+
+
+
+.bottom-line {
+	border-bottom:1px solid #dddddd;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.label-tag {
+	background:#000;
+	color:#fff;
+	padding:.2em .5em .2em .5em;
+}
+
+.img-icon {
+	max-width:75px;
+	min-width:70px;
+}
+
+.img-icon > a  > img {
+	height:65px;
+}
+
+.textJPname {
+	
+}
+
+.extend-panel {
+	padding-left:1em;
+	line-height:1.8em;
+	float:right;
+}
+
+.exteng-panel > a {
+	
+}
+
+.char-attr {
+	margin-top:1em;
+}
+
+.char-attr .panel-heading span:first-child,
+.spr-data .panel-heading span:first-child{
+	color:green;
+}
+
+.spr-data {
+	margin-top:0;
+}
+
+.calculator {
+	width:8em;
+	background:white;
+}
+
+.skill-table tr > td:first-child {
+	width:6em;
+}
+
+.skill-table span {
+	color:green;
+}
+
+.attr-tag {
+	display:inline-block;
+}
+
+.attr-tag span:first-child {
+	background:#dddddd;
+	border:1px solid #dddddd;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	text-align:center;
+	display: inline-block;
+	width:45px;
+}
+
+.attr-tag span:last-child {
+	border:1px solid #dddddd;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	border-left:none;
+	text-align:center;
+	display: inline-block;
+	width:50px;
+	margin-right:0.3em;
+}
+
+.no-margin-right {
+	margin-right:0;
+}
+
+.margin-bottom-small {
+	margin-bottom:1em;
+}
+
+.input-comment {
+	background:#f8f8f8;
+}
+
+.comment-date {
+	width:8em !important;
+}
+
+.comment-date  span {
+	background:#eeeeee;
+	padding:4px;
+}
+
+.attr-table-md td {
+	background:#f8f8f8;
+	border-left:1px solid white;
+	padding:.2em .5em .2em .5em;
+	min-width:5.5em;height:2.4em;
+}
+
+.attr-table-md td:first-child {
+	color:#fff;
+}
+
+.break-btn {
+	margin-top:.5em;
+	margin-bottom:1em;
+	padding-right:0.1em;
+}
+
+.break-btn button {
+}
+
+.site-comment-tag {
+}
+
+.comment-site-name {
+	border:1px solid #dddddd;
+	padding:.3em;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	display:inline-block;
+	margin-bottom:.2em;
+	background:#dddddd;
+	width:5.5em;
+	font-size:12px;
+	text-align:center;
+}
+
+.site-comment {
+	border:1px solid #dddddd;
+	padding:.3em;
+	padding-left:.5em;
+	border-left:none;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	display:inline-block;
+	margin-bottom:.3em;
+	width:2.5em;
+	text-align:left;
+	margin-right:.8em;
+	font-size:12px;
+}
+
+.well-no-margin-bottom {
+	margin-bottom:0 !important;
+}
+
+.span-inline-block {
+	display:inline-block;
+}
+
+/*    weapon.html    */
+.weapon-icon{
+	width:100px;
+	border:4px double #dedede;
+}
+.span-tag{
+	background:#e03d3e;
+	color:#fff;
+	padding:.2em .5em .2em .5em;
+}
+.weapon-simple-data{
+	top:0;
+	left:115px;
+	word-break:break-all;
+	word-wrap:break-word;
+	width:300px;
+}
+.weapon-name{
+	margin-top:5px;
+}
+.span-2-together{
+	margin-bottom:10px;
+}
+.span-2-together > span:first-child{
+	border:1px solid #00BFFF;
+	background:#00BFFF;
+	color:white;
+	padding:5px;
+	text-align:center;
+}
+.span-2-together > span:nth-child(2){
+	border:1px solid #00BFFF;
+	background:white;
+	padding:5px;
+	text-align:center;
+}
+.weapon-table{
+	word-wrap:break-word;
+	word-break:break-all;	
+}
+.th{
+	background:#e03d3e;
+	color:white;
+	height:30px;
+	text-align:center;
+	padding:5px !important;
+}
+.th-s{
+	background:#e03d3e;
+	color:white;
+	height:30px;
+	text-align:center;
+	padding:5px !important;
+}
+.weapon-table td{
+	text-align:center;
+	padding:5px !important;
+	word-wrap:break-word;
+	word-break:break-all;	 
+	vertical-align:middle !important;
+}
+.weapon-data-each{
+	margin-bottom:20px;
+	border-bottom:1px solid #dddddd;
+	overflow:hidden;
+	position:relative;
+}
+.weapon-more{
+	margin-top:10px;
+}
+
+@media screen and (max-width:550px){
+	.th, .th-s{
+		min-width:70px;
+		width:70px;
+	}
+	.weapon-simple-data{
+		width:230px;
+	}
+	.weapon-button-group{
+		float:left;
+		margin-left:5px;
+	}
+}
+/*     xs     */
+@media screen and (min-width:550px){
+	.th, .th-s{
+		min-width:100px;
+		width:100px;
+	}
+	.weapon-simple-data{
+		width:500px;
+	}
+	.weapon-button-group{
+		float:left;
+		margin-left:5px;
+	}
+}
+/*     sm     */
+@media screen and (min-width:768px){
+	.th, .th-s{
+		min-width:130px;
+		width:130px;
+	}
+	.weapon-simple-data{
+		width:992px;
+	}
+	.weapon-button-group{
+		float:left;
+		margin-left:5px;
+	}
+}
+/*     md     */
+@media screen and (min-width:992px){
+	.th{
+		min-width:40px;
+		width:40px;
+	}
+	.th-s {
+		min-width:160px;
+		width:180px;
+	}
+	.weapon-simple-data{
+		width:230px;
+	}
+	.weapon-button-group{
+		float:right;
+	}
+}
+/*     lg     */
+@media screen and (min-width:1200px){
+	.th{
+		min-width:40px;
+		width:50px;
+	}
+	.th-s {
+		min-width:200px;
+		width:230px;
+	}
+	.weapon-button-group{
+		float:right;
+	}
+}
+
+
+
+
+/*    button    */
+.weapon-button-group button{
+	border:1px solid #e03d3e;
+	color:#e03d3e;
+	font-size:10pt;
+	background: none;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:20px;
+	padding-right:20px;
+	margin-left:-5px;
+	margin-bottom:10px;
+	outline: 0;
+}
+.weapon-button-group button:first-child{
+	border-top-left-radius:30px;
+	border-bottom-left-radius:30px;
+}
+.weapon-button-group button:last-child{
+	border-top-right-radius:30px;
+	border-bottom-right-radius:30px;
+}
+.weapon-button-group button:hover,
+.weapon-button-group button:focus,
+.weapon-button-group button.active
+{
+	background:#e03d3e;
+	color:white;
+}
