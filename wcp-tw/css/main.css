@@ -289,8 +289,8 @@ body{
 
 @media screen and (max-width:550px){
 	.th, .th-s{
-		min-width:50px;
-		width:50px;
+		min-width:60px;
+		width:60px;
 	}
 	.weapon-simple-data{
 		width:230px;
@@ -303,8 +303,8 @@ body{
 /*     xs     */
 @media screen and (min-width:550px){
 	.th, .th-s{
-		min-width:50px;
-		width:50px;
+		min-width:60px;
+		width:60px;
 	}
 	.weapon-simple-data{
 		width:400px;
@@ -317,8 +317,8 @@ body{
 /*     sm     */
 @media screen and (min-width:768px){
 	.th, .th-s{
-		min-width:50px;
-		width:50px;
+		min-width:60px;
+		width:60px;
 	}
 	.weapon-simple-data{
 		width:500px;
