@@ -706,3 +706,7 @@
 			if ($('#weapon3').is(':checked')) $('#weapon3').attr('checked',false);
 		}
 	}
+	function setnavbtn(){
+		$('#navcharbtn').addClass("active");
+		$('#navweaponbtn').removeClass("active");
+	}

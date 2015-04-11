@@ -283,7 +283,13 @@ function weaponAttr(wpno,name1,name2,name3,name4,name5,nickname,star,type,phase,
 	this.wpPhase=phase;
 	this.wpImg=[src1,src2,src3];
 	this.wpAttr={atk:[atk1,atk2,atk3,atk4,atk5], def:[def1,def2,def3,def4,def5], cri:[cri1,cri2,cri3,cri4,cri5], add:[add1,add2,add3,add4,add5], attr:[attr1,attr2,attr3,attr4,attr5], as:[as1,as2,as3,as4,as5], ds:[ds1,ds2,ds3,ds4,ds5]};
-
+	this.getMax=function(){
+		if(this.getName(5) != '-')return 5;
+		else if(this.getName(4) != '-')return 4;
+		else if(this.getName(3) != '-')return 3;
+		else if(this.getName(2) != '-')return 2;
+		else if(this.getName(1) != '-')return 1;
+	}
 	this.getNo=function(){return this.wpNo;}
 	this.getName=function(index){return this.wpName[index-1];}
 	this.getNickname=function(){return this.wpNickname;}
