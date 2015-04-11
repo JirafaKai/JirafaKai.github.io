@@ -87,15 +87,16 @@
 	function checkpost(keyword,key,i){
 		var checknum = 0;
 		var checknum2 = 0;
+		
 		for(var n in keyword){
-			if(keyword[n] !== ""){checknum2++;	// prevent 2 spaces together, cannot use keyword.length (num of element of keyword array)
-			if(charactor[i].getJPname().toLowerCase().indexOf(keyword[n].toLowerCase()) !== -1) checknum++;    // !==-1 -> is match
-			if(charactor[i].getNickname().toLowerCase().indexOf(keyword[n].toLowerCase()) !== -1) checknum++;
-			if(charactor[i].getType().indexOf(keyword[n]) !== -1) checknum++;
-			if(charactor[i].getPhase().indexOf(keyword[n]) !== -1) checknum++;
-			if(charactor[i].getStar().indexOf(keyword[n]) !== -1) checknum++;}
+			if(keyword[n] != ""){checknum2++;	// prevent 2 spaces together, cannot use keyword.length (num of element of keyword array)
+			if(charactor[i].getJPname().toLowerCase().indexOf(keyword[n].toLowerCase()) != -1) checknum++;    // !==-1 -> is match
+			else if(charactor[i].getNickname().toLowerCase().indexOf(keyword[n].toLowerCase()) != -1) checknum++;
+			else if(charactor[i].getType().indexOf(keyword[n]) != -1) checknum++;
+			else if(charactor[i].getPhase().indexOf(keyword[n]) != -1) checknum++;
+			else if(charactor[i].getStar().indexOf(keyword[n]) != -1) checknum++;}
 		}
-		if((checknum >= checknum2) && key.length !== 0)
+		if((checknum >= checknum2) && key.length != 0)
 			return true;
 		else return false;
 	}
