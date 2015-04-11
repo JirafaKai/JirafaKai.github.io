@@ -147,7 +147,7 @@
 			+'<th class="th-s" style="background:'+color+'">AS</th>'
 			+'<th class="th-s" style="background:'+color+'">DS</th>'
 			+'</tr></thead>'
-			+'<tr><td id="wpStatus-1-'+myWp.getNo()+'big">'+myWp.getAttr('ATK',5)+'</td>'
+			+'<tr><td id="wpStatus-1-'+myWp.getNo()+'big">'+myWp.getAttr('ATK',myWp.getMax())+'</td>'
 			+'<td id="wpStatus-2-'+myWp.getNo()+'big">'+myWp.getAttr('DEF',myWp.getMax())+'</td>'
 			+'<td id="wpStatus-3-'+myWp.getNo()+'big">'+myWp.getAttr('CRI',myWp.getMax())+'</td>'
 			+'<td id="wpStatus-4-'+myWp.getNo()+'big">'+myWp.getAttr('ADD',myWp.getMax())+'</td>'
