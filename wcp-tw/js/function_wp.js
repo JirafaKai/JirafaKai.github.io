@@ -17,6 +17,8 @@
 					  JData.feed.entry[i].gsx$src1.$t,
 					  JData.feed.entry[i].gsx$src2.$t,
 					  JData.feed.entry[i].gsx$src3.$t,
+					  JData.feed.entry[i].gsx$ascomm.$t,
+					  JData.feed.entry[i].gsx$assp.$t,
 					  JData.feed.entry[i].gsx$atk1.$t,
 					  JData.feed.entry[i].gsx$def1.$t,
 					  JData.feed.entry[i].gsx$cri1.$t,
@@ -159,11 +161,46 @@
 			+'<td id="wpStatus-3-'+myWp.getNo()+'big">'+myWp.getAttr('CRI',myWp.getMax())+'</td>'
 			+'<td id="wpStatus-4-'+myWp.getNo()+'big">'+myWp.getAttr('ADD',myWp.getMax())+'</td>'
 			+'<td id="wpStatus-5-'+myWp.getNo()+'big">'+myWp.getAttr('ATTR',myWp.getMax())+'</td>'
-			+'<td id="wpStatus-6-'+myWp.getNo()+'big">'+myWp.getAttr('AS',myWp.getMax())+'</td>'
+			+'<td id="wpStatus-6-'+myWp.getNo()+'big">'+genASeffect(myWp,myWp.getMax())+'</td>'
 			+'<td id="wpStatus-7-'+myWp.getNo()+'big">'+myWp.getAttr('DS',myWp.getMax())+'</td>'
 			+'</tr></table>'
 			+weaponButton(myWp,'big') + '</div>'
 		);
+	}
+	function genASeffect(myWp,lv){
+		var rString="";
+		if (myWp.getAttr('AS',lv)=='-')
+			return '-';
+		rString ='<span class="mytooltip">'
+				+'<span class="mytooltip-item">'
+				+myWp.getAttr('AS',lv)
+				+'</span>'
+				+'<span class="mytooltip-content clearfix">'
+				+'<span class="mytooltip-text">'
+				+myWp.getAScomm()
+				+'<br/><span class="sp-span">'
+				+'消費SP：'+myWp.getASsp()
+				+'</span>'
+				+'</span>'
+				+'</span>'
+				+'</span>';
+		return rString;
+	}
+	function genASsmall(myWp,lv){
+		var rString;
+		if (myWp.getAttr('AS',lv)=='-')
+			return '-';
+		
+		rString='<span class="AS-small-title">'
+				+myWp.getAttr('AS',lv)
+				+'</span>'
+				+'<br/><span>'
+				+myWp.getAScomm()
+				+'</span>'
+				+'<br/><span class="sp-span">'
+				+'SP消費：'+myWp.getASsp()
+				+'</span>'
+		return rString;
 	}
 	function weaponMore(target,myWp,color){
 		target.html(
@@ -182,7 +219,7 @@
 			+'<td id="wpStatus-5-'+myWp.getNo()+'">'+myWp.getAttr('ATTR',myWp.getMax())+'</td>'
 			+'</tr><tr>'
 			+'<th class="th-s" style="background:'+color+'">AS</th>'
-			+'<td id="wpStatus-6-'+myWp.getNo()+'" colspan="4" class="ta-left">'+myWp.getAttr('AS',myWp.getMax())+'</td>'
+			+'<td id="wpStatus-6-'+myWp.getNo()+'" colspan="4" class="ta-left">'+genASsmall(myWp,myWp.getMax(),color)+'</td>'
 			+'</tr><tr>'
 			+'<th class="th-s" style="background:'+color+'">DS</th>'
 			+'<td id="wpStatus-7-'+myWp.getNo()+'" colspan="4" class="ta-left">'+myWp.getAttr('DS',myWp.getMax())+'</td>'
@@ -234,14 +271,14 @@
 		$('#wpStatus-3-' + wpNo + 'big').html(myWp.getAttr('CRI',lv));
 		$('#wpStatus-4-' + wpNo + 'big').html(myWp.getAttr('ADD',lv));
 		$('#wpStatus-5-' + wpNo + 'big').html(myWp.getAttr('ATTR',lv));
-		$('#wpStatus-6-' + wpNo + 'big').html(myWp.getAttr('AS',lv));
+		$('#wpStatus-6-' + wpNo + 'big').html(genASeffect(myWp,lv));
 		$('#wpStatus-7-' + wpNo + 'big').html(myWp.getAttr('DS',lv));
 		$('#wpStatus-1-' + wpNo).html(myWp.getAttr('ATK',lv));
 		$('#wpStatus-2-' + wpNo).html(myWp.getAttr('DEF',lv));
 		$('#wpStatus-3-' + wpNo).html(myWp.getAttr('CRI',lv));
 		$('#wpStatus-4-' + wpNo).html(myWp.getAttr('ADD',lv));
 		$('#wpStatus-5-' + wpNo).html(myWp.getAttr('ATTR',lv));
-		$('#wpStatus-6-' + wpNo).html(myWp.getAttr('AS',lv));
+		$('#wpStatus-6-' + wpNo).html(genASsmall(myWp,lv));
 		$('#wpStatus-7-' + wpNo).html(myWp.getAttr('DS',lv));
 	}
 	function findMyI(myWp){
