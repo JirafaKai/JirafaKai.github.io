@@ -18,7 +18,7 @@ body{
 	bottom: 0;
 	left: 0;
 	right: 0;
-	z-index: 100;
+	z-index: 50;
 	background-color: rgba(0,0,0,0.5);
 }
 #overlay-loading-content{
@@ -228,7 +228,7 @@ body{
 }
 .weapon-simple-data{
 	top:0;
-	left:115px;
+	left:110px;
 	word-break:break-all;
 	word-wrap:break-word;
 	width:300px;
@@ -280,7 +280,7 @@ body{
 .weapon-data-each{
 	margin-bottom:20px;
 	border-bottom:1px solid #dddddd;
-	overflow:hidden;
+	overflow:initial;
 	position:relative;
 }
 .weapon-more{
@@ -289,8 +289,8 @@ body{
 
 @media screen and (max-width:550px){
 	.th, .th-s{
-		min-width:50px;
-		width:50px;
+		min-width:55px;
+		width:55px;
 	}
 	.weapon-simple-data{
 		width:230px;
@@ -299,12 +299,15 @@ body{
 		float:left;
 		margin-left:5px;
 	}
+	.weapon-data-each{
+		overflow:hidden;
+	}
 }
 /*     xs     */
 @media screen and (min-width:550px){
 	.th, .th-s{
-		min-width:50px;
-		width:50px;
+		min-width:60px;
+		width:60px;
 	}
 	.weapon-simple-data{
 		width:400px;
@@ -313,12 +316,15 @@ body{
 		float:left;
 		margin-left:5px;
 	}
+	.weapon-data-each{
+		overflow:hidden;
+	}
 }
 /*     sm     */
 @media screen and (min-width:768px){
 	.th, .th-s{
-		min-width:50px;
-		width:50px;
+		min-width:130px;
+		width:130px;
 	}
 	.weapon-simple-data{
 		width:500px;
@@ -327,12 +333,15 @@ body{
 		float:left;
 		margin-left:5px;
 	}
+	.weapon-data-each{
+		overflow:hidden;
+	}
 }
 /*     md     */
 @media screen and (min-width:992px){
 	.th{
-		min-width:40px;
-		width:40px;
+		min-width:42px;
+		width:42px;
 	}
 	.th-s {
 		min-width:160px;
@@ -343,6 +352,20 @@ body{
 	}
 	.weapon-button-group{
 		float:right;
+	}
+	.weapon-data-each{
+		min-height:140px;
+	}	
+	.weapon-attr{
+		position:absolute;
+		top:0;
+		right:0;
+	}
+	.weapon-table td{
+		height:60px;
+	}
+	.weapon-data-each{
+		overflow:initial;
 	}
 }
 /*     lg     */
@@ -358,6 +381,20 @@ body{
 	.weapon-button-group{
 		float:right;
 	}
+	.weapon-data-each{
+		min-height:140px;
+	}	
+	.weapon-attr{
+		position:absolute;
+		top:0;
+		right:0;
+	}
+	.weapon-table td{
+		height:60px;
+	}
+	.weapon-data-each{
+		overflow:initial;
+	}
 }
 
 
@@ -371,8 +408,8 @@ body{
 	background: none;
 	padding-top:3px;
 	padding-bottom:3px;
-	padding-left:20px;
-	padding-right:20px;
+	padding-left:13px;
+	padding-right:13px;
 	margin-bottom:20px;
 	border-left:none;
 	outline: 0;
@@ -401,3 +438,83 @@ body{
 .button-pink:hover,.button-pink.active,.button-pink:focus{color:white;background:#e4688c;}
 .button-purple:hover,.button-purple.active,.button-purple:focus{color:white;background:#c056dc;}
 .button-orange:hover,.button-orange.active,.button-orange:focus{color:white;background:#fc6d21;}
+
+
+
+/* tooltip @ skill details */
+.mytooltip{
+	display:inline;
+	position:relative;
+	z-index:999;
+}
+
+.mytooltip-item{
+	text-decoration:underline;
+	cursor:pointer;
+	position:relative;
+	z-index:100;
+	display:inline-block;
+	font-weight:700;
+	-webkit-transition:background-color 0.3s, color 0.3s, -webkit-transform 0.3s;
+	transition:background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.mytooltip:hover .mytooltip-item{
+	text-decoration:none;
+	color:#fff;
+	-webkit-transform:translate3d(0,0.5em,0);
+	transform:translate3d(0,-4em,0);
+}
+
+.mytooltip-content{
+	background:#f8f8f8;
+	color:#000;
+	position:absolute;
+	z-index:99;
+	width:360px;
+	left:50%;
+	top:-420%;
+	margin-left:-180px;
+	text-align:left;
+	opacity:0;
+	font-size:1em;
+	line-height:1.5;
+	padding:1.5em;
+	border-top:35px solid #2a3035;
+	cursor:default;
+	pointer-events:none;
+	border-radius:5px;
+	-webkit-transform:translate3d(0,.5em,0);
+	transform:translate3d(0,.5em,0);
+	-webkit-transition:opacity .3s, -webkit-transform .3s;
+	transition:opacity .3s, transform .3s;
+}
+
+.mytooltip-text{
+	opacity:0;
+	-webkit-transform:translate3d(0,-1.5em,0);
+	transform:translate3d(0,-1.5em,0);
+	-webkit-transition:opacity .3s, -webkit-transform .3s;
+	transition: opacity .3s, transform .3s;
+}
+
+.mytooltip:hover .mytooltip-content,
+.mytooltip:hover .mytooltip-text{
+	pointer-events:auto;
+	opacity:1;
+	-webkit-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+}
+.sp-span{
+	font-size:.8em;
+	color:green;
+	float:right;
+}
+.AS-small-title{
+	font-weight:bold;
+	color:black;
+}
+
+.clearfix{
+	overflow:auto;
+}

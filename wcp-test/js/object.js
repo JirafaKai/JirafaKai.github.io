@@ -274,7 +274,7 @@ function commAttr (charNo, comment, iTime) {
 			return this.comment;
 		}
 	}
-function weaponAttr(wpno,name1,name2,name3,name4,name5,nickname,star,type,phase,src1,src2,src3,atk1,def1,cri1,add1,attr1,as1,ds1,atk2,def2,cri2,add2,attr2,as2,ds2,atk3,def3,cri3,add3,attr3,as3,ds3,atk4,def4,cri4,add4,attr4,as4,ds4,atk5,def5,cri5,add5,attr5,as5,ds5){
+function weaponAttr(wpno,name1,name2,name3,name4,name5,nickname,star,type,phase,src1,src2,src3,asComm,asSp,atk1,def1,cri1,add1,attr1,as1,ds1,atk2,def2,cri2,add2,attr2,as2,ds2,atk3,def3,cri3,add3,attr3,as3,ds3,atk4,def4,cri4,add4,attr4,as4,ds4,atk5,def5,cri5,add5,attr5,as5,ds5){
 	this.wpNo = wpno;
 	this.wpName=[name1,name2,name3,name4,name5];
 	this.wpNickname=nickname;
@@ -282,7 +282,16 @@ function weaponAttr(wpno,name1,name2,name3,name4,name5,nickname,star,type,phase,
 	this.wpType=type;
 	this.wpPhase=phase;
 	this.wpImg=[src1,src2,src3];
+	this.asComm=asComm;
+	this.asSp=asSp;
 	this.wpAttr={atk:[atk1,atk2,atk3,atk4,atk5], def:[def1,def2,def3,def4,def5], cri:[cri1,cri2,cri3,cri4,cri5], add:[add1,add2,add3,add4,add5], attr:[attr1,attr2,attr3,attr4,attr5], as:[as1,as2,as3,as4,as5], ds:[ds1,ds2,ds3,ds4,ds5]};
+	
+	this.getAScomm=function(){
+		return this.asComm;
+	}
+	this.getASsp=function(){
+		return this.asSp;
+	}
 	this.getMax=function(){
 		if(this.getName(5) != '-')return 5;
 		else if(this.getName(4) != '-')return 4;
