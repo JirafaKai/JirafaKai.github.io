@@ -186,12 +186,12 @@
 				+'</span>';
 		return rString;
 	}
-	function genASsmall(myWp,lv,color){
+	function genASsmall(myWp,lv){
 		var rString;
 		if (myWp.getAttr('AS',lv)=='-')
 			return '-';
 		
-		rString='<span class="AS-small-title" style="color:'+color+';">'
+		rString='<span class="AS-small-title">'
 				+myWp.getAttr('AS',lv)
 				+'</span>'
 				+'<br/><span>'
@@ -278,7 +278,7 @@
 		$('#wpStatus-3-' + wpNo).html(myWp.getAttr('CRI',lv));
 		$('#wpStatus-4-' + wpNo).html(myWp.getAttr('ADD',lv));
 		$('#wpStatus-5-' + wpNo).html(myWp.getAttr('ATTR',lv));
-		$('#wpStatus-6-' + wpNo).html(myWp.getAttr('AS',lv));
+		$('#wpStatus-6-' + wpNo).html(genASsmall(myWp,lv));
 		$('#wpStatus-7-' + wpNo).html(myWp.getAttr('DS',lv));
 	}
 	function findMyI(myWp){
