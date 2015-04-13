@@ -382,7 +382,7 @@ body{
 		overflow:initial;
 	}
 	.char-attr-wrapper{
-		width:500px;
+		width:700px;
 	}
 }
 /*     lg     */
@@ -411,6 +411,9 @@ body{
 	}
 	.weapon-data-each{
 		overflow:initial;
+	}
+	.char-attr-wrapper{
+		width:700px;
 	}
 }
 

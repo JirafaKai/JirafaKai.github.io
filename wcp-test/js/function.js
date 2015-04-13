@@ -210,7 +210,7 @@
 	}
 	function charShowStatus(target,myChar,color){
 		target.append(
-			'<div class="char-attr-wrapper" col-md-8">'
+			'<div class="char-attr-wrapper col-md-8">'
 			+'<div class="pull-right extend-panel text-right">'
 			+'<a href="#more' + myChar.getCharNo() + '" data-toggle="collapse">更多</a><br/>'
 			+'<a href="#comment' + myChar.getCharNo() + '" data-toggle="collapse">評價</a><br/>'
