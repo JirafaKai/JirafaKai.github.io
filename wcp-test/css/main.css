@@ -382,7 +382,8 @@ body{
 		overflow:initial;
 	}
 	.char-attr-wrapper{
-		width:700px;
+		width:650px;
+		float:right;
 	}
 }
 /*     lg     */
@@ -414,6 +415,7 @@ body{
 	}
 	.char-attr-wrapper{
 		width:700px;
+		float:right; 
 	}
 }
 
