@@ -415,7 +415,7 @@ body{
 	}
 	.char-attr-wrapper{
 		width:700px !important;
-		float:right; 
+		float:right !important; 
 	}
 }
 
