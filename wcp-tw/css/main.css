@@ -81,7 +81,10 @@ body{
 .exteng-panel > a {
 	
 }
-
+.char-attr-wrapper{
+	float:right;
+	width:700px;
+}
 .char-attr {
 	margin-top:1em;
 }
@@ -168,7 +171,6 @@ body{
 .break-btn {
 	margin-top:.5em;
 	margin-bottom:1em;
-	padding-right:0.1em;
 }
 
 .break-btn button {
@@ -302,6 +304,10 @@ body{
 	.weapon-data-each{
 		overflow:hidden;
 	}
+	.char-attr-wrapper{
+		width:auto;
+		float:initial;
+	}
 }
 /*     xs     */
 @media screen and (min-width:550px){
@@ -319,6 +325,10 @@ body{
 	.weapon-data-each{
 		overflow:hidden;
 	}
+	.char-attr-wrapper{
+		width:auto;
+		float:initial;
+	}
 }
 /*     sm     */
 @media screen and (min-width:768px){
@@ -335,6 +345,10 @@ body{
 	}
 	.weapon-data-each{
 		overflow:hidden;
+	}
+	.char-attr-wrapper{
+		width:auto;
+		float:initial;
 	}
 }
 /*     md     */
@@ -367,6 +381,10 @@ body{
 	.weapon-data-each{
 		overflow:initial;
 	}
+	.char-attr-wrapper{
+		width:650px !important;
+		float:right;
+	}
 }
 /*     lg     */
 @media screen and (min-width:1200px){
@@ -394,6 +412,10 @@ body{
 	}
 	.weapon-data-each{
 		overflow:initial;
+	}
+	.char-attr-wrapper{
+		width:700px !important;
+		float:right !important; 
 	}
 }
 
