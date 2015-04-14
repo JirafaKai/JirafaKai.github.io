@@ -116,8 +116,9 @@ function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, s
 	  }
 	  
 	  //計算各情況下的SP
-	  this.calSP = function (breakTime, bed, arrow, arrowLV, magic, magicLV, weapon3, weapon5) {
+	  this.calSP = function (breakTime, bed, fast, arrow, arrowLV, magic, magicLV, weapon3, weapon5) {
 		  var bedA		= 3*0.01;
+		  var fastA		= 3*0.01;
 		  var arrowA	= 1.5*2*0.01;
 		  var magicA	= 3.5*2*0.01;
 		  var weapon3A	= 3*0.01;
@@ -125,6 +126,7 @@ function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, s
 		  var dsA		= this.getSPaddition()*0.01;
 		  
 		  if (!bed) bedA = 0;
+		  if (!fast) fastA = 0;
 		  if (!weapon3) weapon3A = 0;
 		  if (!weapon5) weapon5A = 0;
 		  if (!arrow) arrowA = 0;
@@ -137,7 +139,7 @@ function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, s
 		  
 		  SPoriginal = this.getOriginalSP(breakTime);
 		  
-		  SPresult = SPoriginal*(1+dsA+weapon3A+weapon5A)*(1+bedA+arrowA+magicA);
+		  SPresult = SPoriginal*(1+dsA+weapon3A+weapon5A)*(1+bedA+fastA+arrowA+magicA);
 		  //alert(SPresult);
 		  return Math.floor(SPresult);
 		  

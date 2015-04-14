@@ -334,6 +334,7 @@
 		if (status==0)
 		{
 			$('#sheepBed').attr('checked', false);
+			$('#fastA').attr('checked', false);
 			$('#breakthrough').val('0');
 			$('#arrow1').val('0');
 			$('#arrow2').val('0');
@@ -354,14 +355,14 @@
 		var totalSP = 0;
 		var baseCorr = 0;
 		var bedA = 0;
-		// var fastA = 0;
+		var fastA = 0;
 		var weaponA = 0;
 		var SPR = 0;
 		var originalSP = 0;
 		
 		var breakthrough = document.getElementById('breakthrough').value;
 		var sheepBed = document.getElementById('sheepBed').value;
-		// var fastDJ = document.getElementById('fastDJ').value;
+		var fastDJ = document.getElementById('fastDJ').value;
 		var arrow1 = document.getElementById('arrow1').value;
 		var arrow2 = document.getElementById('arrow2').value;
 		var magic1 = document.getElementById('magic1').value;
@@ -385,12 +386,12 @@
 			bedA = 0;
 			//$('#calAns').append('-sheepBed unchecked' + bedA + '<br/>');
 		}
-		// if ($('#fastDJ')).is(':checked')){
-			// fastA = 0.03;
-		// }
-		// else{
-			// fastA = 0;
-		// }
+		if ($('#fastDJ').is(':checked')){
+			fastA = 0.03;
+		}
+		else{
+			fastA = 0;
+		}
 		if ($('#weapon3').is(':checked')) {
 			weaponA = 3*0.01;
 		}
@@ -432,7 +433,7 @@
 		
 		originalSP = totalSP/(1+checkDS(i))*(1+weaponA+checkDS(i));
 		
-		// totalSP = Math.floor(originalSP*(1+bedA+fastA+calArrowA(arrow1)+calArrowA(arrow2)+calMagicA(magic1)+calMagicA(magic2)));
+		totalSP = Math.floor(originalSP*(1+bedA+fastA+calArrowA(arrow1)+calArrowA(arrow2)+calMagicA(magic1)+calMagicA(magic2)));
 
 		$('#calAns').append('<span style="font-size:18px;text-align:right;">SP = </span>')
 		$('#calAns').append('<span style="font-size:18px;">' + totalSP + '</span>');

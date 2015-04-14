@@ -334,6 +334,7 @@
 		if (status==0)
 		{
 			$('#sheepBed').attr('checked', false);
+			$('#fastA').attr('checked', false);
 			$('#breakthrough').val('0');
 			$('#arrow1').val('0');
 			$('#arrow2').val('0');
@@ -354,12 +355,14 @@
 		var totalSP = 0;
 		var baseCorr = 0;
 		var bedA = 0;
+		var fastA = 0;
 		var weaponA = 0;
 		var SPR = 0;
 		var originalSP = 0;
 		
 		var breakthrough = document.getElementById('breakthrough').value;
 		var sheepBed = document.getElementById('sheepBed').value;
+		var fastDJ = document.getElementById('fastDJ').value;
 		var arrow1 = document.getElementById('arrow1').value;
 		var arrow2 = document.getElementById('arrow2').value;
 		var magic1 = document.getElementById('magic1').value;
@@ -383,7 +386,12 @@
 			bedA = 0;
 			//$('#calAns').append('-sheepBed unchecked' + bedA + '<br/>');
 		}
-		
+		if ($('#fastDJ').is(':checked')){
+			fastA = 0.03;
+		}
+		else{
+			fastA = 0;
+		}
 		if ($('#weapon3').is(':checked')) {
 			weaponA = 3*0.01;
 		}
@@ -425,7 +433,7 @@
 		
 		originalSP = totalSP/(1+checkDS(i))*(1+weaponA+checkDS(i));
 		
-		totalSP = Math.floor(originalSP*(1+bedA+calArrowA(arrow1)+calArrowA(arrow2)+calMagicA(magic1)+calMagicA(magic2)));
+		totalSP = Math.floor(originalSP*(1+bedA+fastA+calArrowA(arrow1)+calArrowA(arrow2)+calMagicA(magic1)+calMagicA(magic2)));
 
 		$('#calAns').append('<span style="font-size:18px;text-align:right;">SP = </span>')
 		$('#calAns').append('<span style="font-size:18px;">' + totalSP + '</span>');
@@ -441,16 +449,38 @@
 		var firstBreak = 0;
 		var firstBreakNum = 0;
 		var nullFlag = true;
-		//function calSP (breakTime, bed, arrow, arrowLV, magic, magicLV, weapon3, weapon5)
+		//function calSP (breakTime, bed, fast, arrow, arrowLV, magic, magicLV, weapon3, weapon5)
+		
+		//羊床 or 音速*
+		A = calSPR(myChar.calSP(0,true,false,false,false,false,false,false,false),myChar.getType());
+		B = calSPR(myChar.getAttr('SP',0),myChar.getType());
+		if (A > B && A > firstBreak) {
+			if (!firstFlag) SPRcomment += '<br/>';
+			firstFlag = false;
+			SPRcomment += '羊床/音速 = 回' + A + '；';
+			firstBreak = A;
+			nullFlag = false;
+		}
+		
+		//羊床 + 音速* 
+		A = calSPR(myChar.calSP(0,true,true,false,false,false,false,false,false),myChar.getType());
+		B = calSPR(myChar.getAttr('SP',0),myChar.getType());
+		if (A > B && A > firstBreak) {
+			if (!firstFlag) SPRcomment += '<br/>';
+			firstFlag = false;
+			SPRcomment += '羊床 + 音速 = 回' + A + '；';
+			firstBreak = A;
+			nullFlag = false;
+		}
 		
 		//突破
 		for (k=1;k<5;k++){
-			A = calSPR(myChar.calSP(k,false,false,false,false,false,false,false),myChar.getType());
+			A = calSPR(myChar.calSP(k,false,false,false,false,false,false,false,false),myChar.getType());
 			B = calSPR(myChar.getAttr('SP',0),myChar.getType());
-			if (A > B) {
+			if (A > B && A > firstBreak) {
 				if (!firstFlag) SPRcomment += '<br/>';
 				firstFlag = false;
-				SPRcomment += k + '突回' + A + '；';
+				SPRcomment += k + '突 = 回' + A + '；';
 				firstBreak = A;
 				firstBreakNum = k;
 				nullFlag = false;
@@ -458,25 +488,14 @@
 			}
 		}
 		
-		//羊床
-		A = calSPR(myChar.calSP(0,true,false,false,false,false,false,false),myChar.getType());
-		B = calSPR(myChar.getAttr('SP',0),myChar.getType());
-		if (A > B) {
-			if (!firstFlag) SPRcomment += '<br/>';
-			firstFlag = false;
-			SPRcomment += '羊床 = 回' + A + '；';
-			firstBreak = A;
-			nullFlag = false;
-		}
-		
-		//突破 + 羊床
+		//突破 + 羊床 or 音速*
 		for (k=1;k<5;k++){
-			A = calSPR(myChar.calSP(k,true,false,false,false,false,false,false),myChar.getType());
+			A = calSPR(myChar.calSP(k,true,false,false,false,false,false,false,false),myChar.getType());
 			B = calSPR(myChar.getAttr('SP',0),myChar.getType());
 			if (A > B && (A > firstBreak || k < firstBreakNum)) {
 				if (!firstFlag) SPRcomment += '<br/>';
 				firstFlag = false;
-				SPRcomment += k + '突 + 羊床 = 回' + A + '；';
+				SPRcomment += k + '突 + 羊床/音速 = 回' + A + '；';
 				if (A > firstBreak) firstBreak = A;
 				if (k < firstBreakNum) firstBreakNum = k;
 				nullFlag = false;
@@ -484,20 +503,33 @@
 			}
 		}
 		
-		//突破 + 羊床 + 研所
+		//突破 + 羊床 + 音速*
+		for (k=1;k<5;k++){
+			A = calSPR(myChar.calSP(k,true,true,false,false,false,false,false,false),myChar.getType());
+			B = calSPR(myChar.getAttr('SP',0),myChar.getType());
+			if (A > B && (A > firstBreak || k < firstBreakNum)) {
+				if (!firstFlag) SPRcomment += '<br/>';
+				firstFlag = false;
+				SPRcomment += k + '突 + 羊床 + 音速 = 回' + A + '；';
+				if (A > firstBreak) firstBreak = A;
+				if (k < firstBreakNum) firstBreakNum = k;
+				nullFlag = false;
+				break;
+			}
+		}
+		
+		//突破 + 羊床 + 音速* + 研所
 		for (k=1;k<5;k++){
 			if (myChar.getType()=='弓')
-				A = calSPR(myChar.calSP(k,true,true,15,false,false,false,false),myChar.getType());
+				A = calSPR(myChar.calSP(k,true,true,true,15,false,false,false,false),myChar.getType());
 			else if (myChar.getType()=='法')
-				A = calSPR(myChar.calSP(k,true,false,false,true,15,false,false),myChar.getType());
+				A = calSPR(myChar.calSP(k,true,true,false,false,true,15,false,false),myChar.getType());
 			else break;
 			B = calSPR(myChar.getAttr('SP',0),myChar.getType());
-			
-			
 			if (A > B && (A > firstBreak || k < firstBreakNum)) {
 				if (!firstFlag) SPRcomment += '<br/>';
 				firstFlag = false;
-				SPRcomment += k + '突 + 羊床 + 研究所 = 回' + A + '；';
+				SPRcomment += k + '突 + 羊床 + 音速 + 研究所 = 回' + A + '；';
 				if (A > firstBreak) firstBreak = A;
 				if (k < firstBreakNum) firstBreakNum = k;
 				nullFlag = false;
@@ -505,26 +537,26 @@
 			}
 		}
 		
-		//突破 + 羊床 + 研所 + 3%
+		//突破 + 羊床 + 音速* + 研所 + 3%
 		for (k=1;k<5;k++){
 			var tmp = '';
 			if (myChar.getType()=='弓') {
-				A = calSPR(myChar.calSP(k,true,true,15,false,false,true,false),myChar.getType());
+				A = calSPR(myChar.calSP(k,true,true,true,15,false,false,true,false),myChar.getType());
 				tmp = '+ 研究所 ';
 			}
 			else if (myChar.getType()=='法') {
-				A = calSPR(myChar.calSP(k,true,false,false,true,15,true,false),myChar.getType());
+				A = calSPR(myChar.calSP(k,true,true,false,false,true,15,true,false),myChar.getType());
 				tmp = '+ 研究所 ';
 			}
 			else if (myChar.getType()=='雙刀')
 				break;
 			else 
-				A = calSPR(myChar.calSP(k,true,false,false,false,false,true,false),myChar.getType());
+				A = calSPR(myChar.calSP(k,true,true,false,false,false,false,true,false),myChar.getType());
 			B = calSPR(myChar.getAttr('SP',0),myChar.getType());
 			if (A > B && (A > firstBreak || k < firstBreakNum)) {
 				if (!firstFlag) SPRcomment += '<br/>';
 				firstFlag = false;
-				SPRcomment += k + '突 + 羊床 ' + tmp + '+ 武器3% = 回' + A + '；';
+				SPRcomment += k + '突 + 羊床 + 音速 ' + tmp + '+ 武器3% = 回' + A + '；';
 				if (A > firstBreak) firstBreak = A;
 				if (k < firstBreakNum) firstBreakNum = k;
 				nullFlag = false;
@@ -532,22 +564,22 @@
 			}
 		}
 		
-		//突破 + 羊床 + 研所 + 5%
+		//突破 + 羊床 + 音速* + 研所 + 5%
 		for (k=1;k<5;k++){
 			var tmp = '';
 			if (myChar.getType()=='弓' || myChar.getType()=='斧' || myChar.getType()=='雙刀')  //無5%武器
 				break;
 			else if (myChar.getType()=='法') {
-				A = calSPR(myChar.calSP(k,true,false,false,true,15,false,true),myChar.getType());
+				A = calSPR(myChar.calSP(k,true,true,false,false,true,15,false,true),myChar.getType());
 				tmp = '+ 研究所 ';
 			}
 			else 
-				A = calSPR(myChar.calSP(k,true,false,false,false,false,false,true),myChar.getType());
+				A = calSPR(myChar.calSP(k,true,true,false,false,false,false,false,true),myChar.getType());
 			B = calSPR(myChar.getAttr('SP',0),myChar.getType());
 			if (A > B && (A > firstBreak || k < firstBreakNum)) {
 				if (!firstFlag) SPRcomment += '<br/>';
 				firstFlag = false;
-				SPRcomment += k + '突 + 羊床 ' + tmp + '+ 武器5% = 回' + A + '；';
+				SPRcomment += k + '突 + 羊床 + 音速 ' + tmp + '+ 武器5% = 回' + A + '；';
 				if (A > firstBreak) firstBreak = A;
 				if (k < firstBreakNum) firstBreakNum = k;
 				nullFlag = false;
