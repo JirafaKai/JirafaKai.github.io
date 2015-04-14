@@ -354,12 +354,14 @@
 		var totalSP = 0;
 		var baseCorr = 0;
 		var bedA = 0;
+		// var fastA = 0;
 		var weaponA = 0;
 		var SPR = 0;
 		var originalSP = 0;
 		
 		var breakthrough = document.getElementById('breakthrough').value;
 		var sheepBed = document.getElementById('sheepBed').value;
+		// var fastDJ = document.getElementById('fastDJ').value;
 		var arrow1 = document.getElementById('arrow1').value;
 		var arrow2 = document.getElementById('arrow2').value;
 		var magic1 = document.getElementById('magic1').value;
@@ -383,7 +385,12 @@
 			bedA = 0;
 			//$('#calAns').append('-sheepBed unchecked' + bedA + '<br/>');
 		}
-		
+		// if ($('#fastDJ')).is(':checked')){
+			// fastA = 0.03;
+		// }
+		// else{
+			// fastA = 0;
+		// }
 		if ($('#weapon3').is(':checked')) {
 			weaponA = 3*0.01;
 		}
@@ -425,7 +432,7 @@
 		
 		originalSP = totalSP/(1+checkDS(i))*(1+weaponA+checkDS(i));
 		
-		totalSP = Math.floor(originalSP*(1+bedA+calArrowA(arrow1)+calArrowA(arrow2)+calMagicA(magic1)+calMagicA(magic2)));
+		// totalSP = Math.floor(originalSP*(1+bedA+fastA+calArrowA(arrow1)+calArrowA(arrow2)+calMagicA(magic1)+calMagicA(magic2)));
 
 		$('#calAns').append('<span style="font-size:18px;text-align:right;">SP = </span>')
 		$('#calAns').append('<span style="font-size:18px;">' + totalSP + '</span>');
@@ -458,7 +465,7 @@
 			}
 		}
 		
-		//羊床
+		//羊床 or 音速*
 		A = calSPR(myChar.calSP(0,true,false,false,false,false,false,false),myChar.getType());
 		B = calSPR(myChar.getAttr('SP',0),myChar.getType());
 		if (A > B) {
@@ -469,7 +476,9 @@
 			nullFlag = false;
 		}
 		
-		//突破 + 羊床
+		//羊床 + 音速* 
+		
+		//突破 + 羊床 or 音速*
 		for (k=1;k<5;k++){
 			A = calSPR(myChar.calSP(k,true,false,false,false,false,false,false),myChar.getType());
 			B = calSPR(myChar.getAttr('SP',0),myChar.getType());
@@ -484,7 +493,9 @@
 			}
 		}
 		
-		//突破 + 羊床 + 研所
+		//突破 + 羊床 + 音速*
+		
+		//突破 + 羊床 + 音速* + 研所
 		for (k=1;k<5;k++){
 			if (myChar.getType()=='弓')
 				A = calSPR(myChar.calSP(k,true,true,15,false,false,false,false),myChar.getType());
@@ -505,7 +516,7 @@
 			}
 		}
 		
-		//突破 + 羊床 + 研所 + 3%
+		//突破 + 羊床 + 音速* + 研所 + 3%
 		for (k=1;k<5;k++){
 			var tmp = '';
 			if (myChar.getType()=='弓') {
@@ -532,7 +543,7 @@
 			}
 		}
 		
-		//突破 + 羊床 + 研所 + 5%
+		//突破 + 羊床 + 音速* + 研所 + 5%
 		for (k=1;k<5;k++){
 			var tmp = '';
 			if (myChar.getType()=='弓' || myChar.getType()=='斧' || myChar.getType()=='雙刀')  //無5%武器
