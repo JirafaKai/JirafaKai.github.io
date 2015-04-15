@@ -623,7 +623,6 @@
 			+'<input id="latestComment' + charNo + '"style="width:99%" type="text" class="form-control" /></div>'
 			+'<button type="button" class="col-xs-3 btn btn-default" onclick="submitComment(\'' + charNo + '\')">送出評價</button>'
 			+'</form></td></tr>';
-		alert(myChar.opinion.appmedia);
 		return addComment;
 	}
 	function getComment(charNo){
