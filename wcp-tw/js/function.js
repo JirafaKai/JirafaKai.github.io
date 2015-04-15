@@ -50,9 +50,7 @@
 					  JData.feed.entry[i].gsx$as2sp.$t,
                       JData.feed.entry[i].gsx$ds1.$t,
                       JData.feed.entry[i].gsx$ds2.$t,
-                      JData.feed.entry[i].gsx$ds3.$t,
-                      JData.feed.entry[i].gsx$sprcomm.$t,
-                      JData.feed.entry[i].gsx$gamewith.$t
+                      JData.feed.entry[i].gsx$ds3.$t
                     );
 				}
 			target.remove();
@@ -625,6 +623,7 @@
 			+'<input id="latestComment' + charNo + '"style="width:99%" type="text" class="form-control" /></div>'
 			+'<button type="button" class="col-xs-3 btn btn-default" onclick="submitComment(\'' + charNo + '\')">送出評價</button>'
 			+'</form></td></tr>';
+		alert(myChar.opinion.appmedia);
 		return addComment;
 	}
 	function getComment(charNo){
