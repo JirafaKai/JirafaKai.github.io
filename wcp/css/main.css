@@ -1,0 +1,114 @@
+body{margin:0;padding:0;font-family:Microsoft JhengHei;}
+
+/* font-size */
+.f12{font-size:12pt;}
+.f18{font-size:18pt;}
+.f36{font-size:36pt;}
+
+/* color */
+.bg-blue-01{background:#62C3DA;}
+.bg-blue-02{background:#E2F1F6;}
+.bg-green-01{background:#30A55D;}
+.bg-gray-01{background:#dddddd;}
+.bg-white{background:white;}
+.font-white{color:white;}
+.font-blue-01{color:#62C3DA;}
+.border-blue-01{border-color:blue;}
+
+/* title */
+.title-01{
+	padding-left:10px;
+	font-weight:bold;
+	border-left:5px solid;
+	font-size:16pt;
+}
+
+/* button */
+.button-01{
+	font-weight:bold;
+	font-size:11pt;
+	padding:5px 20px;
+	text-decoration:none;
+	color:white;
+	border:0;
+	cursor:pointer;
+}
+.button-01:hover{
+	background:white;
+	color:#62C3DA;
+	transition:background-color .5s, color .5s;
+}
+
+/* wrapper */
+.wrapper-1024{width:1024px;min-width:768px;margin:0 auto;}
+
+/* header */
+.nav-bar{width:100%;height:60px;line-height:60px;}
+.nav-brand{font-size:22pt;float:left;}
+.nav-item{float:right;margin-left:10px;}
+.nav-item > a{
+	padding:5px 20px;
+	background:blue;
+	text-decoration:none;
+	color:white;
+}
+.nav-item > a:hover{
+	background:white;
+	color:blue;
+}
+
+/* index-section-1 */
+.index-section-1{width:100%;}
+.index-section-1-1{
+	position:relative;top:0;left:0;
+	margin:20px 0;
+	width:674px;
+	border-right:1px solid #dddddd;
+}
+.index-section-1-2{
+	position:absolute;top:-20px;right:0;
+	display:inline-block;
+	text-align:center;
+	margin:20px 0;
+	width:350px;
+}
+.icon-group{
+	width:340px;
+	margin-top:13px;
+}
+.icon-group img,.char-icon-group img{width:40px;height:40px;}
+.char-icon-group{
+	margin-top:13px;
+}
+.icon-button{
+	margin:5px 5px;
+	width:50px;height:50px;
+	border-radius:50px;
+	cursor:pointer;
+	display:inline-block;
+}
+#char-icon{background-image:url('../img/icon-char.png');}
+#weapon-icon{background-image:url('../img/icon-weapon.png');}
+.announce-group a{
+	text-decoration:none;
+	color:#32475C;
+	display:inline-block;
+	cursor:pointer;
+	-webkit-transition:color .3s, transform .3s;
+	transition:color .3s, transform .3s;
+}
+.announce-group a::before{
+	content:'>> ';
+	font-size:8pt;
+}
+.announce-group a:hover{
+	color:#62C3DA;
+	-webkit-transform:translate3d(10px,0,0);
+	transform:translate3d(10px,0,0);
+}
+.announce-group div{
+	margin-top:.3em;
+}
+
+/* position */
+.position-r{position:relative;}
