@@ -1,6 +1,16 @@
-body{margin:0;padding:0;font-family:Microsoft JhengHei;}
+html{height:100%;}
+body{
+	background:#E2F1F6;
+	margin:0;padding:0;
+	font-family:Microsoft JhengHei;
+	height:100%;
+}
+div{margin:0;padding:0;}
+.wrap {min-height:100%;position:relative;}
+.content{padding-bottom:100px;}
 
 /* font-size */
+.f10{font-size:10pt;}
 .f12{font-size:12pt;}
 .f18{font-size:18pt;}
 .f36{font-size:36pt;}
@@ -10,10 +20,15 @@ body{margin:0;padding:0;font-family:Microsoft JhengHei;}
 .bg-blue-02{background:#E2F1F6;}
 .bg-green-01{background:#30A55D;}
 .bg-gray-01{background:#dddddd;}
+.bg-gray-02{background:#34495E;}
+.bg-yellow-01{background:#E7BD22;}
 .bg-white{background:white;}
 .font-white{color:white;}
 .font-blue-01{color:#62C3DA;}
 .border-blue-01{border-color:blue;}
+
+/* position */
+.position-r{position:relative;}
 
 /* title */
 .title-01{
@@ -39,6 +54,9 @@ body{margin:0;padding:0;font-family:Microsoft JhengHei;}
 	transition:background-color .5s, color .5s;
 }
 
+/* table-cell */
+.css-table{display:table;width:100%;margin:0 auto;}
+
 /* wrapper */
 .wrapper-1024{width:1024px;min-width:768px;margin:0 auto;}
 
@@ -52,21 +70,17 @@ body{margin:0;padding:0;font-family:Microsoft JhengHei;}
 	text-decoration:none;
 	color:white;
 }
-.nav-item > a:hover{
-	background:white;
-	color:blue;
-}
 
 /* index-section-1 */
 .index-section-1{width:100%;}
 .index-section-1-1{
 	position:relative;top:0;left:0;
-	margin:20px 0;
+	padding:20px 0;
 	width:674px;
 	border-right:1px solid #dddddd;
 }
 .index-section-1-2{
-	position:absolute;top:-20px;right:0;
+	position:absolute;top:0;right:0;
 	display:inline-block;
 	text-align:center;
 	margin:20px 0;
@@ -83,9 +97,14 @@ body{margin:0;padding:0;font-family:Microsoft JhengHei;}
 .icon-button{
 	margin:5px 5px;
 	width:50px;height:50px;
+	border:3px solid white;	
 	border-radius:50px;
 	cursor:pointer;
 	display:inline-block;
+	transition:border .3s;
+}
+.icon-button:hover{
+	border:3px solid #62C3DA;
 }
 #char-icon{background-image:url('../img/icon-char.png');}
 #weapon-icon{background-image:url('../img/icon-weapon.png');}
@@ -110,5 +129,78 @@ body{margin:0;padding:0;font-family:Microsoft JhengHei;}
 	margin-top:.3em;
 }
 
-/* position */
-.position-r{position:relative;}
+/* index-section-2 */
+.index-section-2{
+	position:relative;
+}
+.index-section-2-1{
+	position:relative;
+	top:20px;
+	left:0;
+	text-align:center;
+	margin:20px 0;
+	width:604px;
+}
+.index-section-2-2{
+	position:absolute;top:0px;right:0;
+	width:400px;
+	display:inline-block;
+	text-align:center;
+	margin:20px 0;
+}
+.css-table-01{padding-bottom:50px;}
+.css-table-01 .css-title{
+	color:white;
+	font-size:16pt;
+	margin:0 auto;
+	padding:10px 10px;
+}
+.css-table-01 .css-tbody{
+	background:white;
+	margin:0 auto;
+	position:relative;
+}
+.css-table-01 .css-tbody div{
+	cursor:pointer;
+	position:relative;
+	margin:0 auto;
+	padding:10px 10px;
+	text-align:left;
+	border-bottom:1px solid #eeeeee;
+	transition:.3s;
+}
+.announce-board div{
+	text-align:center !important;
+}
+.css-table-01 .css-tbody div:hover{
+	transform:scale(1.03);
+	background:#34495E;
+	color:white;
+}
+.css-table-01 .css-tbody div:last-child{
+	border-bottom:none;
+}
+.css-table-01 .css-tbody .end-time{
+	position:absolute;
+	top:10px;right:10px;
+	font-size:10pt;
+}
+.css-table-01 .css-tbody  .rest-time{
+	position:absolute;
+	top:30px;right:10px;
+}
+
+/* footer */
+.footer{
+	position:absolute;
+	width:100%;
+	bottom:0;
+	height:100px;
+	margin-top:-100px;
+	clear:both;
+}
+.copyright{
+	position:absolute;
+	top:70px;
+	right:0;
+}
