@@ -258,7 +258,7 @@
 					+ '<div class="panel-body">'
 					+ '<span class="attr-tag"><span>HP</span><span id="HPattr' + myChar.getCharNo() + 'small">' + myChar.getAttr('HP',0) + '</span></span>'
 					+ '<span class="attr-tag"><span>SP</span><span id="SPattr' + myChar.getCharNo() + 'small">' + myChar.getAttr('SP',0) + '</span></span>'
-					+ '<span class="attr-tag"><span>SPR</span><span id="SPRattr' + myChar.getCharNo() + 'small" class="no-margin-right margin-bottom-small">' + myChar.getAttr('SPR',0) + '</span></span><br/>'
+					+ '<span class="attr-tag"><span>SPR</span><span id="SPRattr' + myChar.getCharNo() + 'small" class="no-margin-right margin-bottom-small">' + calSPR(myChar.getAttr('SP',0),myChar.getType()) + '</span></span><br/>'
 					+ '<span class="attr-tag"><span>ATK</span><span id="ATKattr' + myChar.getCharNo() + 'small">' + myChar.getAttr('ATK',0) + '</span></span>'
 					+ '<span class="attr-tag"><span>DEF</span><span id="DEFattr' + myChar.getCharNo() + 'small">' + myChar.getAttr('DEF',0) + '</span></span>'
 					+ '<span class="attr-tag"><span>CRI</span><span id="CRIattr' + myChar.getCharNo() + 'small" class="no-margin-right">' + myChar.getAttr('CRI',0) + '</span></span>'
