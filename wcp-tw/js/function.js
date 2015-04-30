@@ -201,8 +201,7 @@
 		var content = '<div class="textJPname text-left col-xs-7 col-md-3">'
 			+ '<label class="label-tag" style="background:' + color +'">' + myChar.getStar() + '</label>\n'
 			+'<label class="label-tag" style="background:' + color +'">' + myChar.getPhase() + '</label>\n'
-			+'<label class="label-tag" style="background:' + color +'">' + myChar.getType() + '</label><br/>'
-			+'<label class="hidden-xs hidden-sm label-tag" style="background:' + color +'">' + myChar.getcType() + '</label><br/>';
+			+'<label class="label-tag" style="background:' + color +'">' + myChar.getType() + '</label><br/>';
 		if(name.length > 1)
 			content += '<span class="hidden-xs">' + name[0] + '　</span>'+'<span>' + name[1] + '</span><br/>';
 		else content += '<span>' + name[0] + '</span><br/>';
@@ -249,7 +248,7 @@
 	function moreShowCV(target,myChar){
 		target.append('<div style="margin-bottom:10px;margin-top:10px;" class="well">聲優：'
 					+ myChar.getCV() + '<br/>'
-					+ '<span class="hidden-xs hidden-sm">類型：' + myChar.getcType()
+					+ '類型：' + myChar.getcType()
 					+'</div>');
 	}
 	function moreShowAttr(target,myChar){
