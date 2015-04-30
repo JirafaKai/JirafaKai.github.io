@@ -50,7 +50,8 @@
 					  JData.feed.entry[i].gsx$as2sp.$t,
                       JData.feed.entry[i].gsx$ds1.$t,
                       JData.feed.entry[i].gsx$ds2.$t,
-                      JData.feed.entry[i].gsx$ds3.$t
+                      JData.feed.entry[i].gsx$ds3.$t,
+					  JData.feed.entry[i].gsx$type.$t
                     );
 				}
 			target.remove();
@@ -92,7 +93,8 @@
 			else if(charactor[i].getNickname().toLowerCase().indexOf(keyword[n].toLowerCase()) != -1) checknum++;
 			else if(charactor[i].getType().indexOf(keyword[n]) != -1) checknum++;
 			else if(charactor[i].getPhase().indexOf(keyword[n]) != -1) checknum++;
-			else if(charactor[i].getStar().indexOf(keyword[n]) != -1) checknum++;}
+			else if(charactor[i].getStar().indexOf(keyword[n]) != -1) checknum++;
+			else if(charactor[i].getcType().indexOf(keyword[n]) != -1) checknum++;}
 		}
 		if((checknum >= checknum2) && key.length != 0)
 			return true;

@@ -9,7 +9,7 @@ function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, s
       this.phase=phase;
       this.star=star;
       this.type=type;
-	  this.ctype = ctype;
+	  this.ctype=ctype;
 	  this.cv=cv;
       this.lvMaxAttr={hp:[hp,'N/A','N/A','N/A',hp4,lv1hp], sp:[sp,sp1,sp2,sp3,sp4,lv1sp], atk:[atk,'N/A','N/A','N/A',atk4,lv1atk], def:[def,'N/A','N/A','N/A',def4,lv1def], cri:[cri,'N/A','N/A','N/A',cri4,lv1cri], spr:[spr,'N/A','N/A','N/A','N/A']};
       this.sprComm=spcComm;
