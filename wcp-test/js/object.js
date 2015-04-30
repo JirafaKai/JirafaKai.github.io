@@ -1,4 +1,4 @@
-function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, star, type, cv, appmedia, gamewith, famitsu, lv1hp, hp, hp4, lv1sp, sp, lv1atk, atk, atk4, lv1def, def, def4, lv1cri, cri, cri4, spr, sp1, sp2, sp3, sp4, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, appmedia) {
+function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, star, type, cv, appmedia, gamewith, famitsu, lv1hp, hp, hp4, lv1sp, sp, lv1atk, atk, atk4, lv1def, def, def4, lv1cri, cri, cri4, spr, sp1, sp2, sp3, sp4, ls1, ls2, as1, as1sp, as2, as2sp, ds1, ds2, ds3, spcComm, appmedia,ctype) {
 	  this.charno=charno;
 	  this.img2d=img2d;
       this.img3d=img3d;
@@ -9,6 +9,7 @@ function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, s
       this.phase=phase;
       this.star=star;
       this.type=type;
+	  this.ctype = type;
 	  this.cv=cv;
       this.lvMaxAttr={hp:[hp,'N/A','N/A','N/A',hp4,lv1hp], sp:[sp,sp1,sp2,sp3,sp4,lv1sp], atk:[atk,'N/A','N/A','N/A',atk4,lv1atk], def:[def,'N/A','N/A','N/A',def4,lv1def], cri:[cri,'N/A','N/A','N/A',cri4,lv1cri], spr:[spr,'N/A','N/A','N/A','N/A']};
       this.sprComm=spcComm;
@@ -60,6 +61,10 @@ function charAttr (charno, img2d, img3d, imgSrc, cname, ccname, cnName, phase, s
 	  //回傳角色type
 	  this.getType = function () {
 		  return this.type;
+	  }
+	  
+	  this.getcType = function (){
+		  return this.ctype;
 	  }
 	  
 	  //回傳角色法米通評價
