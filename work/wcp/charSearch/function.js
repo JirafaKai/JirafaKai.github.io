@@ -24,7 +24,7 @@
 			keyword = $('.search-input').val().trim().split(" ");
 		if(check == 0)searchajax(keyword,star,job,type,phase,cate);
 	}
-		function searchajaxx(keyword,star,job,type,phase,cate){
+	function searchajaxx(keyword,star,job,type,phase,cate){
 		check = 1;
 		var URLs="charSearch/function/test.php";
 		$.ajax({
@@ -79,7 +79,7 @@
 	}
 	function makeImgResult(i){
 		$('.char-search-01').show();
-		$('.char-search-01').append('<a href="#"><img title="'+charactor[i].getJPname()+'" src="' + charactor[i].getImg('icon') + '" /></a>');
+		$('.char-search-01').append('<a href="char/?cno=' + charactor[i].getCharNo() + '"><img title="'+charactor[i].getJPname()+'" src="' + charactor[i].getImg('icon') + '" /></a>');
 	}
 	function makeDetialResult(){
 		var c = charactor[0];

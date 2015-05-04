@@ -1,0 +1,6 @@
+#Turn on the rewrite engine
+Options +FollowSymlinks
+RewriteEngine on
+
+#Request routing
+RewriteRule ^([a-zA-z0-9_-]*)$		index.php?cno=$1 [nc,qsa]

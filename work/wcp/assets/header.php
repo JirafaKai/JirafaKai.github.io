@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<base href="http://125.31.40.148/work/wcp/" />
+	<base href="http://localhost/work/wcp/" />
 	<base target="_self" />
 	<title>白貓Project</title>
 	<meta charset="utf-8">

@@ -1,7 +1,7 @@
 <?php include_once(__DIR__ . "/../assets/header.php"); ?>
 <!-- charactor show page -->
 
-<div class="content">
+<div style="display:none" class="content">
 	
 	<div class="char-show">
 		<div class="wrapper-1024 position-r">
@@ -302,6 +302,25 @@
 		</div>
 	</div> <!-- char-show -->
 </div> <!-- conetent-->
+
+<?php
+	if (!empty($_GET['cno'])){
+		$cno = $_GET['cno'];
+		include('function/mysql_connect_user.php');
+		
+		$sql = "SELECT * FROM `char` WHERE `cno` = $cno;";
+		$result = mysql_query($sql) or die('MySQL query error');
+		
+		$row = mysql_fetch_array($result);
+		echo $row['cNo'] . '<br/>';
+		
+	}
+	else 
+	{
+		echo 'Invaild request.';
+	}
+
+?>
 
 
 <?php include_once(__DIR__ . "/../assets/footer.php"); ?>
