@@ -1,19 +1,86 @@
 <?php include_once(__DIR__ . "/../assets/header.php"); ?>
 <!-- charactor show page -->
 
-<div style="display:none" class="content">
+<?php
+
+	include("function/function.php");
+	if (!empty($_GET['cno'])){
+		$cno = $_GET['cno'];
+		include('function/mysql_connect_user.php');
+		
+		$sql = "SELECT * FROM `char`,`charattrbase`,`charattr100`,`charattrhyper`,`passiveSkill`,`leaderSkill` "
+				. "WHERE char.cNo = '" . $cno . "' "
+				. "AND charattrbase.cNo = char.cNo "
+				. "AND charattr100.cNo = char.cNo "
+				. "AND charattrhyper.cNo = char.cNo "
+				. "AND leaderSkill.cNo = char.cNo "
+				. "AND passiveSkill.cNo = char.cNo";
+		$result = mysql_query($sql) or die('MySQL query error');
+		
+		$sqlAS = "SELECT * FROM `activeSkill` WHERE activeSkill.cNo = '" . $cno ."'";
+		$resultAS = mysql_query($sqlAS);
+		
+		$asArr = array();
+		$asArr[0] = mysql_fetch_array($resultAS);
+		$asArr[1] = mysql_fetch_array($resultAS);
+		
+		if (mysql_num_rows($result)==0)
+			echo 'No Data is founded.';
+		else{
+			$row = mysql_fetch_array($result);
+			echo $row['cNo'] . '<br/>';
+		}
+		$JName = explode('　', $row['JName']);
+		$CName = explode('　', $row['CName']);
+		$DSsEffect=setDSsEffect($row);
+	}
+	else 
+	{
+		echo 'Invaild request.';
+	}
+?>
+<script>
+function imgHandler(bid){
+	$('#b2d').removeClass('active');
+	$('#b3d').removeClass('active');
+	$('#barused').removeClass('active');
+	$('#img-2d').removeClass('display-b');
+	$('#img-3d').removeClass('display-b');
+	$('#img-arused').removeClass('display-b');
+	$('#img-2d').addClass('display-n');
+	$('#img-3d').addClass('display-n');
+	$('#img-arused').addClass('display-n');
+	
+	if (bid=='b2d'){
+		$('#b2d').addClass('active');
+		$('#img-2d').removeClass('display-n');
+		$('#img-2d').addClass('display-b');
+	}
+	if (bid=='b3d'){
+		$('#b3d').addClass('active');
+		$('#img-3d').removeClass('display-n');
+		$('#img-3d').addClass('display-b');
+	}
+	if (bid=='barused'){
+		$('#barused').addClass('active');
+		$('#img-arused').removeClass('display-n');
+		$('#img-arused').addClass('display-b');
+	}
+}
+</script>
+<div style="" class="content">
 	
 	<div class="char-show">
 		<div class="wrapper-1024 position-r">
 			<div class="leftside">
 				<div class="char-img bg-white">
-					<img class="img-2d" src="img/haruka-2d.png"/>
-					<img class="img-3d" src="img/haruka-3d.png"/>
-					<img class="img-arused" src="http://pic3.mofang.com/2014/0926/20140926061510799.jpg"/>
+					<img id="img-2d" class="img-2d display-b" src="<?php echo $row['img2d'];?>"/>
+					<img id="img-3d" class="img-3d display-n" src="<?php echo $row['img3d'];?>"/>
+					<img id="img-arused" class="img-arused display-n" src="http://pic3.mofang.com/2014/0926/20140926061510799.jpg"/>
 				</div>
 				<div class="img-button-group">
-					<div class="active" id="b3d">3D圖</div><div class="" id="b2d">
-					2D圖</div><div class="" id="barused">
+					<div onclick="javascript:imgHandler(this.id)" class="active" id="b2d">2D圖</div><div onclick="javascript:imgHandler(this.id)" class="" id="b3d">
+					3D圖</div><div onclick="javascript:imgHandler(this.id)" class="" id="barused">
 					覺醒圖</div>
 				</div>			
 				<div class="char-comment position-r">
@@ -67,18 +134,18 @@
 					</div>
 					<div class="char-sub-attr">
 						<div class="char-Name bg-magician">
-							<span class="title">白魔術見習生</span><br/>
-							<span class="name">ハルカ</span>
+							<span class="title"><?php echo $JName[0];?></span><br/>
+							<span class="name"><?php echo $JName[1];?></span>
 						</div><div class="char-Name char-CName bg-magician">
-							<span class="title">白魔術師見習生</span><br/>
-							<span class="name">春香</span>
+							<span class="title">台譯稱號</span><br/>
+							<span class="name">台譯名稱</span>
 						</div>
 						<div class="char-sub-info">
 							<div class="char-phase bg-gray-02">
-								第四期
+								<?php echo $row['phase'];?>
 							</div>
 							<div class="char-job bg-gray-02">
-								魔法師
+								<?php echo jobStandFor($row['job']);?>
 							</div>
 						</div>
 						<div class="char-main-info">
@@ -87,7 +154,7 @@
 									型態
 								</div>
 								<div>
-									支援型
+									<?php echo $row['type'];?>
 								</div>
 							</div>
 							<div class="tag-of-2">
@@ -95,7 +162,7 @@
 									稀有度
 								</div>
 								<div>
-									4星
+									<?php echo $row['star'].'星';?>
 								</div>
 							</div>
 							<div class="tag-of-2">
@@ -103,7 +170,7 @@
 									COST<br/>(覺醒前/後)
 								</div>
 								<div>
-									9/11
+									<?php echo $row['costBefore'].'/'.$row['costAfter'];?>
 								</div>
 							</div>
 							<div class="tag-of-2">
@@ -111,7 +178,7 @@
 									配音
 								</div>
 								<div>
-									大空直美
+									<?php echo $row['CV'];?>
 								</div>
 							</div>
 						</div>
@@ -127,27 +194,27 @@
 							</tr>
 							<tr>
 								<td class="title">初期</td>
-								<td>131(242)</td>
-								<td>131</td>
-								<td>131</td>
-								<td>131</td>
-								<td>131</td>
+								<td><?php echo $row['hpBase'];?></td>
+								<td><?php echo $row['spBase'];?></td>
+								<td><?php echo $row['atkBase'];?></td>
+								<td><?php echo $row['defBase'];?></td>
+								<td><?php echo $row['criBase'];?></td>
 							</tr>
 							<tr>
 								<td class="title">Lv.100</td>
-								<td>131</td>
-								<td>131</td>
-								<td>131</td>
-								<td>131</td>
-								<td>131</td>
+								<td><?php echo $row['hp100'];?><?php printDSsEffect($DSsEffect,'max','hp')?></td>
+								<td><?php echo $row['sp100'];?><?php printDSsEffect($DSsEffect,'max','sp')?></td>
+								<td><?php echo $row['atk100'];?><?php printDSsEffect($DSsEffect,'max','atk')?></td>
+								<td><?php echo $row['def100'];?><?php printDSsEffect($DSsEffect,'max','def')?></td>
+								<td><?php echo $row['cri100'];?><?php printDSsEffect($DSsEffect,'max','cri')?></td>
 							</tr>
 							<tr>
 								<td class="title">Lv.100四突</td>
-								<td>131</td>
-								<td>131</td>
-								<td>131</td>
-								<td>131</td>
-								<td>131</td>
+								<td><?php echo $row['hpHyper'];?><?php printDSsEffect($DSsEffect,'hyper','hp')?></td>
+								<td><?php echo $row['spHyper'];?><?php printDSsEffect($DSsEffect,'hyper','sp')?></td>
+								<td><?php echo $row['atkHyper'];?><?php printDSsEffect($DSsEffect,'hyper','atk')?></td>
+								<td><?php echo $row['defHyper'];?><?php printDSsEffect($DSsEffect,'hyper','def')?></td>
+								<td><?php echo $row['criHyper'];?><?php printDSsEffect($DSsEffect,'hyper','cri')?></td>
 							</tr>
 						</table>
 						</div>
@@ -156,12 +223,12 @@
 								隊長技能
 							</div>
 							<div class="ls-content">
-								<span class="font-red-01">全力魔法(魔法力量全開)</span><br/>
-								<span>法師傷害增加(中)<br/>倍率1.1倍</span>
+								<span class="font-red-01"><?php echo $row['JName1LS']?>(<?php echo $row['CName1LS']?>)</span><br/>
+								<span><?php echo $row['effect1LS'];?></span>
 							</div>
 							<div class="ls-content">
-								<span class="font-red-01">全力魔法(魔法力量全開)</span><br/>
-								<span>sth.</span>
+								<span class="font-red-01"><?php echo $row['JName2LS']?>(<?php echo $row['CName2LS']?>)</span><br/>
+								<span><?php echo $row['effect2LS'];?></span>
 							</div>
 						</div>
 						<div class="passive-skill">
@@ -169,9 +236,9 @@
 								被動技能
 							</div>
 							<div class="ps-content">
-								HP+15%<br/>
-								技能傷害+15%<br/>
-								主動技能傷害+15%
+								<?php echo $row['ps1'];?><br/>
+								<?php echo $row['ps2'];?><br/>
+								<?php echo $row['ps3'];?>
 							</div>
 						</div>
 						<div class="active-skill">
@@ -181,48 +248,48 @@
 								</tr>
 								<tr>
 									<td valign="top" class="as-title">原名</td>
-									<td valign="top" class="as-content as-name font-red-01">原名</td>
-									<td valign="top" class="as-content as-name font-red-01">原名</td>
+									<td valign="top" class="as-content as-name font-red-01"><?php echo $asArr[0]['JNameAS'];?></td>
+									<td valign="top" class="as-content as-name font-red-01"><?php echo $asArr[1]['JNameAS'];?></td>
 								</tr>
 								<tr>
 									<td valign="top" class="as-title">台譯</td>
-									<td valign="top" class="as-content font-red-01">神聖的聖殿</td>
-									<td valign="top" class="as-content font-red-01">-</td>
+									<td valign="top" class="as-content font-red-01"><?php echo $asArr[0]['CNameAS'];?></td>
+									<td valign="top" class="as-content font-red-01"><?php echo $asArr[1]['CNameAS'];?></td>
 								</tr>
 								<tr>
 									<td valign="top" class="as-title">SP消耗</td>
-									<td valign="top" class="as-content">30</td>
-									<td valign="top" class="as-content">55</td>
+									<td valign="top" class="as-content"><?php echo $asArr[0]['spAS'];?></td>
+									<td valign="top" class="as-content"><?php echo $asArr[1]['spAS'];?></td>
 								</tr>	
 								<tr>
 									<td valign="top" class="as-title">倍率</td>
-									<td valign="top" class="as-content">回復攻擊值的45%</td>
-									<td valign="top" class="as-content">15倍</td>
+									<td valign="top" class="as-content"><?php echo $asArr[0]['damage'];?></td>
+									<td valign="top" class="as-content"><?php echo $asArr[1]['damage'];?></td>
 								</tr>
 								<tr>
 									<td valign="top" class="as-title">段數</td>
-									<td valign="top" class="as-content">-</td>
-									<td valign="top" class="as-content">3</td>
+									<td valign="top" class="as-content"><?php echo $asArr[0]['atttime'];?></td>
+									<td valign="top" class="as-content"><?php echo $asArr[1]['atttime'];?></td>
 								</tr>
 								<tr>
 									<td valign="top" class="as-title">屬性傷害</td>
-									<td valign="top" class="as-content">-</td>
-									<td valign="top" class="as-content">-</td>
+									<td valign="top" class="as-content"><?php echo $asArr[0]['attrDamage'];?></td>
+									<td valign="top" class="as-content"><?php echo $asArr[1]['attrDamage'];?></td>
 								</tr>
 								<tr>
 									<td valign="top" class="as-title">施放時間</td>
-									<td valign="top" class="as-content">中</td>
-									<td valign="top" class="as-content">長</td>
+									<td valign="top" class="as-content"><?php echo $asArr[0]['casttime'];?></td>
+									<td valign="top" class="as-content"><?php echo $asArr[1]['casttime'];?></td>
 								</tr>
 								<tr>
 									<td valign="top" class="as-title">範圍</td>
-									<td valign="top" class="as-content">自身大範圍</td>
-									<td valign="top" class="as-content">前方直線中範圍</td>
+									<td valign="top" class="as-content"><?php echo $asArr[0]['size'];?></td>
+									<td valign="top" class="as-content"><?php echo $asArr[1]['size'];?></td>
 								</tr>
 								<tr>
 									<td valign="top" class="as-title">持續增益</td>
-									<td valign="top" class="as-content">全體防禦+50%，持續10秒</td>
-									<td valign="top" class="as-content">-</td>
+									<td valign="top" class="as-content"><?php echo $asArr[0]['buff'];?></td>
+									<td valign="top" class="as-content"><?php echo $asArr[1]['buff'];?></td>
 								</tr>
 							</table>
 						</div>
@@ -240,7 +307,7 @@
 								</tr>
 								<tr>
 									<td class="row-title">0突</td>
-									<td class="spr-content">123</td>
+									<td class="spr-content"><?php echo $row['sp100'];?></td>
 									<td class="spr-content">
 										<input name="a" type="number" min="0" max="15" value="10">
 									</td>
@@ -251,7 +318,7 @@
 								</tr>
 								<tr>
 									<td class="row-title">1突</td>
-									<td class="spr-content">123</td>
+									<td class="spr-content"><?php echo $row['sp1'];?></td>
 									<td class="spr-content">
 										<input name="a" type="number" min="0" max="15" value="10">
 									</td>
@@ -262,7 +329,7 @@
 								</tr>
 								<tr>
 									<td class="row-title">2突</td>
-									<td class="spr-content">123</td>
+									<td class="spr-content"><?php echo $row['sp2'];?></td>
 									<td class="spr-content">
 										<input name="a" type="number" min="0" max="15" value="10">
 									</td>
@@ -273,7 +340,7 @@
 								</tr>
 								<tr>
 									<td class="row-title">3突</td>
-									<td class="spr-content">123</td>
+									<td class="spr-content"><?php echo $row['sp3'];?></td>
 									<td class="spr-content">
 										<input name="a" type="number" min="0" max="15" value="10">
 									</td>
@@ -284,7 +351,7 @@
 								</tr>
 								<tr>
 									<td class="row-title">4突</td>
-									<td class="spr-content">123</td>
+									<td class="spr-content"><?php echo $row['spHyper'];?></td>
 									<td class="spr-content">
 										<input name="a" type="number" min="0" max="15" value="10">
 									</td>
@@ -302,25 +369,7 @@
 		</div>
 	</div> <!-- char-show -->
 </div> <!-- conetent-->
-
-<?php
-	if (!empty($_GET['cno'])){
-		$cno = $_GET['cno'];
-		include('function/mysql_connect_user.php');
-		
-		$sql = "SELECT * FROM `char` WHERE `cno` = $cno;";
-		$result = mysql_query($sql) or die('MySQL query error');
-		
-		$row = mysql_fetch_array($result);
-		echo $row['cNo'] . '<br/>';
-		
-	}
-	else 
-	{
-		echo 'Invaild request.';
-	}
-
-?>
+<script type="text/javascript" src="char/function/function.js"></script>
 
 
 <?php include_once(__DIR__ . "/../assets/footer.php"); ?>
