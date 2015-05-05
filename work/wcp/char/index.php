@@ -67,6 +67,10 @@ function imgHandler(bid){
 		$('#img-arused').addClass('display-b');
 	}
 }
+
+function sprHandler(bid){
+	
+}
 </script>
 <div style="" class="content">
 	
@@ -309,56 +313,56 @@ function imgHandler(bid){
 									<td class="row-title">0突</td>
 									<td class="spr-content"><?php echo $row['sp100'];?></td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr00" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr01" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
 									</td>
-									<td class="spr-content">123</td>
+									<td id="spr02" class="spr-content">test</td>
 								</tr>
 								<tr>
 									<td class="row-title">1突</td>
 									<td class="spr-content"><?php echo $row['sp1'];?></td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr10" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr11" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
 									</td>
-									<td class="spr-content">123</td>
+									<td id="spr12" class="spr-content">123</td>
 								</tr>
 								<tr>
 									<td class="row-title">2突</td>
 									<td class="spr-content"><?php echo $row['sp2'];?></td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr20" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr21" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
 									</td>
-									<td class="spr-content">123</td>
+									<td id="spr22" class="spr-content">123</td>
 								</tr>
 								<tr>
 									<td class="row-title">3突</td>
 									<td class="spr-content"><?php echo $row['sp3'];?></td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr30" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr31" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
 									</td>
-									<td class="spr-content">123</td>
+									<td id="spr32" class="spr-content">123</td>
 								</tr>
 								<tr>
 									<td class="row-title">4突</td>
 									<td class="spr-content"><?php echo $row['spHyper'];?></td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr40" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input name="a" type="number" min="0" max="15" value="10">
+										<input id="spr41" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
 									</td>
-									<td class="spr-content">123</td>
+									<td id="spr42" class="spr-content">123</td>
 								</tr>
 							</table>
 						</div>
