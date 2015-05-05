@@ -68,8 +68,22 @@ function imgHandler(bid){
 	}
 }
 
-function sprHandler(bid){
-	
+function sprHandler(bid,job){
+	if (bid == 'spr00' || bid == 'spr01'){
+		sprCalSimple(sp, job, offset1, offset2)
+	}
+	alert(job);
+}
+function sprCalSimple(sp, job, offset1, offset2){
+	switch (job){
+		case '斧':
+			base = 2;
+		case '槍':
+			base = 1;
+		default:
+			base = 0;
+	}
+	alert(base);
 }
 </script>
 <div style="" class="content">
@@ -311,56 +325,56 @@ function sprHandler(bid){
 								</tr>
 								<tr>
 									<td class="row-title">0突</td>
-									<td class="spr-content"><?php echo $row['sp100'];?></td>
+									<td id="sp100" class="spr-content"><?php printDSsEffect($DSsEffect,'0','spr')?></td>
 									<td class="spr-content">
-										<input id="spr00" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr00" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input id="spr01" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr01" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
 									</td>
 									<td id="spr02" class="spr-content">test</td>
 								</tr>
 								<tr>
 									<td class="row-title">1突</td>
-									<td class="spr-content"><?php echo $row['sp1'];?></td>
+									<td id="sp1" class="spr-content"><?php printDSsEffect($DSsEffect,'1','spr')?></td>
 									<td class="spr-content">
-										<input id="spr10" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr10" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input id="spr11" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr11" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
 									</td>
 									<td id="spr12" class="spr-content">123</td>
 								</tr>
 								<tr>
 									<td class="row-title">2突</td>
-									<td class="spr-content"><?php echo $row['sp2'];?></td>
+									<td id="sp2" class="spr-content"><?php printDSsEffect($DSsEffect,'2','spr')?></td>
 									<td class="spr-content">
-										<input id="spr20" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr20" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input id="spr21" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr21" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
 									</td>
 									<td id="spr22" class="spr-content">123</td>
 								</tr>
 								<tr>
 									<td class="row-title">3突</td>
-									<td class="spr-content"><?php echo $row['sp3'];?></td>
+									<td id="sp3" class="spr-content"><?php printDSsEffect($DSsEffect,'3','spr')?></td>
 									<td class="spr-content">
-										<input id="spr30" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr30" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input id="spr31" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr31" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
 									</td>
 									<td id="spr32" class="spr-content">123</td>
 								</tr>
 								<tr>
 									<td class="row-title">4突</td>
-									<td class="spr-content"><?php echo $row['spHyper'];?></td>
+									<td id="spHyper" class="spr-content"><?php printDSsEffect($DSsEffect,'4','spr')?></td>
 									<td class="spr-content">
-										<input id="spr40" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr40" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
 									</td>
 									<td class="spr-content">
-										<input id="spr41" onchange="sprHandler(this.id)" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr41" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
 									</td>
 									<td id="spr42" class="spr-content">123</td>
 								</tr>

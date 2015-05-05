@@ -106,8 +106,18 @@
 				$changeFlag[$i] = 1;
 		}
 		//print_r($changeFlag);
+		$spArr = array($row['sp1'],$row['sp2'],$row['sp3']);
+		$spArr[0]*=$dsPreArr[2];
+		$spArr[1]*=$dsPreArr[2];
+		$spArr[2]*=$dsPreArr[2];
+		if (substr_count($spArr[0], '.')>0)
+			$spArr[0]=floor($spArr[0]);
+		if (substr_count($spArr[1], '.')>0)
+			$spArr[1]=floor($spArr[1]);
+		if (substr_count($spArr[2], '.')>0)
+			$spArr[2]=floor($spArr[2]);
 		
-		return array($changeFlag, $maxArr, $hyperArr);
+		return array($changeFlag, $maxArr, $hyperArr, $spArr);
 	}
 	
 	function printDSsEffect($arr, $key, $type){
@@ -141,6 +151,17 @@
 			if ($key == 'hyper' && $type == 'cri')
 				echo ' ('.$arr[2][4].')';
 		}
+		
+		if ($key == 0 && $type == 'spr')
+			echo $arr[1][1];
+		if ($key == 1 && $type == 'spr')
+			echo $arr[3][0];
+		if ($key == 2 && $type == 'spr')
+			echo $arr[3][1];
+		if ($key == 3 && $type == 'spr')
+			echo $arr[3][2];
+		if ($key == 4 && $type == 'spr')
+			echo $arr[2][1];
 	}
 	
 ?>
