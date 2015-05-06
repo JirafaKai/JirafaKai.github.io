@@ -696,20 +696,19 @@ a.tooltip[data]:hover:after {
 	text-align:center;
 	display:inline-block;
 	margin-right:5px;
+	border:1px solid #BBBBBA;
 }
 .tag-of-2 div:first-child{
 	display:table-cell;
 	vertical-align:middle;
 	height:35px;
-	border:1px solid #BBBBBA;
+	border-right:1px solid #BBBBBA;
 	background:#DDDCDD;
 	padding:5px 10px;
 }
 .tag-of-2 div:last-child{
 	display:table-cell;
 	vertical-align:middle;
-	border:1px solid #BBBBBA;
-	border-left:none;
 	padding:5px 10px;
 }
 .leader-skill{

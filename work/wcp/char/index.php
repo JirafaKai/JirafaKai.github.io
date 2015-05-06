@@ -1,6 +1,8 @@
 <?php include_once(__DIR__ . "/../assets/header.php"); ?>
 <!-- charactor show page -->
 
+<script type="text/javascript" src="char/js/function.js"></script>
+
 <?php
 
 	include("function/function.php");
@@ -33,59 +35,15 @@
 		$JName = explode('　', $row['JName']);
 		$CName = explode('　', $row['CName']);
 		$DSsEffect=setDSsEffect($row);
+		
+		echo "<script language='javascript'>$(document).ready(function(){initSPR('".$row['job']."')});</script>";
 	}
 	else 
 	{
 		echo 'Invaild request.';
 	}
-?>
-<script>
-function imgHandler(bid){
-	$('#b2d').removeClass('active');
-	$('#b3d').removeClass('active');
-	$('#barused').removeClass('active');
-	$('#img-2d').removeClass('display-b');
-	$('#img-3d').removeClass('display-b');
-	$('#img-arused').removeClass('display-b');
-	$('#img-2d').addClass('display-n');
-	$('#img-3d').addClass('display-n');
-	$('#img-arused').addClass('display-n');
 	
-	if (bid=='b2d'){
-		$('#b2d').addClass('active');
-		$('#img-2d').removeClass('display-n');
-		$('#img-2d').addClass('display-b');
-	}
-	if (bid=='b3d'){
-		$('#b3d').addClass('active');
-		$('#img-3d').removeClass('display-n');
-		$('#img-3d').addClass('display-b');
-	}
-	if (bid=='barused'){
-		$('#barused').addClass('active');
-		$('#img-arused').removeClass('display-n');
-		$('#img-arused').addClass('display-b');
-	}
-}
-
-function sprHandler(bid,job){
-	if (bid == 'spr00' || bid == 'spr01'){
-		sprCalSimple(sp, job, offset1, offset2)
-	}
-	alert(job);
-}
-function sprCalSimple(sp, job, offset1, offset2){
-	switch (job){
-		case '斧':
-			base = 2;
-		case '槍':
-			base = 1;
-		default:
-			base = 0;
-	}
-	alert(base);
-}
-</script>
+?>
 <div style="" class="content">
 	
 	<div class="char-show">
@@ -314,69 +272,75 @@ function sprCalSimple(sp, job, offset1, offset2){
 						<div class="SPR">
 							<table>
 								<tr>
-									<td colspan="5" class="main-title">SP回復量</td>
+									<td colspan="6" class="main-title">SP回復量</td>
 								</tr>
 								<tr>
 									<td class="row-title"></td>
 									<td class="col-title">SP</td>
-									<td class="col-title">建築加成</td>
-									<td class="col-title">武器加成</td>
-									<td class="col-title">最大SPR</td>
+									<td class="col-title">建築加成 (%)</td>
+									<td class="col-title">武器加成 (%)</td>
+									<td class="col-title">加成後SP</td>
+									<td class="col-title">SP回復量</td>
 								</tr>
 								<tr>
 									<td class="row-title">0突</td>
 									<td id="sp100" class="spr-content"><?php printDSsEffect($DSsEffect,'0','spr')?></td>
 									<td class="spr-content">
-										<input id="spr00" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr00" class="city-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" value="0">
 									</td>
 									<td class="spr-content">
-										<input id="spr01" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr01" class="weapon-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" max="5" value="0">
 									</td>
-									<td id="spr02" class="spr-content">test</td>
+									<td id="sp00" class="spr-content"></td>
+									<td id="spr02" class="spr-content"></td>
 								</tr>
 								<tr>
 									<td class="row-title">1突</td>
-									<td id="sp1" class="spr-content"><?php printDSsEffect($DSsEffect,'1','spr')?></td>
+									<td id="sp1" class="spr-content"><?php echo $row['sp1'];?></td>
 									<td class="spr-content">
-										<input id="spr10" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr10" class="city-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" value="0">
 									</td>
 									<td class="spr-content">
-										<input id="spr11" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr11" class="weapon-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" max="5" value="0">
 									</td>
-									<td id="spr12" class="spr-content">123</td>
+									<td id="sp10" class="spr-content"></td>
+									<td id="spr12" class="spr-content"></td>
 								</tr>
 								<tr>
 									<td class="row-title">2突</td>
-									<td id="sp2" class="spr-content"><?php printDSsEffect($DSsEffect,'2','spr')?></td>
+									<td id="sp2" class="spr-content"><?php echo $row['sp2'];?></td>
 									<td class="spr-content">
-										<input id="spr20" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr20" class="city-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" value="0">
 									</td>
 									<td class="spr-content">
-										<input id="spr21" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr21" class="weapon-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" max="5" value="0">
 									</td>
-									<td id="spr22" class="spr-content">123</td>
+									<td id="sp20" class="spr-content"></td>
+									<td id="spr22" class="spr-content"></td>
 								</tr>
 								<tr>
 									<td class="row-title">3突</td>
-									<td id="sp3" class="spr-content"><?php printDSsEffect($DSsEffect,'3','spr')?></td>
+									<td id="sp3" class="spr-content"><?php echo $row['sp3'];?></td>
 									<td class="spr-content">
-										<input id="spr30" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr30" class="city-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" value="0">
 									</td>
 									<td class="spr-content">
-										<input id="spr31" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr31" class="weapon-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" max="5" value="0">
 									</td>
-									<td id="spr32" class="spr-content">123</td>
+									<td id="sp30" class="spr-content"></td>
+									<td id="spr32" class="spr-content"></td>
 								</tr>
 								<tr>
 									<td class="row-title">4突</td>
 									<td id="spHyper" class="spr-content"><?php printDSsEffect($DSsEffect,'4','spr')?></td>
 									<td class="spr-content">
-										<input id="spr40" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="15" value="10">
+										<input id="spr40" class="city-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" value="0">
 									</td>
 									<td class="spr-content">
-										<input id="spr41" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" name="a" type="number" min="0" max="5" value="0">
+										<input id="spr41" class="weapon-add" onchange="sprHandler(this.id,'<?php echo $row['job']?>')" type="number" min="0" max="5" value="0">
 									</td>
-									<td id="spr42" class="spr-content">123</td>
+									<td id="sp40" class="spr-content"></td>
+									<td id="spr42" class="spr-content"></td>
 								</tr>
 							</table>
 						</div>
