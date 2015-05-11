@@ -4,7 +4,22 @@
 <script type="text/javascript" src="char/js/function.js"></script>
 
 <?php
-
+function jobColor ($job){
+	if ($job == '劍')
+		return 'bg-swordman';
+	if ($job == '拳')
+		return 'bg-fighter';
+	if ($job == '斧')
+		return 'bg-warrior';
+	if ($job == '槍')
+		return 'bg-lanser';
+	if ($job == '弓')
+		return 'bg-archer';
+	if ($job == '法')
+		return 'bg-magician';
+	if ($job == '雙刀')
+		return 'bg-crosssaber';
+}
 	include("function/function.php");
 	if (!empty($_GET['cno'])){
 		$cno = $_GET['cno'];
@@ -35,14 +50,23 @@
 			echo $row['cNo'] . '<br/>';
 		}
 		$JName = explode('　', $row['JName']);
-		$CName = explode('　', $row['CName']);
+		if ($row['CName'] != '-')
+			$CName = explode('　', $row['CName']);
+		else{
+			$CName[0] = '台版暫無';
+			$CName[1] = '-';
+		}
 		$DSsEffect=setDSsEffect($row);
+		
+		$jobColor = jobColor($row['job']);
 		
 		echo "<script language='javascript'>$(document).ready(function(){initSPR('".$row['job']."')});</script>";
 		$imgRoot = 'https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s';
 		$arusedImg = $imgRoot . '/arused/' . $cno . '.jpg';
 		$img2d = $imgRoot . '/img2d/' . $cno .'.png';
 		$img3d = $imgRoot . '/img3d/' . $cno .'.png';
+		$as1Img = $imgRoot . '/as1/' . $cno .'.gif';
+		$as2Img = $imgRoot . '/as2/' . $cno .'.gif';
 	}
 	else 
 	{
@@ -114,12 +138,12 @@
 						神氣後</div>
 					</div>
 					<div class="char-sub-attr">
-						<div class="char-Name bg-magician">
+						<div class="char-Name <?php echo $jobColor;?>">
 							<span class="title"><?php echo $JName[0];?></span><br/>
 							<span class="name"><?php echo $JName[1];?></span>
-						</div><div class="char-Name char-CName bg-magician">
-							<span class="title">台譯稱號</span><br/>
-							<span class="name">台譯名稱</span>
+						</div><div class="char-Name char-CName <?php echo $jobColor;?>">
+							<span class="title"><?php echo $CName[0];?></span><br/>
+							<span class="name"><?php echo $CName[1];?></span>
 						</div>
 						<div class="char-sub-info">
 							<div class="char-phase bg-gray-02">
@@ -236,32 +260,34 @@
 								</tr>
 								<tr>
 									<td valign="top" class="as-content as-name">
-										<span class="font-bold font-red-01"><?php echo $asArr[0]['JNameAS'];?></span>
+										<span class="font-bold f14 font-red-01"><?php echo $asArr[0]['JNameAS'];?></span>
 										<?php 
 											if ($asArr[0]['CNameAS'] != '-')
 												echo '<span class="font-bold font-red-01"> ('.$asArr[0]['CNameAS'] .')</span>';?>
-										<span class="sp-span float-r f10 font-green-01">消費SP：<?php echo $asArr[0]['spAS'];?></span>
+										<img class="float-r" src="<?php echo $as1Img;?>"/>
 										<br/>
 										<div class="as-details">
 										<?php echo $asArr[0]['commentAS'];?>
 										<br/>
 										<?php echo $asArr[0]['details'];?>
 										</div>
+										<span class="sp-span f10 font-green-01">消費SP：<?php echo $asArr[0]['spAS'];?></span>
 									</td>
 								</tr>
 								<tr>
 									<td valign="top" class="as-content as-name">
-										<span class="font-bold font-red-01"><?php echo $asArr[1]['JNameAS'];?></span>
+										<span class="font-bold f14 font-red-01"><?php echo $asArr[1]['JNameAS'];?></span>
 										<?php 
 											if ($asArr[1]['CNameAS'] != '-')
 												echo '<span class="font-bold font-red-01"> ('.$asArr[1]['CNameAS'] .')</span>';?>
-										<span class="sp-span float-r f10 font-green-01">消費SP：<?php echo $asArr[1]['spAS'];?></span>
+										<img class="float-r" src="<?php echo $as2Img;?>"/>
 										<br/>
 										<div class="as-details">
 										<?php echo $asArr[1]['commentAS'];?>
 										<br/>
 										<?php echo $asArr[1]['details'];?>
 										</div>
+										<span class="sp-span f10 font-green-01">消費SP：<?php echo $asArr[1]['spAS'];?></span>
 									</td>
 								</tr>
 							</table>
