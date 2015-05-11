@@ -17,7 +17,9 @@
 				. "AND charattrhyper.cNo = char.cNo "
 				. "AND leaderSkill.cNo = char.cNo "
 				. "AND passiveSkill.cNo = char.cNo";
+		
 		$result = mysql_query($sql) or die('MySQL query error');
+		
 		
 		$sqlAS = "SELECT * FROM `activeSkill` WHERE activeSkill.cNo = '" . $cno ."'";
 		$resultAS = mysql_query($sqlAS);
@@ -37,12 +39,15 @@
 		$DSsEffect=setDSsEffect($row);
 		
 		echo "<script language='javascript'>$(document).ready(function(){initSPR('".$row['job']."')});</script>";
+		$imgRoot = 'https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s';
+		$arusedImg = $imgRoot . '/arused/' . $cno . '.jpg';
+		$img2d = $imgRoot . '/img2d/' . $cno .'.png';
+		$img3d = $imgRoot . '/img3d/' . $cno .'.png';
 	}
 	else 
 	{
 		echo 'Invaild request.';
 	}
-	
 ?>
 <div style="" class="content">
 	
@@ -50,9 +55,9 @@
 		<div class="wrapper-1024 position-r">
 			<div class="leftside">
 				<div class="char-img bg-white">
-					<img id="img-2d" class="img-2d display-b" src="<?php echo $row['img2d'];?>"/>
-					<img id="img-3d" class="img-3d display-n" src="<?php echo $row['img3d'];?>"/>
-					<img id="img-arused" class="img-arused display-n" src="http://pic3.mofang.com/2014/0926/20140926061510799.jpg"/>
+					<img id="img-2d" class="img-2d display-b" src="<?php echo $img2d;?>"/>
+					<img id="img-3d" class="img-3d display-n" src="<?php echo $img3d;?>"/>
+					<img id="img-arused" class="img-arused display-n" src="<?php echo $arusedImg;?>"/>
 				</div>
 				<div class="img-button-group">
 					<div onclick="javascript:imgHandler(this.id)" class="active" id="b2d">2D圖</div><div onclick="javascript:imgHandler(this.id)" class="" id="b3d">
@@ -138,7 +143,7 @@
 									稀有度
 								</div>
 								<div>
-									<?php echo $row['star'].'星';?>
+									<?php echo $row['star'];?>
 								</div>
 							</div>
 							<div class="tag-of-2">
@@ -199,11 +204,18 @@
 								隊長技能
 							</div>
 							<div class="ls-content">
-								<span class="font-red-01"><?php echo $row['JName1LS']?>(<?php echo $row['CName1LS']?>)</span><br/>
+								<span class="font-bold font-red-01">
+									<?php echo $row['JName1LS']?>
+									<?php if ($row['CName1LS'] != '-')
+											echo '('.$row['CName1LS'].')';?>
+								</span><br/>
 								<span><?php echo $row['effect1LS'];?></span>
-							</div>
-							<div class="ls-content">
-								<span class="font-red-01"><?php echo $row['JName2LS']?>(<?php echo $row['CName2LS']?>)</span><br/>
+								<br/><br/>
+								<span class="font-bold font-red-01">
+									<?php echo $row['JName2LS']?>
+									<?php if ($row['CName2LS'] != '-')
+										echo '('.$row['CName2LS'].')';?>
+								</span><br/>
 								<span><?php echo $row['effect2LS'];?></span>
 							</div>
 						</div>
@@ -220,52 +232,37 @@
 						<div class="active-skill">
 							<table>
 								<tr>
-									<td colspan="3" class="main-title">主動技能</td>
+									<td colspan="1" class="main-title">主動技能</td>
 								</tr>
 								<tr>
-									<td valign="top" class="as-title">原名</td>
-									<td valign="top" class="as-content as-name font-red-01"><?php echo $asArr[0]['JNameAS'];?></td>
-									<td valign="top" class="as-content as-name font-red-01"><?php echo $asArr[1]['JNameAS'];?></td>
+									<td valign="top" class="as-content as-name">
+										<span class="font-bold font-red-01"><?php echo $asArr[0]['JNameAS'];?></span>
+										<?php 
+											if ($asArr[0]['CNameAS'] != '-')
+												echo '<span class="font-bold font-red-01"> ('.$asArr[0]['CNameAS'] .')</span>';?>
+										<span class="sp-span float-r f10 font-green-01">消費SP：<?php echo $asArr[0]['spAS'];?></span>
+										<br/>
+										<div class="as-details">
+										<?php echo $asArr[0]['commentAS'];?>
+										<br/>
+										<?php echo $asArr[0]['details'];?>
+										</div>
+									</td>
 								</tr>
 								<tr>
-									<td valign="top" class="as-title">台譯</td>
-									<td valign="top" class="as-content font-red-01"><?php echo $asArr[0]['CNameAS'];?></td>
-									<td valign="top" class="as-content font-red-01"><?php echo $asArr[1]['CNameAS'];?></td>
-								</tr>
-								<tr>
-									<td valign="top" class="as-title">SP消耗</td>
-									<td valign="top" class="as-content"><?php echo $asArr[0]['spAS'];?></td>
-									<td valign="top" class="as-content"><?php echo $asArr[1]['spAS'];?></td>
-								</tr>	
-								<tr>
-									<td valign="top" class="as-title">倍率</td>
-									<td valign="top" class="as-content"><?php echo $asArr[0]['damage'];?></td>
-									<td valign="top" class="as-content"><?php echo $asArr[1]['damage'];?></td>
-								</tr>
-								<tr>
-									<td valign="top" class="as-title">段數</td>
-									<td valign="top" class="as-content"><?php echo $asArr[0]['atttime'];?></td>
-									<td valign="top" class="as-content"><?php echo $asArr[1]['atttime'];?></td>
-								</tr>
-								<tr>
-									<td valign="top" class="as-title">屬性傷害</td>
-									<td valign="top" class="as-content"><?php echo $asArr[0]['attrDamage'];?></td>
-									<td valign="top" class="as-content"><?php echo $asArr[1]['attrDamage'];?></td>
-								</tr>
-								<tr>
-									<td valign="top" class="as-title">施放時間</td>
-									<td valign="top" class="as-content"><?php echo $asArr[0]['casttime'];?></td>
-									<td valign="top" class="as-content"><?php echo $asArr[1]['casttime'];?></td>
-								</tr>
-								<tr>
-									<td valign="top" class="as-title">範圍</td>
-									<td valign="top" class="as-content"><?php echo $asArr[0]['size'];?></td>
-									<td valign="top" class="as-content"><?php echo $asArr[1]['size'];?></td>
-								</tr>
-								<tr>
-									<td valign="top" class="as-title">持續增益</td>
-									<td valign="top" class="as-content"><?php echo $asArr[0]['buff'];?></td>
-									<td valign="top" class="as-content"><?php echo $asArr[1]['buff'];?></td>
+									<td valign="top" class="as-content as-name">
+										<span class="font-bold font-red-01"><?php echo $asArr[1]['JNameAS'];?></span>
+										<?php 
+											if ($asArr[1]['CNameAS'] != '-')
+												echo '<span class="font-bold font-red-01"> ('.$asArr[1]['CNameAS'] .')</span>';?>
+										<span class="sp-span float-r f10 font-green-01">消費SP：<?php echo $asArr[1]['spAS'];?></span>
+										<br/>
+										<div class="as-details">
+										<?php echo $asArr[1]['commentAS'];?>
+										<br/>
+										<?php echo $asArr[1]['details'];?>
+										</div>
+									</td>
 								</tr>
 							</table>
 						</div>

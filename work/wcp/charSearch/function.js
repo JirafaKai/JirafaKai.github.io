@@ -79,7 +79,7 @@
 	}
 	function makeImgResult(i){
 		$('.char-search-01').show();
-		$('.char-search-01').append('<a href="char/?cno=' + charactor[i].getCharNo() + '"><img title="'+charactor[i].getJPname()+'" src="' + charactor[i].getImg('icon') + '" /></a>');
+		$('.char-search-01').append('<a href="char/' + charactor[i].getCharNo() + '"><img title="'+charactor[i].getJPname()+'" src="' + charactor[i].getImg('icon') + '" /></a>');
 	}
 	function makeDetialResult(){
 		var c = charactor[0];
@@ -87,7 +87,7 @@
 		$('.char-search-02').append(
 			'<img class="char-search-arused" src="' + c.getImg('2d') + '"/>'
 			+'<div class="char-search-tag">'
-			+'<span class="bg-magician">' + c.getStar() + '星</span>'
+			+'<span class="bg-magician">' + c.getStar() + '</span>'
 			+'<span class="bg-magician">' + c.getJob() + '</span>'
 			+'<span class="bg-magician">' + c.getPhase() + '</span>'
 			+'<span class="bg-magician">' + c.getType() + '</span>'

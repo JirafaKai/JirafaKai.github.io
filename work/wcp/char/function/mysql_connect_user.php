@@ -3,7 +3,7 @@
 //資料庫位置
 $db_server = "125.31.40.148";
 //資料庫名稱
-$db_name = "wcp";
+$db_name = "wcp_new";
 //資料庫管理者帳號
 $db_user = "user";
 //資料庫管理者密碼
