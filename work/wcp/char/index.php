@@ -4,27 +4,13 @@
 <script type="text/javascript" src="char/js/function.js"></script>
 
 <?php
-function jobColor ($job){
-	if ($job == '劍')
-		return 'bg-swordman';
-	if ($job == '拳')
-		return 'bg-fighter';
-	if ($job == '斧')
-		return 'bg-warrior';
-	if ($job == '槍')
-		return 'bg-lanser';
-	if ($job == '弓')
-		return 'bg-archer';
-	if ($job == '法')
-		return 'bg-magician';
-	if ($job == '雙刀')
-		return 'bg-crosssaber';
-}
 	include("function/function.php");
 	if (!empty($_GET['cno'])){
 		$cno = $_GET['cno'];
 		include('function/mysql_connect_user.php');
 		
+		$cnoOriginal = urlMaker($cno, 'original');
+		$cnoArused = urlMaker($cno, 'arused');
 		$sql = "SELECT * FROM `char`,`charattrbase`,`charattr100`,`charattrhyper`,`passiveSkill`,`leaderSkill` "
 				. "WHERE char.cNo = '" . $cno . "' "
 				. "AND charattrbase.cNo = char.cNo "
@@ -47,7 +33,7 @@ function jobColor ($job){
 			echo 'No Data is founded.';
 		else{
 			$row = mysql_fetch_array($result);
-			echo $row['cNo'] . '<br/>';
+			//echo $row['cNo'] . '<br/>';
 		}
 		$JName = explode('　', $row['JName']);
 		if ($row['CName'] != '-')
@@ -62,9 +48,9 @@ function jobColor ($job){
 		
 		echo "<script language='javascript'>$(document).ready(function(){initSPR('".$row['job']."')});</script>";
 		$imgRoot = 'https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s';
-		$arusedImg = $imgRoot . '/arused/' . $cno . '.jpg';
-		$img2d = $imgRoot . '/img2d/' . $cno .'.png';
-		$img3d = $imgRoot . '/img3d/' . $cno .'.png';
+		$arusedImg = $imgRoot . '/arused/' . $cnoOriginal . '.jpg';
+		$img2d = $imgRoot . '/img2d/' . $cnoOriginal .'.png';
+		$img3d = $imgRoot . '/img3d/' . $cnoOriginal .'.png';
 		$as1Img = $imgRoot . '/as1/' . $cno .'.gif';
 		$as2Img = $imgRoot . '/as2/' . $cno .'.gif';
 	}
@@ -134,8 +120,8 @@ function jobColor ($job){
 			<div class="rightside">	
 				<div class="char-attr">
 					<div class="ganki-button-group">
-						<div class="active">神氣前</div><div class="">
-						神氣後</div>
+						<a href="/work/wcp/char/<?php echo urlMaker($cno,'original');?>"><div id="before" class="">神氣前</div></a><a style="<?php displayArused($cnoArused);?>" href="/work/wcp/char/<?php echo urlMaker($cno,'arused');?>"><div id="after" class="">
+						神氣後</div></a>
 					</div>
 					<div class="char-sub-attr">
 						<div class="char-Name <?php echo $jobColor;?>">
@@ -375,6 +361,12 @@ function jobColor ($job){
 	</div> <!-- char-show -->
 </div> <!-- conetent-->
 <script type="text/javascript" src="char/function/function.js"></script>
-
+<script>
+	cno = <?php echo urlMaker($_GET['cno'],'what');?>;
+	if (cno)
+		$('#after').addClass('active');
+	else
+		$('#before').addClass('active');
+</script>
 
 <?php include_once(__DIR__ . "/../assets/footer.php"); ?>
