@@ -492,7 +492,7 @@ body{
 	background:#f8f8f8;
 	color:#000;
 	position:absolute;
-	z-index:101;
+	z-index:99;
 	width:360px;
 	left:50%;
 	top:-420%;
