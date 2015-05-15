@@ -1,24 +1,26 @@
 
 function charAttr(data) {
+	  this.imgRoot = 'https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s';
 	  this.charno=data[0];
-      this.cName=data[2];
-      this.ccName=data[3];
+      this.jName=data[1];
+	  this.cName=data[2];
+      this.nName=data[3];
       this.star=data[4];
       this.type=data[5];
 	  this.job=data[6];
-	  this.categorg=data[7];
-	  this.phase=data[8];
-	  this.costb=data[9];
-	  this.costa=data[10];
-	  this.cv=data[11];
-	  this.imgSrc=data[12];
-	  this.img2d=data[13];
-      this.img3d=data[14];
+	  this.phase=data[7];
+	  this.costb=data[8];
+	  this.costa=data[9];
+	  this.cv=data[10];
+	  this.imgSrc=this.imgRoot + '/icon/' + this.charno + '.png';
+	  this.img2d=this.imgRoot + '/img2d/' + this.charno + '.png';
+	  this.img3d=this.imgRoot + '/img3d/' + this.charno + '.png';
 	  
-      this.attr={hp:[data[17],data[24],data[31]], sp:[data[18],data[25],data[32]], atk:[data[19],data[26],data[33]], def:[data[20],data[27],data[34]], cri:[data[21],data[28],data[35]]};
-      this.lskill={jlsname:[data[38],data[39]], clsname:[data[40],data[41]], lsef:[data[42],data[43]]};
-	  this.askill={jasname:[data[46],data[59]],casname:[data[47],data[60]],assp:[data[48],data[61]],astype:[data[49],data[62]],assize:[data[50],data[63]],asbuff:[data[51],data[64]],asattrdamage:[data[52],data[65]],asdamage:[data[53],data[66]],asctime:[data[54],data[67]],asatime:[data[55],data[68]],asimg:[data[56],data[69]]};
-	  this.pskill=[data[72],data[73],data[74]];
+      this.attr={hp:[data[15],data[20],data[25]], sp:[data[16],data[21],data[26]], atk:[data[17],data[22],data[27]], def:[data[18],data[23],data[28]], cri:[data[19],data[24],data[29]]};
+      this.lskill={jlsname:[data[30],data[31]], clsname:[data[32],data[33]], lsef:[data[34],data[35]]};
+	  this.pskill=[data[36],data[37],data[38]];
+	  this.askill={asOrder:[data[39],data[45]],jasname:[data[40],data[46]],casname:[data[41],data[47]],assp:[data[42],data[48]],ascomment:[data[43],data[49]],asdetails:[data[44],data[50]]};
+	  
 	  
 	  
 	  
@@ -46,12 +48,16 @@ function charAttr(data) {
 	  
 	  //回傳角色日文名字
 	  this.getJPname = function () {
+		  return this.jName;
+	  }
+	  
+	  this.getCNname = function () {
 		  return this.cName;
 	  }
 	  
 	  //回傳角色暱稱
-	  this.getCname = function () {
-		  return this.ccName;
+	  this.getNickname = function () {
+		  return this.nName;
 	  }
 	  
 	  //回傳期數
@@ -99,6 +105,9 @@ function charAttr(data) {
 	  //回傳隊長技、主動技、被動技、主動技SP消耗值
 	  this.getaSkill = function (skillType, index) {
 		  switch (skillType) {
+				case 'order':
+					return this.askill.asOrder[index];
+					break;
 				case 'jn':
 					return this.askill.jasname[index];
 					break;
@@ -108,29 +117,11 @@ function charAttr(data) {
 				case 'sp':
 					return this.askill.assp[index];
 					break;
-				case 'type':
-					return this.askill.astype[index];
+				case 'comment':
+					return this.askill.ascomment[index];
 					break;
-				case 'size':
-					return this.askill.assize[index];
-					break;
-				case 'buff':
-					return this.askill.asbuff[index];
-					break;
-				case 'attrdamage':
-					return this.askill.asattrdamage[index];
-					break;
-				case 'damage':
-					return this.askill.asdamage[index];
-					break;
-				case 'ctime':
-					return this.askill.asctime[index];
-					break;
-				case 'atime':
-					return this.askill.asatime[index];
-					break;
-				case 'img':
-					return this.askill.asimg[index];
+				case 'details':
+					return this.askill.asdetails[index];
 					break;
 				default:
 					break;

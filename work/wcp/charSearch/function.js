@@ -16,7 +16,7 @@
 		for(var i=0;i<12;i++)
 			if($('#phase-'+i).prop("checked"))phase[i]='1';
 			else phase[i]='0';
-		for(var i=1;i<3;i++)
+		for(var i=1;i<7;i++)
 			if($('#cate-'+i).prop("checked"))cate[i-1]='1';
 			else cate[i-1]='0';
 		var keyword = 'isempty';
@@ -92,10 +92,10 @@
 			+'<span class="bg-magician">' + c.getPhase() + '</span>'
 			+'<span class="bg-magician">' + c.getType() + '</span>'
 			+'</div>'
-			+'<a href="#" class="char-search-more font-white bg-gray-02">詳細資料</a>'
+			+'<a href="char/'+c.getCharNo()+'" class="char-search-more font-white bg-gray-02">詳細資料</a>'
 			+'<div class="char-search-name">'
 			+'<span>原名：' + c.getJPname() + '</span><br/>'
-			+'<span>台譯：' + c.getCname() + '</span>'
+			+'<span>台譯：' + c.getCNname() + '</span>'
 			+'</div>'
 			+'<div class="char-search-table">'
 			+'<table>'
@@ -135,14 +135,16 @@
 			+'</div>'
 			+'<div class="char-search-skill">'
 			+'<div class="skill-board skill01">'
+			+'<span class="char-search-sTitle">隊長技能</span><br/>'
+			+'<span>'+c.getlSkill('jn',0)+'</span><br/>'
 			+'<span class="char-search-sTitle">進階隊長技能</span><br/>'
-			+'<span>'+c.getlSkill('cn',0)+'</span>'
+			+'<span>'+c.getlSkill('jn',1)+'</span>'
 			+'</div>'
 			+'<div class="skill-board skill02">'
 			+'<span class="char-search-sTitle">主動技能</span><br/>'
-			+'<span>'+c.getaSkill('cn',0)+'</span><br/>'
+			+'<span>'+c.getaSkill('jn',0)+'</span><br/>'
 			+'<span class="f10 font-green-01">消費SP：'+c.getaSkill('sp',0)+'</span><br/>'
-			+'<span>'+c.getaSkill('cn',1)+'</span><br/>'
+			+'<span>'+c.getaSkill('jn',1)+'</span><br/>'
 			+'<span class="f10 font-green-01">消費SP：'+c.getaSkill('sp',1)+'</span>'
 			+'</div>'
 			+'<div class="skill-board skill03">'
