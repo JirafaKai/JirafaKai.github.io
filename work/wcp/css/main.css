@@ -277,9 +277,11 @@ a{text-decoration:none;}
 .icon-group{
 	width:340px;
 	margin-top:13px;
-	height:130px;
+	height:150px;
 }
-.icon-group img, .icon-group-02 img, .char-icon-group img{width:40px;height:40px;cursor:pointer;}
+.icon-group img, .icon-group-02 img, .char-icon-group img{
+	width:50px;height:50px;cursor:pointer;
+	}
 .char-icon-group{
 	margin-top:13px;
 }
@@ -300,20 +302,22 @@ a{text-decoration:none;}
 	position:absolute;
 	top:15px;
 	right:0;
+	transition: .3s;
 }
 #char-icon.active{
 	background:#30A55D;
 	background-image:url('../img/icon-char.png');
 }
 #weapon-icon{
-	background-image:url('../img/icon-weapon.png');
+	background-image:url('../img/icon-star.png');
 	position:absolute;
 	top:75px;
 	right:0;
+	transition: .3s;
 }
 #weapon-icon.active{
 	background:#E74C3C;
-	background-image:url('../img/icon-weapon.png');
+	background-image:url('../img/icon-star.png');
 }
 .announce-group-01 a{
 	text-decoration:none;
@@ -589,15 +593,15 @@ a.tooltip[data]:hover:after {
 	font-weight:bold;
 	height:30px;
 }
-.char-show{
+.char-show,.weapon-show{
 	padding:20px 0;
 }
-.char-show .leftside{
+.char-show .leftside, .weapon-show .leftside{
 	display:inline-block;
 	float:left;
 	width:30%;
 }
-.char-show .rightside{
+.char-show .rightside, .weapon-show .rightside{
 	display:inline-block;
 	float:right;
 	width:69%;
@@ -654,10 +658,12 @@ a.tooltip[data]:hover:after {
 	display:inline-block;
 	padding:10px 30px;
 	cursor:pointer;
+	color:#34495E;
 }
 .char-show .ganki-button-group div.active{
 	background:white;
 	color:#62C3DA;
+	font-weight:bold;
 }
 .char-sub-attr{
 	width:100%;
@@ -725,17 +731,17 @@ a.tooltip[data]:hover:after {
 	vertical-align:middle;
 	padding:5px 10px;
 }
-.leader-skill{
+.leader-skill, .table-02{
 	text-align:center;
 	margin-top:10px;
 }
-.leader-skill .ls-title{
+.leader-skill .ls-title, .table-02 .t-title {
 	display:table-cell;
 	border:1px solid #BBBBBA;
 	background:#DDDCDD;
 	padding:10px 10px;
 }
-.leader-skill .ls-content{
+.leader-skill .ls-content, .table-02 .t-content{
 	text-align:left;
 	display:table-cell;
 	border:1px solid #BBBBBA;
@@ -898,4 +904,83 @@ a.tooltip[data]:hover:after {
 }
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1
+}
+.weapon-button-group div{
+	display:inline-block;
+	padding:10px 30px;
+	cursor:pointer;
+	color:#34495E;
+}
+.weapon-button-group div.active{
+	background:white;
+	font-weight:bold;
+	color:#62C3DA;
+}
+.weapon-board{
+	background:white;
+	padding:20px;
+}
+.weapon-name {
+	margin:15px 0;
+}
+.main-tag{
+	display:inline-block;
+}
+.attr-tag{
+	padding:3px 5px;
+	display:inline-block;
+	color:white;
+	font-size:10pt;
+}
+.weapon-board .icon img{
+	width: 150px;
+	padding:8px;
+	box-sizing:border-box;
+	border: 3px double #dddddd;
+}
+.table-01 table{
+	border-collapse:collapse;
+	border-spacing:0;
+	font-size:10pt;
+}
+.table-01 td{
+	box-sizing:border-box;
+	min-width:105px;
+	text-align:center;
+	border:1px solid #bbbbbb;
+	margin:0;
+	height:30px;
+}
+.table-01 .t-title{
+	background:#dddddd;
+	font-weight:bold;
+}
+.table-02 .t-title{
+	width:80px;
+}
+.table-02 .t-content{
+	box-sizing:border-box;
+	width:425px;
+}
+.weapon-board .active-skill table, .material-table table{
+	width:526px;
+}
+.link-02{
+	margin-bottom:10px;
+	cursor:pointer;
+}
+.link-02 div{
+	position:absolute;
+	top:20px;
+	left:80px;
+}
+.link-02 img{
+	width:60px;
+	margin:10px;
+}
+.weapon-show .leftside{
+	width:25%;
+}
+.weapon-show .rightside{
+	width:73%;
 }

@@ -21,7 +21,7 @@
 		</div>
 		<a href="#" class="nav-item"><button class="button button-01 bg-blue-01">副本</button></a>
 		<a href="#" class="nav-item"><button class="button button-01 bg-blue-01">怪物</button></a>
-		<a href="#" class="nav-item"><button class="button button-01 bg-blue-01">武器</button></a>
+		<a href="weaponSearch" class="nav-item"><button class="button button-01 bg-blue-01">武器</button></a>
 		<a href="charSearch/" class="nav-item"><button class="button button-01 bg-blue-01">角色</button></a>
 	</div>
 </div>
