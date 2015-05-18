@@ -1,4 +1,4 @@
-<?php include_once(__DIR__ . "/../assets/header.html"); ?>
+<?php include_once(__DIR__ . "/../assets/header.php"); ?>
 <!-- weapon show page -->
 
 <?php
@@ -180,4 +180,4 @@ function countStage($wno){
 	$(aAdd).addClass('active');
 </script>
 
-<?php include_once(__DIR__ . "/../assets/footer.html"); ?>
+<?php include_once(__DIR__ . "/../assets/footer.php"); ?>

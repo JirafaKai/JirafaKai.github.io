@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<base href="http://localhost/work/wcp/" />
+	<base href="http://jirafakai.ddns.net/work/wcp/" />
 	<base target="_self" />
 	<title>白貓Project</title>
 	<meta charset="utf-8">
@@ -21,7 +21,7 @@
 		</div>
 		<a href="#" class="nav-item"><button class="button button-01 bg-blue-01">副本</button></a>
 		<a href="#" class="nav-item"><button class="button button-01 bg-blue-01">怪物</button></a>
-		<a href="weaponSearch" class="nav-item"><button class="button button-01 bg-blue-01">武器</button></a>
+		<a href="weaponSearch	" class="nav-item"><button class="button button-01 bg-blue-01">武器</button></a>
 		<a href="charSearch/" class="nav-item"><button class="button button-01 bg-blue-01">角色</button></a>
 	</div>
 </div>
