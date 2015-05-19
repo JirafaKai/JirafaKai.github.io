@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<base href="http://jirafakai.ddns.net/work/wcp/" />
+	<base href="http://jirafakai.asuscomm.com/" />
 	<base target="_self" />
 	<title>白貓Project</title>
 	<meta charset="utf-8">
@@ -17,7 +17,7 @@
 <div class="nav-bar bg-blue-01">
 	<div class="wrapper-1024">
 		<div class="nav-brand font-white">
-			<a class="font-white" href="index.php">白貓Project資訊站</a>
+			<a class="font-white" href="">白貓Project資訊站</a>
 		</div>
 		<a href="#" class="nav-item"><button class="button button-01 bg-blue-01">副本</button></a>
 		<a href="#" class="nav-item"><button class="button button-01 bg-blue-01">怪物</button></a>

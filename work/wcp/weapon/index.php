@@ -50,6 +50,17 @@ function countStage($wno){
 			echo 'No Data is founded.';
 		else{
 			$row = mysql_fetch_array($result);
+			$sql2 = 'select `JName`,`job` from `char` where `cNo` = "' . $wno . '"';
+			$result2 = mysql_query($sql2);
+			$row2 = mysql_fetch_row($result2);
+			$cname = explode('　',$row2[0]);
+			if($row2[1] == "劍")$bgjob = 'swordman';
+			else if($row2[1] == "拳")$bgjob = 'fighter';
+			else if($row2[1] == "斧")$bgjob = 'warrior';
+			else if($row2[1] == "槍")$bgjob = 'lanser';
+			else if($row2[1] == "弓")$bgjob = 'archer';
+			else if($row2[1] == "法")$bgjob = 'magician';
+			else if($row2[1] == "雙刀")$bgjob = 'crosssaber';
 		}
 		$count = countStage($wno);
 	}
@@ -62,13 +73,24 @@ function countStage($wno){
 	<div class="weapon-show">
 		<div class="wrapper-1024 position-r">
 			<div class="leftside">
-				<div class="link-02 bg-magician font-white position-r">
-					<img src="https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s/icon/NM0341.png"/>
-					<div>
-						<span class="f10 display-b">專屬人物</span>
-						<span class="f14 font-bold display-b">ハルカ</span>
-					</div>
-				</div>
+				<?php
+						if(mysql_num_rows($result2)==0){
+							echo '<div>';
+							echo '<img src="img/256x100.gif"/>';
+							echo '</div>';
+						}
+						else {
+							echo '<a href="char/'.$wno.'" >';
+							echo '<div class="link-02 bg-'.$bgjob.' font-white position-r">';
+							echo '<img src="https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s/icon/'.$wno.'.png"/>';
+							echo '<div>';
+							echo '	<span class="f10 display-b">專屬人物</span>';
+							echo '	<span class="f14 font-bold display-b">'.$cname[1].'</span>';
+							echo '</div>';
+							echo '</div>';
+							echo '</a>';
+						}
+				?>
 				<div>
 					<img src="img/256x100.gif"/>
 				</div>

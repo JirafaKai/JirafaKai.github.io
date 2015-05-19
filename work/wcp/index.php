@@ -5,7 +5,7 @@ function showWhere1($arr){
 	$imgRoot = 'https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s';
 	foreach ($arr as $i){
 		$img = $imgRoot . '/icon/' . $i['cno'] . '.png';
-		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/work/wcp/char/' . $i['cno'] . '"><img src="' . $img . '" title="' . $i['JName'].'"/></a>';
+		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/char/' . $i['cno'] . '"><img src="' . $img . '" title="' . $i['JName'].'"/></a>';
 		//echo $img;
 	}
 }

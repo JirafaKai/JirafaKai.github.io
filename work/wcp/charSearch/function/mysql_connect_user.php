@@ -1,7 +1,7 @@
 <?php
 //資料庫設定
 //資料庫位置
-$db_server = "jirafakai.ddns.net";
+$db_server = "jirafakai.asuscomm.com";
 //資料庫名稱
 $db_name = "wcp_new";
 //資料庫管理者帳號
