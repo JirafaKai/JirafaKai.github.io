@@ -120,7 +120,7 @@
 			<div class="rightside">	
 				<div class="char-attr">
 					<div class="ganki-button-group">
-						<a href="/work/wcp/char/<?php echo urlMaker($cno,'original');?>"><div id="before" class="">神氣前</div></a><a style="<?php displayArused($cnoArused);?>" href="/work/wcp/char/<?php echo urlMaker($cno,'arused');?>"><div id="after" class="">
+						<a href="/char/<?php echo urlMaker($cno,'original');?>"><div id="before" class="">神氣前</div></a><a style="<?php displayArused($cnoArused);?>" href="/char/<?php echo urlMaker($cno,'arused');?>"><div id="after" class="">
 						神氣後</div></a>
 					</div>
 					<div class="char-sub-attr">
