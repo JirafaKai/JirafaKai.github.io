@@ -5,17 +5,89 @@ function showWhere1($arr){
 	$imgRoot = 'https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s';
 	foreach ($arr as $i){
 		$img = $imgRoot . '/icon/' . $i['cno'] . '.png';
-		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/char/' . $i['cno'] . '"><img src="' . $img . '" title="' . $i['JName'].'"/></a>';
+		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/work/wcp/char/' . $i['cno'] . '"><img src="' . $img . '" title="' . $i['JName'].'"/></a>';
 		//echo $img;
 	}
 }
-
-
+function time2string($second){
+    $day = floor($second/(3600*24));
+    $second = $second%(3600*24);
+    $hour = floor($second/3600);
+    $second = $second%3600;
+    $minute = floor($second/60);
+    $second = $second%60;
+    return '剩餘'.$day.'天'.$hour.'小時'.$minute.'分結束';
+}
+function dateAndTime($input, $oType){
+	$tmp = explode(' ',$input);
+	$date = $tmp[0];
+	$time = $tmp[1];
 	
+	$tmp = explode('-',$date);
+	$year = $tmp[0];
+	$month = $tmp[1];
+	$day = $tmp[2];
+	
+	$tmp = explode(':',$time);
+	$hour = $tmp[0];
+	$minute = $tmp[1];
+	$second = $tmp[2];
+	
+	if ($oType == 'date')
+		return $date;
+	else if ($oType == 'time')
+		return $time;
+	else if ($oType == 'year')
+		return $year;
+	else if ($oType == 'month')
+		return $month;
+	else if ($oType == 'day')
+		return $day;
+	else if ($oType == 'hour')
+		return $hour;
+	else if ($oType == 'minute')
+		return $minute;
+	else if ($oType == 'second')
+		return $second;
+}
+function showAnnounce($arr){
+	foreach ($arr as $i){
+		$month = dateAndTime($i['aCreateTime'],'month');
+		$day = dateAndTime($i['aCreateTime'],'day');
+		echo '<div>
+				<a class="a-01" href="http://'.$_SERVER['SERVER_NAME'].'/work/wcp/announce/'.$i['aid'].'">'.$i['aTitle'].'</a>
+				<span class="date-01">'.$month.'/'.$day.'</span>
+			</div>';
+	}	
+}
+function showEvent($arr){
+	foreach ($arr as $i){
+		$start = $i['eStart'];
+		$end = $i['eEnd'];
+		$endTime = dateAndTime($start, 'month').'/'.dateAndTime($start,'day').' ~ '. dateAndTime($end,'month').'/'.dateAndTime($end,'day');
+		
+		$time1 = strtotime($end);
+		$time2 = strtotime(date('Y-m-d G:i:s'));
+		$restTime = time2string($time1 - $time2);
+		
+		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/work/wcp/event/'.$i['aid'].'">
+				<div title="'.$i['eTitle'].'">
+					<img src="img/event-icon.png"/>
+					<span class="end-time">'.$endTime.'</span><br/>
+					<span class="rest-time">'.$restTime.'</span>
+				</div>
+			</a>';
+	}
+}
+	$sqlEvent = "SELECT * FROM `event` WHERE eEnd > NOW() ORDER BY eEnd ASC";
 	$sql = "SELECT cno,JName FROM `char` WHERE showWhere = 1";
 	$sql2 = "SELECT cno,JName FROM `char` WHERE showWhere = 2";
+	$sqlAnnounce = "SELECT * FROM `announce` ORDER BY aCreateTime DESC LIMIT 8";
+	
+	$resultEvent = mysql_query($sqlEvent);
 	$result = mysql_query($sql);
 	$result2 = mysql_query($sql2);
+	$resultAnnounce = mysql_query($sqlAnnounce);
 	
 	$i = 0;
 	$arrShow = array();
@@ -30,15 +102,27 @@ function showWhere1($arr){
 		$arrShow2[$i] = $row;
 		$i++;
 	}
+	$i=0;
+	$arrEvent = array();
+	while ($row = mysql_fetch_array($resultEvent)){
+		$arrEvent[$i] = $row;
+		$i++;
+	}
 	
+	$i=0;
+	$arrAnnounce = array();
+	while ($row = mysql_fetch_array($resultAnnounce)){
+		$arrAnnounce[$i] = $row;
+		$i++;
+	}
 ?>
 <div class="content">
 
 <div class="index-section-1 bg-white">
-	<div class="wrapper-1024 position-r">
+	<div class="wrapper-1024 position-r float-l">
 		<div class="index-section-1-1">
 			<span class="title-01 font-blue-01 border-blue-01">遊戲公告</span>
-			<div class="headline">
+			<div class="headline display-n">
 				<div class="headline-tooltip-02">
 					<a href="#"><img class="headline-img" src="img/headline-2.jpg"/></a>
 					<div class="headline-tooltip-content">
@@ -54,19 +138,9 @@ function showWhere1($arr){
 					</div>
 				</div>
 			</div> <!-- headline -->
+			
 			<div class="announce-group-01">
-				<div>
-					<a class="a-01" href="#">イベントキャラモチーフ武器ガチャに登場！</a>
-					<span class="date-01">04-22</span>
-				</div>
-				<div>
-					<a href="#">『白猫』ゲーム内にしょこたんキャラが登場！</a>
-					<span class="date-01">04-22</span>
-				</div>
-				<div>
-					<a href="#">『白猫』ゲーム内にしょこたんキャラが登場！</a>
-					<span class="date-01">04-22</span>
-				</div>
+				<?php showAnnounce($arrAnnounce);?>
 			</div>
 		</div> <!-- section-1-1 -->
 		
@@ -80,7 +154,7 @@ function showWhere1($arr){
 			<div class="icon-group" id="weapon-data">
 				<?php showWhere1($arrShow2); ?>
 			</div>
-			<div class="announce-group-02">
+			<div class="announce-group-02 display-n">
 				<span class="title-01 font-blue-01 border-blue-01">站內更新</span>
 				<div class="icon-group-02">
 					<img title="Name" src="img/icon-41x41.png"/>
@@ -92,7 +166,6 @@ function showWhere1($arr){
 					<img title="Name" src="img/icon-41x41.png"/>
 				</div>
 			</div>
-			
 		</div> <!-- section-1-2 -->
 	</div>
 </div>
@@ -105,26 +178,7 @@ function showWhere1($arr){
 					活動時間表
 				</div>
 				<div class="css-tbody table-hover-01">
-					<div>
-						<img src="img/event-icon.png"/>
-						<span class="end-time">4/16 ~ 4/30</span><br/>
-						<span class="rest-time">剩餘3天18小時結束</span>
-					</div>
-					<div>
-						<img src="img/event-icon.png"/>
-						<span class="end-time">4/16 ~ 4/30</span><br/>
-						<span class="rest-time">剩餘3天18小時結束</span>
-					</div>
-					<div>
-						<img src="img/event-icon.png"/>
-						<span class="end-time">4/16 ~ 4/30</span><br/>
-						<span class="rest-time">剩餘3天18小時結束</span>
-					</div>
-					<div>
-						<img src="img/event-icon.png"/>
-						<span class="end-time">4/16 ~ 4/30</span><br/>
-						<span class="rest-time">剩餘3天18小時結束</span>
-					</div>
+					<?php showEvent($arrEvent); ?>
 				</div>
 			</div>
 		</div>
