@@ -12,7 +12,7 @@
 		for(var i=0;i<12;i++)
 			if($('#phase-'+i).prop("checked"))phase[i]='1';
 			else phase[i]='0';
-		for(var i=1;i<7;i++)
+		for(var i=1;i<8;i++)
 			if($('#cate-'+i).prop("checked"))cate[i-1]='1';
 			else cate[i-1]='0';
 		var keyword = 'isempty';

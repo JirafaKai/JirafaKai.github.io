@@ -109,10 +109,10 @@ function countStage($wno){
 			<div class="rightside">	
 				<div class="weapon-attr">
 					<div class="weapon-button-group">
-						<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/work/wcp/weapon/?a=<?php echo $wno;?>&b=1"><div id="a1" class="">一階</div></a><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/work/wcp/weapon/?a=<?php echo $wno;?>&b=2"><div id="a2" class="">
-						二階</div></a><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/work/wcp/weapon/?a=<?php echo $wno;?>&b=3"><div id="a3" class="">
-						三階</div></a><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/work/wcp/weapon/?a=<?php echo $wno;?>&b=4"><div id="a4" class="" style="<?php if ($count<4) echo 'display:none';?>">
-						四階</div></a><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/work/wcp/weapon/?a=<?php echo $wno;?>&b=5"><div id="a5" class="" style="<?php if ($count<5) echo 'display:none';?>">
+						<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/weapon/?a=<?php echo $wno;?>&b=1"><div id="a1" class="">一階</div></a><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/weapon/?a=<?php echo $wno;?>&b=2"><div id="a2" class="">
+						二階</div></a><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/weapon/?a=<?php echo $wno;?>&b=3"><div id="a3" class="">
+						三階</div></a><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/weapon/?a=<?php echo $wno;?>&b=4"><div id="a4" class="" style="<?php if ($count<4) echo 'display:none';?>">
+						四階</div></a><a href="http://<?php echo $_SERVER['SERVER_NAME'];?>/weapon/?a=<?php echo $wno;?>&b=5"><div id="a5" class="" style="<?php if ($count<5) echo 'display:none';?>">
 						五階</div><a/>
 					</div>
 					<div class="weapon-board">

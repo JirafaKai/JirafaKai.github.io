@@ -4,7 +4,7 @@
 ?>
 <html>
 <head>
-	<base href="http://localhost/work/wcp/" />
+	<base href="http://jirafakai.asuscomm.com" />
 	<base target="_self" />
 	<title>白貓Project</title>
 	<meta charset="utf-8">

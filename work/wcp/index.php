@@ -5,7 +5,7 @@ function showWhere1($arr){
 	$imgRoot = 'https://i0.wp.com/googledrive.com/host/0B2fxyLtO7o4xfnZYS0RXUmR3MTZJa3U2bEFrLWtTa0JmRW5oaFhId0dyU01KWFJfMEVqT2s';
 	foreach ($arr as $i){
 		$img = $imgRoot . '/icon/' . $i['cno'] . '.png';
-		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/work/wcp/char/' . $i['cno'] . '"><img src="' . $img . '" title="' . $i['JName'].'"/></a>';
+		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/char/' . $i['cno'] . '"><img src="' . $img . '" title="' . $i['JName'].'"/></a>';
 		//echo $img;
 	}
 }
@@ -55,7 +55,7 @@ function showAnnounce($arr){
 		$month = dateAndTime($i['aCreateTime'],'month');
 		$day = dateAndTime($i['aCreateTime'],'day');
 		echo '<div>
-				<a class="a-01" href="http://'.$_SERVER['SERVER_NAME'].'/work/wcp/announce/'.$i['aid'].'">'.$i['aTitle'].'</a>
+				<a class="a-01" href="http://'.$_SERVER['SERVER_NAME'].'/announce/'.$i['aid'].'">'.$i['aTitle'].'</a>
 				<span class="date-01">'.$month.'/'.$day.'</span>
 			</div>';
 	}	
@@ -70,7 +70,7 @@ function showEvent($arr){
 		$time2 = strtotime(date('Y-m-d G:i:s'));
 		$restTime = time2string($time1 - $time2);
 		
-		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/work/wcp/event/'.$i['aid'].'">
+		echo '<a href="http://'.$_SERVER['SERVER_NAME'].'/event/'.$i['aid'].'">
 				<div title="'.$i['eTitle'].'">
 					<img src="img/event-icon.png"/>
 					<span class="end-time">'.$endTime.'</span><br/>

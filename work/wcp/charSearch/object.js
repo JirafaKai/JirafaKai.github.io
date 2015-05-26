@@ -4,22 +4,18 @@ function charAttr(data) {
 	  this.charno=data[0];
       this.jName=data[1];
 	  this.cName=data[2];
-      this.nName=data[3];
-      this.star=data[4];
-      this.type=data[5];
-	  this.job=data[6];
-	  this.phase=data[7];
-	  this.costb=data[8];
-	  this.costa=data[9];
-	  this.cv=data[10];
+      this.star=data[3];
+      this.type=data[4];
+	  this.job=data[5];
+	  this.phase=data[6];
 	  this.imgSrc=this.imgRoot + '/icon/' + this.charno + '.png';
 	  this.img2d=this.imgRoot + '/img2d/' + this.charno + '.png';
 	  this.img3d=this.imgRoot + '/img3d/' + this.charno + '.png';
 	  
-      this.attr={hp:[data[15],data[20],data[25]], sp:[data[16],data[21],data[26]], atk:[data[17],data[22],data[27]], def:[data[18],data[23],data[28]], cri:[data[19],data[24],data[29]]};
-      this.lskill={jlsname:[data[30],data[31]], clsname:[data[32],data[33]], lsef:[data[34],data[35]]};
-	  this.pskill=[data[36],data[37],data[38]];
-	  this.askill={asOrder:[data[39],data[45]],jasname:[data[40],data[46]],casname:[data[41],data[47]],assp:[data[42],data[48]],ascomment:[data[43],data[49]],asdetails:[data[44],data[50]]};
+      this.attr={hp:[data[7],data[12],data[17]], sp:[data[8],data[13],data[18]], atk:[data[9],data[14],data[19]], def:[data[10],data[15],data[20]], cri:[data[11],data[16],data[21]]};
+      this.lskill=[data[22],data[23]];
+	  this.pskill=[data[24],data[25],data[26]];
+	  this.askill={jasname:[data[27],data[29]],assp:[data[28],data[30]]};
 	  
 	  
 	  
@@ -53,11 +49,6 @@ function charAttr(data) {
 	  
 	  this.getCNname = function () {
 		  return this.cName;
-	  }
-	  
-	  //回傳角色暱稱
-	  this.getNickname = function () {
-		  return this.nName;
 	  }
 	  
 	  //回傳期數
@@ -105,50 +96,24 @@ function charAttr(data) {
 	  //回傳隊長技、主動技、被動技、主動技SP消耗值
 	  this.getaSkill = function (skillType, index) {
 		  switch (skillType) {
-				case 'order':
-					return this.askill.asOrder[index];
-					break;
 				case 'jn':
 					return this.askill.jasname[index];
-					break;
-				case 'cn':
-					return this.askill.casname[index];
 					break;
 				case 'sp':
 					return this.askill.assp[index];
 					break;
-				case 'comment':
-					return this.askill.ascomment[index];
-					break;
-				case 'details':
-					return this.askill.asdetails[index];
-					break;
 				default:
 					break;
 			}
 	  }
 	  
-	  this.getlSkill = function (skillType, index) {
-		  switch (skillType) {
-				case 'jn':
-					return this.lskill.jlsname[index];
-					break;
-				case 'cn':
-					return this.lskill.clsname[index];
-					break;
-				case 'ef':
-					return this.lskill.lsef[index];
-					break;
-				default:
-					break;
-			}
+	  this.getlSkill = function (index) {
+		  if(this.lskill[index] == "null")return '';
+		  return this.lskill[index];
 	  }
 	  
 	  this.getpSkill = function (index) {
+		  if(this.pskill[index] == "null")return '';
 		  return this.pskill[index];
-	  }
-	  
-	  this.getCV = function () {
-		return this.cv;
 	  }
    }

@@ -8,7 +8,7 @@
 		$phase = $_POST['phase'];
 		$phases = explode(' ' , '初代 第一期 第二期 第三期 第四期 第五期 第六期 第七期 第八期 第九期 第十期 第十一期');
 		$cate = $_POST['cate'];
-		$cates = explode(' ' , '活動限定 正月限定 聖誕限定 黑貓限定 中川限定 限定角色');
+		$cates = explode(' ' , '活動限定 正月限定 聖誕限定 黑貓限定 中川限定 限定武器 島');
 		$sql = 'select `weapon`.`wNo`,`weapon`.`nickname` from `weapon`,`weaponattr1`,`weaponattr2`,`weaponattr3`,`weaponattr4`,`weaponattr5` where `weapon`.`wNo` = `weaponattr1`.`wNo` and `weapon`.`wNo` = `weaponattr2`.`wNo`and `weapon`.`wNo` = `weaponattr3`.`wNo` and `weapon`.`wNo` = `weaponattr4`.`wNo`and `weapon`.`wNo` = `weaponattr5`.`wNo` and ';
 		$num = 0;
 		$check = false;
@@ -61,7 +61,12 @@
 			$check = true;
 			$addword = $addword . '`phase` = "'.$cates[$i].'"';}
 		}
+		if($cate[6] == '1'){
+			if($check == true) $addword = $addword .' or ';
+			$check = true;
+			$addword = $addword . '`phase` like "%'.$cates[6].'%"';}
 		if($check == true){$sql = $sql . $addword . ') ';$ocheck=$check;}
+		$sql = $sql . ' ORDER BY `weapon`.`job` ASC';
 		$myre = array();
 		$word = array();
 		$result = mysql_query($sql);

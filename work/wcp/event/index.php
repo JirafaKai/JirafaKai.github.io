@@ -74,12 +74,12 @@ function dateAndTime($input, $oType){
 			
 			<div class="rightside">	
 				<div class="adv">
-					<div><img src="http://localhost/work/wcp/img/400x100.gif"/></div>
-					<div><img src="http://localhost/work/wcp/img/400x100.gif"/></div>
-					<div><img src="http://localhost/work/wcp/img/400x100.gif"/></div>
-					<div><img src="http://localhost/work/wcp/img/400x100.gif"/></div>
-					<div><img src="http://localhost/work/wcp/img/400x100.gif"/></div>
-					<div><img src="http://localhost/work/wcp/img/400x100.gif"/></div>
+					<div><img src="img/400x100.gif"/></div>
+					<div><img src="img/400x100.gif"/></div>
+					<div><img src="img/400x100.gif"/></div>
+					<div><img src="img/400x100.gif"/></div>
+					<div><img src="img/400x100.gif"/></div>
+					<div><img src="img/400x100.gif"/></div>
 				</div>
 			</div> <!-- rightside -->
 			<div style="clear:both;"></div>

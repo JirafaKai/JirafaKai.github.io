@@ -11,7 +11,7 @@
 		$phases = explode(' ' , '初代 第一期 第二期 第三期 第四期 第五期 第六期 第七期 第八期 第九期 第十期 第十一期');
 		$cate = $_POST['cate'];
 		$cates = explode(' ' , '活動限定 正月限定 聖誕限定 黑貓限定 中川限定 限定角色');
-		$sql = 'select * from `char` where ';
+		$sql = 'select `cNo`,`JName` from `char` where ';
 		$num = 0;
 		$check = false;
 		$ocheck = false;
@@ -76,22 +76,27 @@
 			$addword = $addword . '`phase` = "'.$cates[$i].'"';}
 		}
 		if($check == true){$sql = $sql . $addword . ') ';$ocheck=$check;}
-		
+		$sql = $sql . ' ORDER BY `char`.`job` ASC';
+		$result = mysql_query($sql);
 		$myre = array();
 		$word = array();
-		$result = mysql_query($sql);
+		if(mysql_num_rows($result) == 1)$check = true;else $check = false;
+		
 		$word = array();
 		while($row = @mysql_fetch_row($result)){
 			foreach($row as $data) array_push($word,$data);
-			$sql = 'select `hpBase`,`spBase`,`atkBase`,`defBase`,`criBase`,`hp100`,`sp100`,`atk100`,`def100`,`cri100`,`hpHyper`,`spHyper`,`atkHyper`,`defHyper`,`criHyper`,`JName1LS`,`JName2LS`,`CName1LS`,`CName2LS`,`effect1LS`,`effect2LS`,`ps1`,`ps2`,`ps3` from `charattrbase`,`charattr100`,`charattrhyper`,`leaderskill`,`passiveskill` where `charattrbase`.`cNo` = "'.$row[0].'" and `charattr100`.`cNo` = "'.$row[0].'" and `charattrhyper`.`cNo` = "'.$row[0].'" and `leaderskill`.`cNo` = "'.$row[0].'" and `passiveskill`.`cNo` = "'.$row[0].'"';
+			if($check == true){
+			$sql = 'select `CName`,`star`,`type`,`job`,`phase`,`hpBase`,`spBase`,`atkBase`,`defBase`,`criBase`,`hp100`,`sp100`,`atk100`,`def100`,`cri100`,`hpHyper`,`spHyper`,`atkHyper`,`defHyper`,`criHyper`,`JName1LS`,`JName2LS`,`ps1`,`ps2`,`ps3` from `char`,`charattrbase`,`charattr100`,`charattrhyper`,`leaderskill`,`passiveskill` where 
+			`char`.`cNo` = "'.$row[0].'" and 
+			`charattrbase`.`cNo` = "'.$row[0].'" and  `charattr100`.`cNo` = "'.$row[0].'" and  `charattrhyper`.`cNo` = "'.$row[0].'" and  `leaderskill`.`cNo` = "'.$row[0].'" and  `passiveskill`.`cNo` = "'.$row[0].'"';
 			$result2 = mysql_query($sql);
 			$row2 = @mysql_fetch_row($result2);
 			foreach($row2 as $data2)array_push($word,$data2);
-			$sql = 'select `asOrder`,`JNameAS`,`CNameAS`,`spAS`,`commentAS`,`details` from `activeskill` where `cNo` = "'.$row[0].'"';
+			$sql = 'select `JNameAS`,`spAS` from `activeskill` where `cNo` = "'.$row[0].'"';
 			$result2 = mysql_query($sql);
 			while($row2 = @mysql_fetch_row($result2)){
 				foreach($row2 as $data2)array_push($word,$data2);
-			}
+			}}
 			
 			array_push($myre,$word);
 			unset($word);

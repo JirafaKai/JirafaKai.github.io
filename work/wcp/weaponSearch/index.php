@@ -52,7 +52,8 @@
 						<input type="checkbox" name="category" id="cate-3" value"聖誕限定" onclick="search()"/><label for="cate-3">聖誕限定</label>
 						<input type="checkbox" name="category" id="cate-4" value"黑貓限定" onclick="search()"/><label for="cate-4">黑貓限定</label>
 						<input type="checkbox" name="category" id="cate-5" value"中川限定" onclick="search()"/><label for="cate-5">中川限定</label>
-						<input type="checkbox" name="category" id="cate-6" value"限定角色" onclick="search()"/><label for="cate-6">限定角色</label>
+						<input type="checkbox" name="category" id="cate-6" value"限定武器" onclick="search()"/><label for="cate-6">限定武器</label>
+						<input type="checkbox" name="category" id="cate-7" value"島武" onclick="search()"/><label for="cate-7">島武</label>
 					</div>
 				</div>
 			</div>

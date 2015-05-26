@@ -4,25 +4,32 @@
 		var type = [];
 		var phase = [];
 		var cate = [];
+		var search = false;
 		for(var i=1;i<5;i++)
-			if($('#star'+i).prop("checked"))star[i-1]='1';
+			if($('#star'+i).prop("checked")){star[i-1]='1';search=true;}
 			else star[i-1]='0';
 		for(var i=1;i<8;i++)
-			if($('#job'+i).prop("checked"))job[i-1]='1';
+			if($('#job'+i).prop("checked")){job[i-1]='1';search=true;}
 			else job[i-1]='0';
 		for(var i=1;i<8;i++)
-			if($('#type'+i).prop("checked"))type[i-1]='1';
+			if($('#type'+i).prop("checked")){type[i-1]='1';search=true;}
 			else type[i-1]='0';	
 		for(var i=0;i<12;i++)
-			if($('#phase-'+i).prop("checked"))phase[i]='1';
+			if($('#phase-'+i).prop("checked")){phase[i]='1';search=true;}
 			else phase[i]='0';
 		for(var i=1;i<7;i++)
-			if($('#cate-'+i).prop("checked"))cate[i-1]='1';
+			if($('#cate-'+i).prop("checked")){cate[i-1]='1';search=true;}
 			else cate[i-1]='0';
 		var keyword = 'isempty';
-		if($('.search-input').val() != '')
-			keyword = $('.search-input').val().trim().split(" ");
-		if(check == 0)searchajax(keyword,star,job,type,phase,cate);
+		if($('.search-input').val() != ''){search = true;
+			keyword = $('.search-input').val().trim().split(" ");}
+		if(check == 0 && search ==true)searchajax(keyword,star,job,type,phase,cate);
+		else if(search == false){
+			$('.char-search-01').html('');
+			$('.char-search-01').hide();
+			$('.char-search-02').html('');
+			$('.char-search-02').hide();
+		}
 	}
 	function searchajaxx(keyword,star,job,type,phase,cate){
 		check = 1;
@@ -34,7 +41,7 @@
                 dataType:'text',
 
                 success: function(data){
-					alert(data);
+					console.log(data);
                 },
 
                 error:function(xhr, ajaxOptions, thrownError){ 
@@ -87,10 +94,10 @@
 		$('.char-search-02').append(
 			'<img class="char-search-arused" src="' + c.getImg('2d') + '"/>'
 			+'<div class="char-search-tag">'
-			+'<span class="bg-magician">' + c.getStar() + '</span>'
-			+'<span class="bg-magician">' + c.getJob() + '</span>'
-			+'<span class="bg-magician">' + c.getPhase() + '</span>'
-			+'<span class="bg-magician">' + c.getType() + '</span>'
+			+'<span class="bg-'+getColor(c.getJob())+'">' + c.getStar() + '</span>'
+			+'<span class="bg-'+getColor(c.getJob())+'">' + c.getJob() + '</span>'
+			+'<span class="bg-'+getColor(c.getJob())+'">' + c.getPhase() + '</span>'
+			+'<span class="bg-'+getColor(c.getJob())+'">' + c.getType() + '</span>'
 			+'</div>'
 			+'<a href="char/'+c.getCharNo()+'" class="char-search-more font-white bg-gray-02">詳細資料</a>'
 			+'<div class="char-search-name">'
@@ -133,13 +140,16 @@
 			+'</tr>'
 			+'</table>'
 			+'</div>'
-			+'<div class="char-search-skill">'
+			+getSkill(c)
+		);
+	}
+	function getSkill(c){
+		var word = '<div class="char-search-skill">'
 			+'<div class="skill-board skill01">'
 			+'<span class="char-search-sTitle">隊長技能</span><br/>'
-			+'<span>'+c.getlSkill('jn',0)+'</span><br/>'
-			+'<span class="char-search-sTitle">進階隊長技能</span><br/>'
-			+'<span>'+c.getlSkill('jn',1)+'</span>'
-			+'</div>'
+			+'<span>'+c.getlSkill(0)+'</span><br/>';
+		if(c.getlSkill(1) != '-')word += '<span class="char-search-sTitle">進階隊長技能</span><br/>'+'<span>'+c.getlSkill(1)+'</span>';
+		word += '</div>'
 			+'<div class="skill-board skill02">'
 			+'<span class="char-search-sTitle">主動技能</span><br/>'
 			+'<span>'+c.getaSkill('jn',0)+'</span><br/>'
@@ -150,9 +160,17 @@
 			+'<div class="skill-board skill03">'
 			+'<span class="char-search-sTitle">被動技能</span><br/>'
 			+'<span>'+c.getpSkill(0)+'</span><br/>'
-			+'<span>'+c.getpSkill(1)+'</span><br/>'
-			+'<span>'+c.getpSkill(2)+'</span>'
-			+'</div>'
-			+'</div>'
-		);
+			+'<span>'+c.getpSkill(1)+'</span><br/>';
+		if(c.getpSkill(2) != '-')word += '<span>'+c.getpSkill(2)+'</span>';
+		word += '</div>'+'</div>';
+		return word;
+	}
+	function getColor(job){
+		if(job == "劍")return 'swordman';
+			else if(job == "拳")return 'fighter';
+			else if(job == "斧")return 'warrior';
+			else if(job == "槍")return 'lanser';
+			else if(job == "弓")return 'archer';
+			else if(job == "法")return 'magician';
+			else if(job == "雙刀")return 'crosssaber';
 	}

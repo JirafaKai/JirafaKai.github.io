@@ -120,7 +120,7 @@
 			<div class="rightside">	
 				<div class="char-attr">
 					<div class="ganki-button-group">
-						<a href="/work/wcp/char/<?php echo urlMaker($cno,'original');?>"><div id="before" class="">神氣前</div></a><a style="<?php displayArused($cnoArused);?>" href="/work/wcp/char/<?php echo urlMaker($cno,'arused');?>"><div id="after" class="">
+						<a href="/char/<?php echo urlMaker($cno,'original');?>"><div id="before" class="">神氣前</div></a><a style="<?php displayArused($cnoArused);?>" href="/char/<?php echo urlMaker($cno,'arused');?>"><div id="after" class="">
 						神氣後</div></a>
 					</div>
 					<div class="char-sub-attr">
@@ -220,13 +220,15 @@
 											echo '('.$row['CName1LS'].')';?>
 								</span><br/>
 								<span><?php echo $row['effect1LS'];?></span>
-								<br/><br/>
-								<span class="font-bold font-red-01">
-									<?php echo $row['JName2LS']?>
-									<?php if ($row['CName2LS'] != '-')
-										echo '('.$row['CName2LS'].')';?>
-								</span><br/>
-								<span><?php echo $row['effect2LS'];?></span>
+								<?php if ($row['JName2LS'] != '-'){
+								echo '<br/><br/>';
+								echo '<span class="font-bold font-red-01">';
+									echo $row['JName2LS'];
+									if ($row['CName2LS'] != '-')
+										echo '('.$row['CName2LS'].')';
+								echo '</span><br/>';
+								echo '<span>'.$row['effect2LS'].'</span>';
+								}?>
 							</div>
 						</div>
 						<div class="passive-skill">
@@ -235,8 +237,10 @@
 							</div>
 							<div class="ps-content">
 								<?php echo $row['ps1'];?><br/>
-								<?php echo $row['ps2'];?><br/>
-								<?php echo $row['ps3'];?>
+								<?php echo $row['ps2'];?>
+								<?php if($row['ps3'] != '-'){
+									echo '<br/>';
+									echo $row['ps3'];}?>
 							</div>
 						</div>
 						<div class="active-skill">
