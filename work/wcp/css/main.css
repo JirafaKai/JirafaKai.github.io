@@ -3,11 +3,12 @@ html{height:100%;}
 body{
 	margin:0;padding:0;
 	font-family:Microsoft JhengHei;
+	width:100%;
 	height:100%;
 }
 div{margin:0;padding:0;}
 a{text-decoration:none;}
-.wrap {min-height:100%;position:relative;background:#E2F1F6;}
+.wrap {min-height:100%;min-width:1084px;position:relative;background:#E2F1F6;}
 .content{padding-bottom:100px;}
 
 /* display */
@@ -755,7 +756,7 @@ a.tooltip[data]:hover:after {
 	border:1px solid #BBBBBA;
 	padding:10px 10px;
 	border-left:none;
-	width:613px;
+	width:560px;
 	line-height:25px;
 	box-sizing:border-box;
 }
@@ -773,7 +774,7 @@ a.tooltip[data]:hover:after {
 	border-top:none;
 	padding:10px 10px;
 	border-left:none;
-	width:613px;
+	width:560px;
 	line-height:25px;
 	box-sizing:border-box;
 }
@@ -785,7 +786,7 @@ a.tooltip[data]:hover:after {
 	border-collapse:collapse;
 	border-spacing:0;
 	box-sizing:border-box;
-	width:700px;
+	width:647px;
 }
 .active-skill .main-title, .active-skill .as-title, .SPR .main-title{
 	background:#DDDCDD;
